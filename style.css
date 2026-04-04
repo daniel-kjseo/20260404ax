@@ -1,49 +1,48 @@
 :root {
-    --bg-color: #e0e0e0;
-    --card-bg: #f0f0f0;
+    --bg-color: #f4f4f4;
     --text-color: #333;
-    --number-bg: #fff;
-    --button-bg: #4CAF50;
-    --button-hover: #45a049;
-    --shadow-color: rgba(0, 0, 0, 0.19);
-    --shadow-color-inset: rgba(0, 0, 0, 0.23);
+    --panel-bg: rgba(255, 255, 255, 0.8);
 }
 
 [data-theme="dark"] {
-    --bg-color: #121212;
-    --card-bg: #1e1e1e;
-    --text-color: #e0e0e0;
-    --number-bg: #333;
-    --button-bg: #388E3C;
-    --button-hover: #2E7D32;
-    --shadow-color: rgba(0, 0, 0, 0.5);
-    --shadow-color-inset: rgba(0, 0, 0, 0.7);
+    --bg-color: #1a1a1a;
+    --text-color: #f4f4f4;
+    --panel-bg: rgba(0, 0, 0, 0.7);
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: sans-serif;
-    transition: background-color 0.3s, color 0.3s;
+    overflow: hidden;
+}
+
+#map {
+    height: 100vh;
+    width: 100vw;
 }
 
 .theme-switch-wrapper {
     position: absolute;
     top: 20px;
     right: 20px;
+    z-index: 1000;
+    background: var(--panel-bg);
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .theme-switch {
     display: inline-block;
-    height: 34px;
+    height: 24px;
     position: relative;
-    width: 60px;
+    width: 50px;
 }
 
 .theme-switch input {
@@ -59,25 +58,31 @@ body {
     right: 0;
     top: 0;
     transition: .4s;
-    border-radius: 34px;
+    border-radius: 24px;
 }
 
 .slider:before {
     background-color: #fff;
-    bottom: 4px;
+    bottom: 3px;
     content: "";
-    height: 26px;
+    height: 18px;
     left: 4px;
     position: absolute;
     transition: .4s;
-    width: 26px;
+    width: 18px;
     border-radius: 50%;
 }
 
 input:checked + .slider {
-    background-color: #66bb6a;
+    background-color: #2196F3;
 }
 
 input:checked + .slider:before {
-    transform: translateX(26px);
+    transform: translateX(24px);
+}
+
+.cat-icon {
+    font-size: 24px;
+    text-align: center;
+    line-height: 24px;
 }

@@ -1,122 +1,72 @@
-class LottoGenerator extends HTMLElement {
-    constructor() {
-        super();
-        const shadow = this.attachShadow({ mode: 'open' });
+// Map Initialization
+const map = L.map('map').setView([20, 0], 2);
 
-        const wrapper = document.createElement('div');
-        wrapper.setAttribute('class', 'lotto-card');
+const lightTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+});
 
-        const title = document.createElement('h1');
-        title.textContent = 'Lotto Number Generator';
+const darkTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 20
+});
 
-        const numbersContainer = document.createElement('div');
-        numbersContainer.setAttribute('class', 'numbers');
+// Population Data (Major Cities)
+const cities = [
+    { name: "Tokyo", coords: [35.6895, 139.6917], pop: "37M" },
+    { name: "Delhi", coords: [28.6139, 77.2090], pop: "31M" },
+    { name: "Shanghai", coords: [31.2304, 121.4737], pop: "27M" },
+    { name: "Sao Paulo", coords: [-23.5505, -46.6333], pop: "22M" },
+    { name: "Mexico City", coords: [19.4326, -99.1332], pop: "21M" },
+    { name: "Cairo", coords: [30.0444, 31.2357], pop: "20M" },
+    { name: "Mumbai", coords: [19.0760, 72.8777], pop: "20M" },
+    { name: "Beijing", coords: [39.9042, 116.4074], pop: "20M" },
+    { name: "Dhaka", coords: [23.8103, 90.4125], pop: "20M" },
+    { name: "Osaka", coords: [34.6937, 135.5023], pop: "19M" },
+    { name: "New York", coords: [40.7128, -74.0060], pop: "18M" },
+    { name: "Seoul", coords: [37.5665, 126.9780], pop: "10M" }
+];
 
-        const button = document.createElement('button');
-        button.textContent = 'Generate Numbers';
-        button.addEventListener('click', () => this.generateNumbers(numbersContainer));
+// Cat Icon using Emoji
+const catIcon = L.divIcon({
+    html: '<div class="cat-icon">🐱</div>',
+    className: 'custom-div-icon',
+    iconSize: [30, 30],
+    iconAnchor: [15, 15]
+});
 
-        const style = document.createElement('style');
-        style.textContent = `
-            .lotto-card {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem;
-                background-color: var(--card-bg);
-                border-radius: 1rem;
-                box-shadow: 0 10px 20px var(--shadow-color), 0 6px 6px var(--shadow-color-inset);
-                text-align: center;
-                transition: background-color 0.3s, box-shadow 0.3s;
-            }
-            h1 {
-                margin-bottom: 2rem;
-                color: var(--text-color);
-                transition: color 0.3s;
-            }
-            .numbers {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-                margin-bottom: 2rem;
-            }
-            .number {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 4rem;
-                height: 4rem;
-                background-color: var(--number-bg);
-                border-radius: 50%;
-                font-size: 1.5rem;
-                font-weight: bold;
-                color: var(--text-color);
-                box-shadow: 0 4px 8px var(--shadow-color);
-                transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-            }
-            button {
-                padding: 1rem 2rem;
-                border: none;
-                border-radius: 0.5rem;
-                background-color: var(--button-bg);
-                color: white;
-                font-size: 1rem;
-                cursor: pointer;
-                transition: background-color 0.3s;
-            }
-            button:hover {
-                background-color: var(--button-hover);
-            }
-        `;
-
-        shadow.appendChild(style);
-        shadow.appendChild(wrapper);
-        wrapper.appendChild(title);
-        wrapper.appendChild(numbersContainer);
-        wrapper.appendChild(button);
-    }
-
-    generateNumbers(container) {
-        container.innerHTML = '';
-        const numbers = new Set();
-        while (numbers.size < 6) {
-            numbers.add(Math.floor(Math.random() * 45) + 1);
-        }
-
-        const sortedNumbers = Array.from(numbers).sort((a, b) => a - b);
-
-        sortedNumbers.forEach(number => {
-            const numberElement = document.createElement('div');
-            numberElement.setAttribute('class', 'number');
-            numberElement.textContent = number;
-            container.appendChild(numberElement);
-        });
-    }
-}
-
-customElements.define('lotto-generator', LottoGenerator);
+// Add Markers
+cities.forEach(city => {
+    L.marker(city.coords, { icon: catIcon })
+        .addTo(map)
+        .bindPopup(`<b>${city.name}</b><br>Population: ~${city.pop}`);
+});
 
 // Theme Switch Logic
 const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light';
 
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-
-    if (currentTheme === 'dark') {
+function applyTheme(theme) {
+    if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        map.removeLayer(lightTiles);
+        darkTiles.addTo(map);
         toggleSwitch.checked = true;
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        map.removeLayer(darkTiles);
+        lightTiles.addTo(map);
+        toggleSwitch.checked = false;
     }
 }
 
+applyTheme(currentTheme);
+
 function switchTheme(e) {
-    if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-    }
+    const theme = e.target.checked ? 'dark' : 'light';
+    applyTheme(theme);
+    localStorage.setItem('theme', theme);
 }
 
 toggleSwitch.addEventListener('change', switchTheme, false);
