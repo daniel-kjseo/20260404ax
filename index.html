@@ -3,22 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Map with Cats</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <title>Global Tech & Insight Blog | Latest Updates</title>
+    <meta name="description" content="Stay updated with the latest in tech, travel, and global trends. Insightful articles for a modern lifestyle.">
+    <meta name="keywords" content="tech, travel, lifestyle, global trends, insights">
+    
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="Global Tech & Insight Blog">
+    <meta property="og:description" content="Explore the latest trends and insights from around the world.">
+    <meta property="og:type" content="website">
+    
+    <!-- Leaflet CSS (optional if we keep some map integration, but user said "Blog") -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /> -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Mock Ad Script (Placeholder) -->
+    <script>
+        console.log("Ad script initialized...");
+    </script>
 </head>
 <body>
-    <div class="theme-switch-wrapper">
-        <label class="theme-switch" for="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <div class="slider"></div>
-        </label>
-        <span>Dark Mode</span>
-    </div>
+    <header>
+        <div class="container header-content">
+            <div class="logo">InsightGlobal</div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Tech</a></li>
+                    <li><a href="#">Travel</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider"></div>
+                </label>
+            </div>
+        </div>
+    </header>
 
-    <div id="map"></div>
+    <main class="container">
+        <!-- Top Ad Placement (Above the Fold) -->
+        <div class="ad-slot top-ad">
+            <div class="ad-placeholder">Top Banner Advertisement</div>
+        </div>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+        <div class="content-grid">
+            <section class="posts-section" id="post-list">
+                <article class="post-card">
+                    <div class="post-img" style="background-color: #ddd;">Post Image</div>
+                    <div class="post-content">
+                        <span class="category">Tech</span>
+                        <h2>The Future of AI in 2026</h2>
+                        <p>Discover how artificial intelligence is shaping our daily lives and what to expect in the coming years...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Mid-Content Ad Placement -->
+                <div class="ad-slot mid-ad">
+                    <div class="ad-placeholder">In-Feed Advertisement</div>
+                </div>
+
+                <article class="post-card">
+                    <div class="post-img" style="background-color: #ccc;">Post Image</div>
+                    <div class="post-content">
+                        <span class="category">Travel</span>
+                        <h2>Hidden Gems in Southern Europe</h2>
+                        <p>Explore the less-traveled paths of Italy and Greece for an unforgettable summer experience...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-img" style="background-color: #bbb;">Post Image</div>
+                    <div class="post-content">
+                        <span class="category">Lifestyle</span>
+                        <h2>Sustainable Living: Small Changes</h2>
+                        <p>Learn how to reduce your carbon footprint with these simple, daily habits that make a difference...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+            </section>
+
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h3>Popular Posts</h3>
+                    <ul class="popular-list">
+                        <li><a href="#">10 Tips for Remote Work Success</a></li>
+                        <li><a href="#">The Rise of Electric Vehicles</a></li>
+                        <li><a href="#">Global Economic Outlook 2026</a></li>
+                    </ul>
+                </div>
+
+                <!-- Sidebar Ad Placement -->
+                <div class="ad-slot sidebar-ad">
+                    <div class="ad-placeholder">Sidebar Ad (300x600)</div>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3>Newsletter</h3>
+                    <p>Get the latest insights delivered to your inbox.</p>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 InsightGlobal. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+
     <script src="main.js"></script>
 </body>
 </html>
