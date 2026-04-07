@@ -10,6 +10,14 @@ const i18n = {
         privacyText: "Photos are never saved on our server.",
         retryBtn: "Try Again",
         shareBtn: "Share",
+        affiliateTitle: "Affiliate Inquiry",
+        affiliateLabelName: "Name / Company",
+        affiliateLabelEmail: "Email",
+        affiliateLabelMessage: "Message",
+        affiliatePlaceholderName: "Your name or company",
+        affiliatePlaceholderEmail: "your@email.com",
+        affiliatePlaceholderMessage: "How can we collaborate?",
+        affiliateBtn: "Send Inquiry",
         results: {
             male: [
                 { type: "Dog Face", emoji: "🐶", desc: "Friendly and loyal, you have a charm that makes everyone feel comfortable!", percentages: ["Dog 45%", "Cat 20%", "Bear 15%"] },
@@ -35,6 +43,14 @@ const i18n = {
         privacyText: "사진은 서버에 저장되지 않습니다.",
         retryBtn: "다시 하기",
         shareBtn: "공유하기",
+        affiliateTitle: "제휴 문의",
+        affiliateLabelName: "성함 / 업체명",
+        affiliateLabelEmail: "이메일",
+        affiliateLabelMessage: "문의 내용",
+        affiliatePlaceholderName: "성함 또는 업체명을 입력하세요",
+        affiliatePlaceholderEmail: "이메일 주소를 입력하세요",
+        affiliatePlaceholderMessage: "제휴 내용을 입력해 주세요",
+        affiliateBtn: "문의하기",
         results: {
             male: [
                 { type: "강아지상", emoji: "🐶", desc: "다정다감하고 귀여운 당신은 누구에게나 호감을 주는 매력을 가졌네요!", percentages: ["강아지 45%", "고양이 20%", "곰 15%"] },
@@ -61,11 +77,13 @@ const imagePreview = document.getElementById('image-preview');
 const setupSection = document.getElementById('setup-section');
 const analysisSection = document.getElementById('analysis-section');
 const resultSection = document.getElementById('result-section');
+const affiliateSection = document.getElementById('affiliate-section');
 const loadingBar = document.getElementById('loading-bar');
 const btnRetry = document.getElementById('btn-retry');
 const btnShare = document.getElementById('btn-share');
 const langEn = document.getElementById('lang-en');
 const langKo = document.getElementById('lang-ko');
+const linkAffiliate = document.getElementById('link-affiliate');
 
 // State
 let selectedGender = 'female';
@@ -89,6 +107,16 @@ function setLanguage(lang) {
     document.querySelector('.privacy-notice span:last-child').textContent = i18n[lang].privacyText;
     btnRetry.textContent = i18n[lang].retryBtn;
     btnShare.textContent = i18n[lang].shareBtn;
+
+    // Affiliate form text
+    document.getElementById('affiliate-title').textContent = i18n[lang].affiliateTitle;
+    document.getElementById('label-name').textContent = i18n[lang].affiliateLabelName;
+    document.getElementById('label-email').textContent = i18n[lang].affiliateLabelEmail;
+    document.getElementById('label-message').textContent = i18n[lang].affiliateLabelMessage;
+    document.getElementById('name').placeholder = i18n[lang].affiliatePlaceholderName;
+    document.getElementById('email').placeholder = i18n[lang].affiliatePlaceholderEmail;
+    document.getElementById('message').placeholder = i18n[lang].affiliatePlaceholderMessage;
+    document.getElementById('btn-affiliate').textContent = i18n[lang].affiliateBtn;
 }
 
 langEn.addEventListener('click', () => setLanguage('en'));
@@ -144,6 +172,7 @@ function handleFile(file) {
 function startAnalysis() {
     setupSection.classList.add('hidden');
     analysisSection.classList.remove('hidden');
+    affiliateSection.classList.add('hidden');
     
     let progress = 0;
     const interval = setInterval(() => {
@@ -215,6 +244,15 @@ btnShare.addEventListener('click', () => {
         }).catch(err => console.log('Error sharing', err));
     } else {
         alert('Share not supported on this browser. Copy the URL!');
+    }
+});
+
+// Affiliate Toggle
+linkAffiliate.addEventListener('click', (e) => {
+    e.preventDefault();
+    affiliateSection.classList.toggle('hidden');
+    if (!affiliateSection.classList.contains('hidden')) {
+        affiliateSection.scrollIntoView({ behavior: 'smooth' });
     }
 });
 
