@@ -368,9 +368,19 @@ header {
 
 /* Comment Section */
 .comment-section {
-    margin-top: 3rem;
+    margin-top: 4rem;
     padding-top: 2rem;
     border-top: 1px solid var(--border-color);
+    text-align: left; /* Ensure text alignment is left for comments */
+}
+
+#disqus_thread {
+    width: 100%;
+    color: var(--text-color); /* Help Disqus detect light/dark mode */
+}
+
+#disqus_thread a {
+    color: var(--primary-color); /* Inherit site link color */
 }
 
 /* Footer */
