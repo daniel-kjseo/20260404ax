@@ -366,6 +366,13 @@ header {
     opacity: 0.8;
 }
 
+/* Comment Section */
+.comment-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
 /* Footer */
 footer {
     margin-top: 2rem;
