@@ -1,28 +1,24 @@
-
-# Lotto Number Generator App Blueprint
+# Global AI Face Analysis Test - Blueprint
 
 ## Overview
+A viral-style web application that analyzes user facial features using AI (simulated in this version) to determine their "animal face" archetype. Designed for high engagement, social sharing, and privacy.
 
-This document outlines the design and implementation of a simple Lotto Number Generator web application. The application will allow users to generate random lottery numbers.
+## Core Features
+- **AI Face Analysis:** Simulated analysis with a polished progress bar and status updates.
+- **Gender-Specific Results:** Different animal categories for Male and Female users.
+- **Multi-Language Support:** English and Korean translations included.
+- **Privacy-Centric:** Purely client-side processing (no photos saved on servers).
+- **Responsive Design:** Mobile-first, modern UI with emoji-driven aesthetics.
+- **Viral Mechanics:** One-click sharing and retry functionality.
 
-## Project Outline
+## Technical Stack
+- **Frontend:** HTML5, CSS3 (Vanilla), JavaScript (Vanilla).
+- **Design:** Modern, minimalist, soft-tech aesthetic.
+- **State Management:** Simple client-side state for gender and language.
 
-### Style and Design
-*   **Layout:** A clean, centered layout that is mobile-responsive.
-*   **Color Palette:** A modern and vibrant color scheme.
-*   **Typography:** Clear and readable fonts.
-*   **Iconography:** Use of icons to enhance user understanding.
-*   **Visual Effects:** Subtle shadows and gradients for a polished look.
-
-### Features
-*   **Lotto Number Generation:** A button to generate a set of random lottery numbers.
-*   **Display:** The generated numbers will be displayed in a visually appealing way.
-*   **Web Component:** The core functionality will be encapsulated in a `<lotto-generator>` web component.
-
-## Current Plan
-
-*   **Objective:** Create a visually appealing and functional Lotto Number Generator.
-*   **Steps:**
-    1.  **HTML (`index.html`):** Set up the basic structure with a `<lotto-generator>` element.
-    2.  **JavaScript (`main.js`):** Implement the `LottoGenerator` web component.
-    3.  **CSS (`style.css`):** Style the application to be visually appealing and responsive.
+## User Flow
+1. **Landing:** User selects language and gender.
+2. **Input:** User uploads a photo (drag & drop or click).
+3. **Analysis:** "Fast Analysis" sequence with a 5-second progress bar.
+4. **Result:** Display animal type, description, and percentage breakdown.
+5. **Action:** User can share the result or try again.

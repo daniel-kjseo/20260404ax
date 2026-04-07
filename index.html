@@ -1,128 +1,85 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Tech & Insight Blog | Latest Updates</title>
-    <meta name="description" content="Stay updated with the latest in tech, travel, and global trends. Insightful articles for a modern lifestyle.">
-    <meta name="keywords" content="tech, travel, lifestyle, global trends, insights">
-    
-    <!-- Open Graph for Social Media -->
-    <meta property="og:title" content="Global Tech & Insight Blog">
-    <meta property="og:description" content="Explore the latest trends and insights from around the world.">
-    <meta property="og:type" content="website">
-    
-    <!-- Leaflet CSS (optional if we keep some map integration, but user said "Blog") -->
-    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /> -->
+    <title>AI Animal Face Test | Global Face Analysis</title>
+    <meta name="description" content="What animal do I look like? Find your animal face type with AI. Privacy safe, no photos saved.">
+    <meta name="keywords" content="animal face, ai face test, facial analysis, look alike, puppy face, cat face">
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Mock Ad Script (Placeholder) -->
-    <script>
-        console.log("Ad script initialized...");
-    </script>
 </head>
 <body>
-    <header>
-        <div class="container header-content">
-            <div class="logo">InsightGlobal</div>
-            <nav>
-                <ul>
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#">Tech</a></li>
-                    <li><a href="#">Travel</a></li>
-                    <li><a href="#">About</a></li>
-                </ul>
-            </nav>
-            <div class="theme-switch-wrapper">
-                <label class="theme-switch" for="checkbox">
-                    <input type="checkbox" id="checkbox" />
-                    <div class="slider"></div>
-                </label>
+    <div class="container">
+        <header>
+            <div class="language-selector">
+                <button id="lang-en" class="lang-btn active">English</button>
+                <button id="lang-ko" class="lang-btn">한국어</button>
             </div>
-        </div>
-    </header>
+            <h1 class="main-title">AI Animal Face Test</h1>
+            <p class="subtitle">Global AI Face Analysis</p>
+        </header>
 
-    <main class="container">
-        <!-- Top Ad Placement (Above the Fold) -->
-        <div class="ad-slot top-ad">
-            <div class="ad-placeholder">Top Banner Advertisement</div>
-        </div>
-
-        <div class="content-grid">
-            <section class="posts-section" id="post-list">
-                <article class="post-card">
-                    <div class="post-img" style="background-color: #ddd;">Post Image</div>
-                    <div class="post-content">
-                        <span class="category">Tech</span>
-                        <h2>The Future of AI in 2026</h2>
-                        <p>Discover how artificial intelligence is shaping our daily lives and what to expect in the coming years...</p>
-                        <a href="#" class="read-more">Read More</a>
+        <main>
+            <section id="setup-section">
+                <div class="gender-selection">
+                    <span class="selection-label">Select Gender:</span>
+                    <div class="toggle-container">
+                        <input type="radio" id="gender-female" name="gender" value="female" checked>
+                        <label for="gender-female" class="toggle-btn">👩 Female</label>
+                        <input type="radio" id="gender-male" name="gender" value="male">
+                        <label for="gender-male" class="toggle-btn">👨 Male</label>
                     </div>
-                </article>
-
-                <!-- Mid-Content Ad Placement -->
-                <div class="ad-slot mid-ad">
-                    <div class="ad-placeholder">In-Feed Advertisement</div>
                 </div>
 
-                <article class="post-card">
-                    <div class="post-img" style="background-color: #ccc;">Post Image</div>
-                    <div class="post-content">
-                        <span class="category">Travel</span>
-                        <h2>Hidden Gems in Southern Europe</h2>
-                        <p>Explore the less-traveled paths of Italy and Greece for an unforgettable summer experience...</p>
-                        <a href="#" class="read-more">Read More</a>
+                <div class="upload-container" id="drop-zone">
+                    <div class="upload-content">
+                        <span class="upload-icon">📷</span>
+                        <p class="upload-text">Click or drag your photo here</p>
+                        <p class="upload-hint">(JPG, PNG up to 10MB)</p>
                     </div>
-                </article>
-
-                <article class="post-card">
-                    <div class="post-img" style="background-color: #bbb;">Post Image</div>
-                    <div class="post-content">
-                        <span class="category">Lifestyle</span>
-                        <h2>Sustainable Living: Small Changes</h2>
-                        <p>Learn how to reduce your carbon footprint with these simple, daily habits that make a difference...</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </article>
+                    <input type="file" id="file-input" accept="image/*" hidden>
+                    <img id="image-preview" class="image-preview hidden">
+                </div>
             </section>
 
-            <aside class="sidebar">
-                <div class="sidebar-widget">
-                    <h3>Popular Posts</h3>
-                    <ul class="popular-list">
-                        <li><a href="#">10 Tips for Remote Work Success</a></li>
-                        <li><a href="#">The Rise of Electric Vehicles</a></li>
-                        <li><a href="#">Global Economic Outlook 2026</a></li>
-                    </ul>
+            <section id="analysis-section" class="hidden">
+                <div class="analysis-status">
+                    <div class="loading-bar-container">
+                        <div class="loading-bar" id="loading-bar"></div>
+                    </div>
+                    <p id="analysis-text" class="status-text">⚡ Fast Analysis...</p>
                 </div>
+            </section>
 
-                <!-- Sidebar Ad Placement -->
-                <div class="ad-slot sidebar-ad">
-                    <div class="ad-placeholder">Sidebar Ad (300x600)</div>
+            <section id="result-section" class="hidden">
+                <div class="result-card">
+                    <div class="result-header">
+                        <span id="result-emoji" class="result-emoji">🐶</span>
+                        <h2 id="result-title" class="result-title">Puppy Face</h2>
+                    </div>
+                    <p id="result-desc" class="result-desc">Friendly and cute, you have the most lovable charm!</p>
+                    
+                    <div class="percentage-container" id="percentage-list">
+                        <!-- Percentages will be injected here -->
+                    </div>
+
+                    <div class="action-buttons">
+                        <button id="btn-retry" class="btn secondary">Try Again</button>
+                        <button id="btn-share" class="btn primary">Share</button>
+                    </div>
                 </div>
+            </section>
 
-                <div class="sidebar-widget">
-                    <h3>Newsletter</h3>
-                    <p>Get the latest insights delivered to your inbox.</p>
-                    <form id="newsletter-form">
-                        <input type="email" placeholder="Your Email" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </aside>
-        </div>
-    </main>
-
-    <footer>
-        <div class="container footer-content">
-            <p>&copy; 2026 InsightGlobal. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Contact</a>
+            <div class="privacy-notice">
+                <span class="lock-icon">🔒</span>
+                <span>Photos are never saved on our server.</span>
             </div>
-        </div>
-    </footer>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 AI Animal Face Test. All rights reserved.</p>
+        </footer>
+    </div>
 
     <script src="main.js"></script>
 </body>
