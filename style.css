@@ -309,6 +309,18 @@ header {
     color: var(--text-color);
 }
 
+/* Ad Container */
+.ad-container {
+    margin: 20px auto;
+    text-align: center;
+    min-height: 90px;
+    background-color: rgba(0, 0, 0, 0.02);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
 /* Privacy Notice */
 .privacy-notice {
     margin-top: 2.5rem;
@@ -390,16 +402,11 @@ header {
     margin-top: 4rem;
     padding-top: 2rem;
     border-top: 1px solid var(--border-color);
-    text-align: left; /* Ensure text alignment is left for comments */
+    text-align: left;
 }
 
 #disqus_thread {
     width: 100%;
-    color: var(--text-color); /* Help Disqus detect light/dark mode */
-}
-
-#disqus_thread a {
-    color: var(--primary-color); /* Inherit site link color */
 }
 
 /* Footer */
