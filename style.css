@@ -198,65 +198,84 @@ header {
 
 /* Result Card */
 .result-card {
-    text-align: left;
+    text-align: center;
     background-color: var(--bg-color);
-    padding: 2rem;
-    border-radius: 20px;
+    padding: 2.5rem 1.5rem;
+    border-radius: 24px;
 }
 
-.result-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.result-emoji {
-    font-size: 4rem;
+.match-label {
+    font-size: 1rem;
+    color: var(--secondary-text);
+    margin-bottom: 0.5rem;
 }
 
 .result-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 800;
-}
-
-.result-desc {
     margin-bottom: 2rem;
-    color: var(--secondary-text);
-    font-size: 1.1rem;
+    color: var(--primary-color);
 }
 
-/* Percentages */
-.percentage-item {
-    margin-bottom: 1rem;
-}
-
-.label-row {
+.names-container {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.4rem;
-    font-weight: 600;
-    font-size: 0.9rem;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
 }
 
-.bar-bg {
-    width: 100%;
-    height: 10px;
-    background-color: var(--border-color);
-    border-radius: 5px;
-    overflow: hidden;
+.name-box {
+    background-color: var(--card-bg);
+    padding: 1rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s;
 }
 
-.bar-fill {
-    height: 100%;
-    background-color: var(--primary-color);
-    border-radius: 5px;
-    width: 0%;
-    transition: width 1s ease-out;
+.name-box.emphasized {
+    border: 3px solid var(--primary-color);
+    padding: 2rem 1rem;
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
 }
 
-.bar-fill.accent {
-    background-color: var(--secondary-color);
+.name-box.emphasized .name-value {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--primary-color);
+}
+
+.name-box.emphasized .name-lang {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-text);
+    background: var(--accent-light);
+    padding: 0.2rem 1rem;
+    border-radius: 20px;
+}
+
+.secondary-names {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+}
+
+.secondary-names .name-box {
+    padding: 0.8rem 0.4rem;
+}
+
+.secondary-names .name-lang {
+    font-size: 0.7rem;
+    color: var(--secondary-text);
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+}
+
+.secondary-names .name-value {
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 /* Action Buttons */

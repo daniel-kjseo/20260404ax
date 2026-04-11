@@ -1,15 +1,22 @@
 // Multi-language strings
 const i18n = {
     en: {
-        title: "AI Animal Face Test",
-        subtitle: "Global AI Face Analysis",
+        title: "K-Idol Name Generator",
+        subtitle: "Find your K-Pop look-alike & names",
         selectionLabel: "Select Gender:",
-        uploadText: "Click or drag your photo here",
+        uploadText: "Upload your photo",
         uploadHint: "(JPG, PNG up to 10MB)",
-        statusText: "⚡ Fast Analysis...",
+        statusText: "⚡ Analyzing your features...",
         privacyText: "Photos are never saved on our server.",
         retryBtn: "Try Again",
-        shareBtn: "Share",
+        shareBtn: "Share Result",
+        matchLabel: "You look like",
+        langLabels: {
+            en: "American",
+            ko: "Korean",
+            ja: "Japanese",
+            zh: "Chinese"
+        },
         affiliateTitle: "Affiliate Inquiry",
         affiliateLabelName: "Name / Company",
         affiliateLabelEmail: "Email",
@@ -17,32 +24,25 @@ const i18n = {
         affiliatePlaceholderName: "Your name or company",
         affiliatePlaceholderEmail: "your@email.com",
         affiliatePlaceholderMessage: "How can we collaborate?",
-        affiliateBtn: "Send Inquiry",
-        results: {
-            male: [
-                { type: "Dog Face", emoji: "🐶", desc: "Friendly and loyal, you have a charm that makes everyone feel comfortable!", percentages: ["Dog 45%", "Cat 20%", "Bear 15%"] },
-                { type: "Cat Face", emoji: "🐱", desc: "Chic and mysterious, you have a sharp and sophisticated aura.", percentages: ["Cat 50%", "Fox 25%", "Dog 10%"] },
-                { type: "Dinosaur Face", emoji: "🦖", desc: "Strong and charismatic, you have a powerful presence that commands attention.", percentages: ["Dinosaur 55%", "Bear 20%", "Dog 10%"] },
-                { type: "Bear Face", emoji: "🐻", desc: "Reliable and warm, you look like someone who gives great hugs!", percentages: ["Bear 48%", "Dog 22%", "Dinosaur 10%"] }
-            ],
-            female: [
-                { type: "Puppy Face", emoji: "🐶", desc: "Friendly and cute, you have the most lovable charm!", percentages: ["Dog 42%", "Rabbit 28%", "Deer 10%"] },
-                { type: "Cat Face", emoji: "🐱", desc: "Sophisticated and alluring, you have a sharp and chic gaze.", percentages: ["Cat 45%", "Fox 25%", "Deer 12%"] },
-                { type: "Rabbit Face", emoji: "🐰", desc: "Bubbly and bright, you radiate positive energy everywhere you go!", percentages: ["Rabbit 52%", "Dog 20%", "Deer 10%"] },
-                { type: "Deer Face", emoji: "🦌", desc: "Elegant and calm, you have a graceful and peaceful atmosphere.", percentages: ["Deer 50%", "Rabbit 20%", "Cat 10%"] }
-            ]
-        }
+        affiliateBtn: "Send Inquiry"
     },
     ko: {
-        title: "AI 동물상 테스트",
-        subtitle: "글로벌 인공지능 얼굴 분석",
+        title: "K-아이돌 이름 생성기",
+        subtitle: "나와 닮은 아이돌과 이름 찾기",
         selectionLabel: "성별 선택:",
-        uploadText: "사진을 클릭하거나 드래그하세요",
+        uploadText: "사진 업로드하기",
         uploadHint: "(JPG, PNG 최대 10MB)",
-        statusText: "⚡ 빠른 분석 중...",
+        statusText: "⚡ 인공지능 분석 중...",
         privacyText: "사진은 서버에 저장되지 않습니다.",
         retryBtn: "다시 하기",
-        shareBtn: "공유하기",
+        shareBtn: "결과 공유하기",
+        matchLabel: "당신의 닮은꼴 아이돌은",
+        langLabels: {
+            en: "미국식 이름",
+            ko: "한국식 이름",
+            ja: "일본식 이름",
+            zh: "중국식 이름"
+        },
         affiliateTitle: "제휴 문의",
         affiliateLabelName: "성함 / 업체명",
         affiliateLabelEmail: "이메일",
@@ -50,22 +50,25 @@ const i18n = {
         affiliatePlaceholderName: "성함 또는 업체명을 입력하세요",
         affiliatePlaceholderEmail: "이메일 주소를 입력하세요",
         affiliatePlaceholderMessage: "제휴 내용을 입력해 주세요",
-        affiliateBtn: "문의하기",
-        results: {
-            male: [
-                { type: "강아지상", emoji: "🐶", desc: "다정다감하고 귀여운 당신은 누구에게나 호감을 주는 매력을 가졌네요!", percentages: ["강아지 45%", "고양이 20%", "곰 15%"] },
-                { type: "고양이상", emoji: "🐱", desc: "시크하고 신비로운 당신은 날카로우면서도 세련된 분위기를 풍깁니다.", percentages: ["고양이 50%", "여우 25%", "강아지 10%"] },
-                { type: "공룡상", emoji: "🦖", desc: "강하고 카리스마 있는 당신은 압도적인 존재감을 보여줍니다.", percentages: ["공룡 55%", "곰 20%", "강아지 10%"] },
-                { type: "곰상", emoji: "🐻", desc: "듬직하고 따뜻한 당신은 포근한 매력으로 주변을 안심시킵니다.", percentages: ["곰 48%", "강아지 22%", "공룡 10%"] }
-            ],
-            female: [
-                { type: "강아지상", emoji: "🐶", desc: "다정하고 귀여운 당신은 모든 사람들에게 사랑받는 매력을 가졌네요!", percentages: ["강아지 42%", "토끼 28%", "사슴 10%"] },
-                { type: "고양이상", emoji: "🐱", desc: "세련되고 매혹적인 당신은 날카로우면서도 도도한 매력이 돋보입니다.", percentages: ["고양이 45%", "여우 25%", "사슴 12%"] },
-                { type: "토끼상", emoji: "🐰", desc: "발랄하고 귀여운 당신은 주변에 긍정적인 에너지를 전파합니다!", percentages: ["토끼 52%", "강아지 20%", "사슴 10%"] },
-                { type: "사슴상", emoji: "🦌", desc: "우아하고 차분한 당신은 맑고 영롱한 분위기를 자아냅니다.", percentages: ["사슴 50%", "토끼 20%", "고양이 10%"] }
-            ]
-        }
+        affiliateBtn: "문의하기"
     }
+};
+
+const idols = {
+    female: [
+        { id: "Jennie (BLACKPINK)", names: { en: "Jennie", ko: "김제니", ja: "ジェニー", zh: "珍妮" } },
+        { id: "Karina (aespa)", names: { en: "Karina", ko: "유지민", ja: "カリナ", zh: "柳智敏" } },
+        { id: "Wonyoung (IVE)", names: { en: "Wonyoung", ko: "장원영", ja: "ウォニョン", zh: "张员瑛" } },
+        { id: "Hanni (NewJeans)", names: { en: "Hanni", ko: "하니", ja: "ハニ", zh: "牟智慧" } },
+        { id: "Sana (TWICE)", names: { en: "Sana", ko: "사나", ja: "サナ", zh: "凑崎纱夏" } }
+    ],
+    male: [
+        { id: "V (BTS)", names: { en: "V", ko: "김태형", ja: "ヴィ", zh: "金泰亨" } },
+        { id: "Cha Eun-woo (ASTRO)", names: { en: "Eunwoo", ko: "차은우", ja: "チャウヌ", zh: "车银优" } },
+        { id: "Felix (Stray Kids)", names: { en: "Felix", ko: "필릭스", ja: "フィリックス", zh: "李龙馥" } },
+        { id: "Mingyu (SEVENTEEN)", names: { en: "Mingyu", ko: "김민규", ja: "ミンギュ", zh: "金珉奎" } },
+        { id: "Hyunjin (Stray Kids)", names: { en: "Hyunjin", ko: "황현진", ja: "ヒョンジン", zh: "黄铉辰" } }
+    ]
 };
 
 let currentLang = 'en';
@@ -93,11 +96,9 @@ function setLanguage(lang) {
     currentLang = lang;
     document.documentElement.lang = lang;
     
-    // Update active button
     langEn.classList.toggle('active', lang === 'en');
     langKo.classList.toggle('active', lang === 'ko');
 
-    // Update UI text
     document.querySelector('.main-title').textContent = i18n[lang].title;
     document.querySelector('.subtitle').textContent = i18n[lang].subtitle;
     document.querySelector('.selection-label').textContent = i18n[lang].selectionLabel;
@@ -107,8 +108,8 @@ function setLanguage(lang) {
     document.querySelector('.privacy-notice span:last-child').textContent = i18n[lang].privacyText;
     btnRetry.textContent = i18n[lang].retryBtn;
     btnShare.textContent = i18n[lang].shareBtn;
+    document.getElementById('idol-match-label').textContent = i18n[lang].matchLabel;
 
-    // Affiliate form text
     document.getElementById('affiliate-title').textContent = i18n[lang].affiliateTitle;
     document.getElementById('label-name').textContent = i18n[lang].affiliateLabelName;
     document.getElementById('label-email').textContent = i18n[lang].affiliateLabelEmail;
@@ -117,6 +118,11 @@ function setLanguage(lang) {
     document.getElementById('email').placeholder = i18n[lang].affiliatePlaceholderEmail;
     document.getElementById('message').placeholder = i18n[lang].affiliatePlaceholderMessage;
     document.getElementById('btn-affiliate').textContent = i18n[lang].affiliateBtn;
+
+    // If result is already shown, update labels
+    if (!resultSection.classList.contains('hidden')) {
+        updateResultLabels();
+    }
 }
 
 langEn.addEventListener('click', () => setLanguage('en'));
@@ -168,7 +174,6 @@ function handleFile(file) {
     reader.readAsDataURL(file);
 }
 
-// Analysis Sequence
 function startAnalysis() {
     setupSection.classList.add('hidden');
     analysisSection.classList.remove('hidden');
@@ -183,45 +188,40 @@ function startAnalysis() {
             clearInterval(interval);
             showResult();
         }
-    }, 50);
+    }, 30);
 }
 
-// Result Generation
+let lastMatchedIdol = null;
+
 function showResult() {
     analysisSection.classList.add('hidden');
     resultSection.classList.remove('hidden');
 
-    const results = i18n[currentLang].results[selectedGender];
-    const result = results[Math.floor(Math.random() * results.length)];
+    const genderIdols = idols[selectedGender];
+    const idol = genderIdols[Math.floor(Math.random() * genderIdols.length)];
+    lastMatchedIdol = idol;
 
-    document.getElementById('result-emoji').textContent = result.emoji;
-    document.getElementById('result-title').textContent = result.type;
-    document.getElementById('result-desc').textContent = result.desc;
+    document.getElementById('result-title').textContent = idol.id;
+    updateResultLabels();
+}
 
-    const percentageList = document.getElementById('percentage-list');
-    percentageList.innerHTML = '';
+function updateResultLabels() {
+    if (!lastMatchedIdol) return;
 
-    result.percentages.forEach((p, index) => {
-        const [label, valueStr] = p.split(' ');
-        const value = parseInt(valueStr);
-        
-        const item = document.createElement('div');
-        item.className = 'percentage-item';
-        item.innerHTML = `
-            <div class="label-row">
-                <span>${label}</span>
-                <span>${valueStr}</span>
-            </div>
-            <div class="bar-bg">
-                <div class="bar-fill ${index === 0 ? '' : 'accent'}" style="width: 0%"></div>
-            </div>
-        `;
-        percentageList.appendChild(item);
+    const labels = i18n[currentLang].langLabels;
+    const idolNames = lastMatchedIdol.names;
 
-        // Animate bar
-        setTimeout(() => {
-            item.querySelector('.bar-fill').style.width = `${value}%`;
-        }, 100);
+    // Primary name (Current Language)
+    const primaryLang = currentLang === 'ko' ? 'ko' : 'en';
+    const secondaryLangs = ['en', 'ko', 'ja', 'zh'].filter(l => l !== primaryLang);
+
+    document.getElementById('lang-label-primary').textContent = labels[primaryLang];
+    document.getElementById('val-primary').textContent = idolNames[primaryLang];
+
+    secondaryLangs.forEach((lang, index) => {
+        const idx = index + 1;
+        document.getElementById(`lang-label-sec-${idx}`).textContent = labels[lang];
+        document.getElementById(`val-sec-${idx}`).textContent = idolNames[lang];
     });
 }
 
@@ -233,13 +233,14 @@ btnRetry.addEventListener('click', () => {
     imagePreview.src = '';
     fileInput.value = '';
     loadingBar.style.width = '0%';
+    lastMatchedIdol = null;
 });
 
 btnShare.addEventListener('click', () => {
     if (navigator.share) {
         navigator.share({
             title: i18n[currentLang].title,
-            text: `I got ${document.getElementById('result-title').textContent}! Find your animal face type here.`,
+            text: `I look like ${lastMatchedIdol.id}! Check out my names in 4 languages.`,
             url: window.location.href,
         }).catch(err => console.log('Error sharing', err));
     } else {
@@ -247,7 +248,6 @@ btnShare.addEventListener('click', () => {
     }
 });
 
-// Affiliate Toggle
 linkAffiliate.addEventListener('click', (e) => {
     e.preventDefault();
     affiliateSection.classList.toggle('hidden');
