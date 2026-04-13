@@ -6,41 +6,46 @@
     <title>About Us | K-Idol Face Test & Name Generator</title>
     <meta name="description" content="Learn more about the K-Idol Face Test & Name Generator project.">
     <link rel="stylesheet" href="style.css">
-    <style>
-        .content-page {
-            max-width: 800px;
-            margin: 40px auto;
-            text-align: left;
-            padding: 40px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-        }
-        .content-page h1 { margin-bottom: 20px; color: var(--primary-color); }
-        .content-page h2 { margin-top: 30px; margin-bottom: 15px; }
-        .content-page p { margin-bottom: 15px; color: var(--text-color); }
-        .back-link { display: inline-block; margin-bottom: 20px; color: var(--primary-color); text-decoration: none; font-weight: bold; }
-    </style>
 </head>
 <body>
-    <div class="content-page">
-        <a href="/" class="back-link">← Back to Home</a>
+    <nav class="navbar">
+        <a href="/" class="nav-logo">K-Idol AI</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/about.html">About</a>
+            <a href="/contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container" style="text-align: left;">
+        <a href="/" style="display: inline-block; margin-bottom: 20px; color: var(--primary-color); text-decoration: none; font-weight: bold;">← Back to Home</a>
         <h1>About Us</h1>
         <p>Welcome to K-Idol Face Test & Name Generator, your ultimate destination for discovering your K-Pop identity through the power of AI.</p>
         
-        <h2>Our Mission</h2>
+        <h2 style="margin-top: 30px; margin-bottom: 15px;">Our Mission</h2>
         <p>Our mission is to bring joy and cultural connection to K-Pop fans worldwide. We believe that technology should be fun, accessible, and privacy-conscious. By combining modern AI facial analysis concepts with the global phenomenon of K-Pop, we've created a unique experience that allows fans to see themselves through the lens of their favorite idols.</p>
 
-        <h2>Why We Built This</h2>
+        <h2 style="margin-top: 30px; margin-bottom: 15px;">Why We Built This</h2>
         <p>The idea was born from the "Animal Face Archetype" culture in Korea, where people are often compared to animals like cats, puppies, or bunnies based on their facial features. We wanted to take this a step further by matching those archetypes with famous K-Pop idols and generating localized names in four different languages.</p>
 
-        <h2>Privacy First</h2>
+        <h2 style="margin-top: 30px; margin-bottom: 15px;">Privacy First</h2>
         <p>In an era where data privacy is paramount, we've designed our tool to work entirely within your browser. We don't want your photos; we just want you to have fun. That's why we don't use any backend servers to process your images.</p>
 
-        <h2>Our Team</h2>
+        <h2 style="margin-top: 30px; margin-bottom: 15px;">Our Team</h2>
         <p>We are a small group of K-Pop enthusiasts and developers who love building interactive web experiences. We hope you enjoy using our tool as much as we enjoyed building it!</p>
 
         <p>Thank you for being part of our community.</p>
+
+        <footer style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border-color); text-align: center;">
+            <p>&copy; 2026 K-Idol Face Test. All rights reserved.</p>
+            <div class="footer-links" style="margin-top: 10px; display: flex; justify-content: center; gap: 15px;">
+                <a href="/about.html" style="text-decoration: none; color: var(--secondary-text);">About Us</a>
+                <a href="/privacy.html" style="text-decoration: none; color: var(--secondary-text);">Privacy Policy</a>
+                <a href="/terms.html" style="text-decoration: none; color: var(--secondary-text);">Terms of Service</a>
+                <a href="/contact.html" style="text-decoration: none; color: var(--secondary-text);">Contact</a>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
