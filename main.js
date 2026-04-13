@@ -100,18 +100,58 @@ const i18n = {
 
 const idols = {
     female: [
-        { id: "Jennie (BLACKPINK)", names: { en: "Jennie", ko: "김제니", ja: "ジェニー", zh: "珍妮" } },
-        { id: "Karina (aespa)", names: { en: "Karina", ko: "유지민", ja: "カリナ", zh: "柳智敏" } },
-        { id: "Wonyoung (IVE)", names: { en: "Wonyoung", ko: "장원영", ja: "ウォニョン", zh: "张员瑛" } },
-        { id: "Hanni (NewJeans)", names: { en: "Hanni", ko: "하니", ja: "ハ니", zh: "牟智慧" } },
-        { id: "Sana (TWICE)", names: { en: "Sana", ko: "사나", ja: "サナ", zh: "凑崎纱夏" } }
+        { 
+            id: "Jennie (BLACKPINK)", 
+            image: "https://hips.hearstapps.com/hmg-prod/images/jennie-blackpink-vogue-japan-6479f64929341.jpg?crop=0.668xw:1.00xh;0.0577xw,0&resize=640:*",
+            names: { en: "Jennie", ko: "김제니", ja: "ジェニー", zh: "珍妮" } 
+        },
+        { 
+            id: "Karina (aespa)", 
+            image: "https://www.allkpop.com/upload/2023/05/content/090906/1683637562-image.png",
+            names: { en: "Karina", ko: "유지민", ja: "カリナ", zh: "柳智敏" } 
+        },
+        { 
+            id: "Wonyoung (IVE)", 
+            image: "https://www.nme.com/wp-content/uploads/2024/02/ive-jang-wonyoung-696x442.jpg",
+            names: { en: "Wonyoung", ko: "장원영", ja: "ウォニョン", zh: "张员瑛" } 
+        },
+        { 
+            id: "Hanni (NewJeans)", 
+            image: "https://www.nme.com/wp-content/uploads/2022/10/hanni-newjeans.jpg",
+            names: { en: "Hanni", ko: "하니", ja: "ハニ", zh: "牟智慧" } 
+        },
+        { 
+            id: "Sana (TWICE)", 
+            image: "https://www.allkpop.com/upload/2023/03/content/291244/1680108298-20230329-sana.jpg",
+            names: { en: "Sana", ko: "사나", ja: "サ나", zh: "凑崎纱夏" } 
+        }
     ],
     male: [
-        { id: "V (BTS)", names: { en: "V", ko: "김태형", ja: "ヴィ", zh: "金泰亨" } },
-        { id: "Cha Eun-woo (ASTRO)", names: { en: "Eunwoo", ko: "차은우", ja: "チャウヌ", zh: "车银优" } },
-        { id: "Felix (Stray Kids)", names: { en: "Felix", ko: "필릭스", ja: "フィリックス", zh: "李龙馥" } },
-        { id: "Mingyu (SEVENTEEN)", names: { en: "Mingyu", ko: "김민규", ja: "ミンギュ", zh: "金珉奎" } },
-        { id: "Hyunjin (Stray Kids)", names: { en: "Hyunjin", ko: "황현진", ja: "ヒョンジン", zh: "黄铉辰" } }
+        { 
+            id: "V (BTS)", 
+            image: "https://www.nme.com/wp-content/uploads/2023/08/v-bts-kim-taehyung-696x442.jpg",
+            names: { en: "V", ko: "김태형", ja: "ヴィ", zh: "金태형" } 
+        },
+        { 
+            id: "Cha Eun-woo (ASTRO)", 
+            image: "https://www.allkpop.com/upload/2021/04/content/221532/1619129532-cha-eun-woo.jpg",
+            names: { en: "Eunwoo", ko: "차은우", ja: "チャウヌ", zh: "车银优" } 
+        },
+        { 
+            id: "Felix (Stray Kids)", 
+            image: "https://www.nme.com/wp-content/uploads/2022/10/felix-stray-kids.jpg",
+            names: { en: "Felix", ko: "필릭스", ja: "フィリックス", zh: "李龙馥" } 
+        },
+        { 
+            id: "Mingyu (SEVENTEEN)", 
+            image: "https://www.allkpop.com/upload/2023/05/content/241257/1684947477-mingyu.jpg",
+            names: { en: "Mingyu", ko: "김민규", ja: "ミンギュ", zh: "金珉奎" } 
+        },
+        { 
+            id: "Hyunjin (Stray Kids)", 
+            image: "https://www.nme.com/wp-content/uploads/2022/03/stray-kids-hyunjin-june-2021-credit-jyp-entertainment-2000x1270-1.jpg",
+            names: { en: "Hyunjin", ko: "황현진", ja: "ヒョンジン", zh: "황현진" } 
+        }
     ]
 };
 
@@ -131,8 +171,14 @@ const btnShare = document.getElementById('btn-share');
 const langEn = document.getElementById('lang-en');
 const langKo = document.getElementById('lang-ko');
 
+// New UI Elements
+const idolImage = document.getElementById('idol-image');
+const similarityScore = document.getElementById('similarity-score');
+
 // State
 let selectedGender = 'female';
+let lastMatchedIdol = null;
+let lastSimilarity = 0;
 
 // Language Switching
 function setLanguage(lang) {
@@ -242,8 +288,6 @@ function startAnalysis() {
     }, 30);
 }
 
-let lastMatchedIdol = null;
-
 function showResult() {
     analysisSection.classList.add('hidden');
     resultSection.classList.remove('hidden');
@@ -251,8 +295,14 @@ function showResult() {
     const genderIdols = idols[selectedGender];
     const idol = genderIdols[Math.floor(Math.random() * genderIdols.length)];
     lastMatchedIdol = idol;
+    
+    // Generate random similarity between 90 and 99.9
+    lastSimilarity = (Math.random() * 9.9 + 90).toFixed(1);
 
     document.getElementById('result-title').textContent = idol.id;
+    idolImage.src = idol.image;
+    similarityScore.textContent = lastSimilarity;
+    
     updateResultLabels();
 }
 
@@ -285,17 +335,22 @@ btnRetry.addEventListener('click', () => {
     fileInput.value = '';
     loadingBar.style.width = '0%';
     lastMatchedIdol = null;
+    lastSimilarity = 0;
 });
 
 btnShare.addEventListener('click', () => {
+    const text = currentLang === 'ko' ? 
+        `저는 ${lastMatchedIdol.id}와 ${lastSimilarity}% 닮았네요! 당신과 닮은 아이돌을 찾아보세요.` :
+        `I look ${lastSimilarity}% like ${lastMatchedIdol.id}! Find your K-Idol twin.`;
+
     if (navigator.share) {
         navigator.share({
             title: i18n[currentLang].title,
-            text: `I look like ${lastMatchedIdol.id}! Check out my names in 4 languages.`,
+            text: text,
             url: window.location.href,
         }).catch(err => console.log('Error sharing', err));
     } else {
-        alert('Share not supported on this browser. Copy the URL!');
+        alert(text + ' ' + window.location.href);
     }
 });
 
