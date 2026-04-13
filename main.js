@@ -140,7 +140,7 @@ const idols = {
         { 
             id: "Felix (Stray Kids)", 
             image: "https://www.nme.com/wp-content/uploads/2022/10/felix-stray-kids.jpg",
-            names: { en: "Felix", ko: "필릭스", ja: "フィリックス", zh: "李龙馥" } 
+            names: { en: "Felix", ko: "필릭스", ja: "フィ리ックス", zh: "李龙馥" } 
         },
         { 
             id: "Mingyu (SEVENTEEN)", 
@@ -171,8 +171,8 @@ const btnShare = document.getElementById('btn-share');
 const langEn = document.getElementById('lang-en');
 const langKo = document.getElementById('lang-ko');
 
-// New UI Elements
-const idolImage = document.getElementById('idol-image');
+// UI Elements
+const similarityEmoji = document.getElementById('similarity-emoji');
 const similarityScore = document.getElementById('similarity-score');
 
 // State
@@ -296,11 +296,20 @@ function showResult() {
     const idol = genderIdols[Math.floor(Math.random() * genderIdols.length)];
     lastMatchedIdol = idol;
     
-    // Generate random similarity between 90 and 99.9
-    lastSimilarity = (Math.random() * 9.9 + 90).toFixed(1);
+    // Generate random similarity between 10 and 80
+    lastSimilarity = Math.floor(Math.random() * 71 + 10);
+
+    let emoji = '😊';
+    if (lastSimilarity <= 30) {
+        emoji = '😭';
+    } else if (lastSimilarity <= 50) {
+        emoji = '😥';
+    } else {
+        emoji = '😊';
+    }
 
     document.getElementById('result-title').textContent = idol.id;
-    idolImage.src = idol.image;
+    similarityEmoji.textContent = emoji;
     similarityScore.textContent = lastSimilarity;
     
     updateResultLabels();

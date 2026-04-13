@@ -524,42 +524,28 @@ footer {
     }
 }
 
-/* Idol Result Visuals */
-.idol-visual-container {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: 0 auto 1.5rem;
-    border-radius: 50%;
-    border: 4px solid var(--accent-light);
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.idol-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.idol-visual-container:hover .idol-image {
-    transform: scale(1.1);
+/* Similarity Score Visuals */
+.similarity-container {
+    margin: 0 auto 2rem;
+    display: flex;
+    justify-content: center;
 }
 
 .similarity-badge {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 0);
     background: var(--secondary-color);
     color: white;
-    padding: 0.3rem 1rem;
-    border-radius: 20px;
+    padding: 1rem 2rem;
+    border-radius: 50px;
     font-weight: 800;
-    font-size: 1rem;
-    box-shadow: 0 4px 10px rgba(244, 114, 182, 0.4);
-    z-index: 2;
+    font-size: 2rem;
+    box-shadow: 0 8px 20px rgba(244, 114, 182, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#similarity-emoji {
+    font-size: 2.5rem;
 }
 
 .idol-match-info {
