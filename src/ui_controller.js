@@ -1,8 +1,8 @@
 /**
- * UI Controller for Managing UX and DOM Updates
+ * UI Controller for 2026 K-Pop Debut Evaluation
  */
 import { i18n, idols } from './data_store.js';
-import { loadModels, analyzeFace } from './ai_engine.js';
+import { loadModels, analyzeDebutFace } from './ai_engine.js';
 
 let currentLang = 'en';
 let selectedGender = 'female';
@@ -20,37 +20,27 @@ const btnRetry = document.getElementById('btn-retry');
 const btnShare = document.getElementById('btn-share');
 
 export function initUI() {
-    // Language setup
     document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
     document.getElementById('lang-ko').addEventListener('click', () => setLanguage('ko'));
     
-    // Gender setup
     document.querySelectorAll('input[name="gender"]').forEach(input => {
-        input.addEventListener('change', (e) => {
-            selectedGender = e.target.value;
-        });
+        input.addEventListener('change', (e) => { selectedGender = e.target.value; });
     });
 
-    // Upload setup
     dropZone.addEventListener('click', () => fileInput.click());
     dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
     dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
     dropZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        dropZone.classList.remove('dragover');
+        e.preventDefault(); dropZone.classList.remove('dragover');
         if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
     });
     fileInput.addEventListener('change', (e) => {
         if (e.target.files.length > 0) handleFile(e.target.files[0]);
     });
 
-    // Retry setup
     btnRetry.addEventListener('click', resetApp);
-    
-    // Share setup
     btnShare.addEventListener('click', shareResult);
 
-    // Initial state
     setLanguage('en');
 }
 
@@ -63,25 +53,20 @@ function setLanguage(lang) {
 
     document.querySelector('.main-title').textContent = i18n[lang].title;
     document.querySelector('.subtitle').textContent = i18n[lang].subtitle;
-    document.querySelector('.selection-label').textContent = i18n[lang].selectionLabel;
     document.querySelector('.upload-text').textContent = i18n[lang].uploadText;
     document.querySelector('.upload-hint').textContent = i18n[lang].uploadHint;
     document.getElementById('analysis-text').textContent = i18n[lang].statusText;
     document.getElementById('privacy-text-short').textContent = i18n[lang].privacyText;
     document.getElementById('idol-match-label').textContent = i18n[lang].matchLabel;
+    
+    // Position/Rank Labels (if present in DOM)
+    const posLabel = document.getElementById('pos-label');
+    const rankLabel = document.getElementById('rank-label');
+    if (posLabel) posLabel.textContent = i18n[lang].positionLabel;
+    if (rankLabel) rankLabel.textContent = i18n[lang].rankLabel;
+
     btnRetry.textContent = i18n[lang].retryBtn;
     btnShare.textContent = i18n[lang].shareBtn;
-    document.getElementById('btn-affiliate').textContent = i18n[lang].affiliateBtn;
-
-    // Update articles
-    const articles = i18n[lang].articles;
-    const articleElements = document.querySelectorAll('.info-section');
-    articles.forEach((article, index) => {
-        if (articleElements[index]) {
-            articleElements[index].querySelector('h2').textContent = article.title;
-            articleElements[index].querySelector('p').textContent = article.content;
-        }
-    });
 
     if (lastResult) updateResultDisplay();
 }
@@ -104,14 +89,13 @@ async function startAnalysis() {
     try {
         await loadModels();
         
-        // Progress simulation
         let prog = 0;
         const interval = setInterval(() => {
-            prog += 2;
-            if (prog <= 90) loadingBar.style.width = prog + '%';
-        }, 50);
+            prog += 5;
+            if (prog <= 95) loadingBar.style.width = prog + '%';
+        }, 100);
 
-        const result = await analyzeFace(imagePreview);
+        const result = await analyzeDebutFace(imagePreview);
         clearInterval(interval);
         
         if (!result) {
@@ -122,18 +106,17 @@ async function startAnalysis() {
 
         loadingBar.style.width = '100%';
         
-        // Match Idol
+        // Find Twin
         const pool = idols[selectedGender].filter(i => i.archetype === result.archetype);
         const candidates = pool.length > 0 ? pool : idols[selectedGender];
-        const match = candidates[Math.floor(Math.random() * candidates.length)];
+        const twin = candidates[Math.floor(Math.random() * candidates.length)];
         
-        lastResult = { match, analysis: result };
-        
-        setTimeout(updateResultDisplay, 500);
+        lastResult = { twin, analysis: result };
+        setTimeout(updateResultDisplay, 800);
 
     } catch (err) {
         console.error(err);
-        alert("An error occurred during analysis.");
+        alert("Evaluation Error.");
         resetApp();
     }
 }
@@ -144,29 +127,23 @@ function updateResultDisplay() {
     analysisSection.classList.add('hidden');
     resultSection.classList.remove('hidden');
     
-    const { match, analysis } = lastResult;
+    const { twin, analysis } = lastResult;
+    const lang = i18n[currentLang];
     
-    document.getElementById('result-title').textContent = match.id;
+    // Core Results
+    document.getElementById('result-title').textContent = twin.id;
     document.getElementById('similarity-score').textContent = analysis.similarity;
     
-    // Emoji logic
-    let emoji = '😊';
-    if (analysis.similarity <= 75) emoji = '🙂';
-    else if (analysis.similarity >= 95) emoji = '🤩';
+    const posVal = document.getElementById('pos-val');
+    const rankVal = document.getElementById('rank-val');
+    if (posVal) posVal.textContent = lang.positions[analysis.position];
+    if (rankVal) rankVal.textContent = lang.ranks[analysis.rank];
+
+    // Aesthetics
+    let emoji = '🤩';
+    if (analysis.rank === 'B') emoji = '🔥';
+    else if (analysis.rank === 'A') emoji = '✨';
     document.getElementById('similarity-emoji').textContent = emoji;
-
-    // Names
-    const labels = i18n[currentLang].langLabels;
-    const primary = currentLang === 'ko' ? 'ko' : 'en';
-    const secondary = ['en', 'ko', 'ja', 'zh'].filter(l => l !== primary);
-
-    document.getElementById('lang-label-primary').textContent = labels[primary];
-    document.getElementById('val-primary').textContent = match.names[primary];
-
-    secondary.forEach((lang, i) => {
-        document.getElementById(`lang-label-sec-${i+1}`).textContent = labels[lang];
-        document.getElementById(`val-sec-${i+1}`).textContent = match.names[lang];
-    });
 }
 
 function resetApp() {
@@ -182,13 +159,14 @@ function resetApp() {
 
 function shareResult() {
     if (!lastResult) return;
-    const { match, analysis } = lastResult;
+    const { twin, analysis } = lastResult;
+    const pos = i18n[currentLang].positions[analysis.position];
     const text = currentLang === 'ko' ? 
-        `저는 ${match.id}와 ${analysis.similarity}% 닮았네요! 당신의 아이돌 닮은꼴은?` :
-        `I look ${analysis.similarity}% like ${match.id}! Find your K-Idol twin.`;
+        `[데뷔 평가] 저는 ${pos} 포지션으로 합격! 닮은꼴은 ${twin.id}입니다. 당신의 랭크는?` :
+        `[Debut Pass] I'm assigned as ${pos}! My twin is ${twin.id}. Find your rank!`;
 
     if (navigator.share) {
-        navigator.share({ title: 'K-Idol Face Test', text, url: window.location.href });
+        navigator.share({ title: 'K-Idol Debut Evaluation', text, url: window.location.href });
     } else {
         alert(text + "\n" + window.location.href);
     }

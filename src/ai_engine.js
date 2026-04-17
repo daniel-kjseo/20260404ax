@@ -1,11 +1,10 @@
 /**
- * AI Engine for Facial Analysis using face-api.js
+ * AI Engine for 2026 K-Pop Debut Evaluation
  */
 import { archetypes } from './data_store.js';
 
 export async function loadModels(modelPath = './models') {
     if (window.faceapi.nets.tinyFaceDetector.params && window.faceapi.nets.faceLandmark68Net.params) return;
-    
     try {
         await Promise.all([
             window.faceapi.nets.tinyFaceDetector.loadFromUri(modelPath),
@@ -18,10 +17,9 @@ export async function loadModels(modelPath = './models') {
     }
 }
 
-export async function analyzeFace(imageElement) {
-    // Ensure image is loaded
+export async function analyzeDebutFace(imageElement) {
     if (!imageElement.complete || imageElement.naturalWidth === 0) {
-        await new Promise(resolve => imageElement.onload = resolve);
+        await new Promise(resolve => { imageElement.onload = resolve; });
     }
 
     const detection = await window.faceapi.detectSingleFace(
@@ -31,11 +29,11 @@ export async function analyzeFace(imageElement) {
 
     if (!detection) return null;
 
-    const ratios = calculateFaceRatios(detection.landmarks);
-    return ratios;
+    const traits = calculateAdvancedTraits(detection.landmarks);
+    return traits;
 }
 
-function calculateFaceRatios(landmarks) {
+function calculateAdvancedTraits(landmarks) {
     const leftEye = landmarks.getLeftEye();
     const rightEye = landmarks.getRightEye();
     const jaw = landmarks.getJawOutline();
@@ -68,11 +66,22 @@ function calculateFaceRatios(landmarks) {
         }
     }
 
-    // Similarity score calculation (70-99 range)
-    let similarity = Math.max(70, Math.min(99, 99 - (minDistance * 60)));
+    // Similarity score (Boosted for virality: 85-99 range)
+    let rawSim = 99 - (minDistance * 60);
+    let similarity = Math.floor(Math.max(85, Math.min(99, rawSim)));
     
+    // Position Logic
+    const position = archetypes[bestArchetype].position;
+    
+    // Rank Logic
+    let rank = 'B';
+    if (similarity >= 95) rank = 'S';
+    else if (similarity >= 90) rank = 'A';
+
     return { 
         archetype: bestArchetype, 
-        similarity: Math.floor(similarity) 
+        similarity, 
+        position,
+        rank
     };
 }
