@@ -24,16 +24,29 @@ export function initUI() {
     document.getElementById('lang-ko').addEventListener('click', () => setLanguage('ko'));
     
     document.querySelectorAll('input[name="gender"]').forEach(input => {
-        input.addEventListener('change', (e) => { selectedGender = e.target.value; });
+        input.addEventListener('change', (e) => { 
+            selectedGender = e.target.value;
+            // Native-like feedback
+            input.parentElement.parentElement.querySelectorAll('.toggle-btn').forEach(btn => btn.style.background = '');
+        });
     });
 
     dropZone.addEventListener('click', () => fileInput.click());
-    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
-    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+    
+    // Drag and Drop
+    dropZone.addEventListener('dragover', (e) => { 
+        e.preventDefault(); 
+        dropZone.style.borderColor = 'var(--primary-color)';
+    });
+    dropZone.addEventListener('dragleave', () => { 
+        dropZone.style.borderColor = '';
+    });
     dropZone.addEventListener('drop', (e) => {
-        e.preventDefault(); dropZone.classList.remove('dragover');
+        e.preventDefault();
+        dropZone.style.borderColor = '';
         if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
     });
+
     fileInput.addEventListener('change', (e) => {
         if (e.target.files.length > 0) handleFile(e.target.files[0]);
     });
@@ -59,7 +72,6 @@ function setLanguage(lang) {
     document.getElementById('privacy-text-short').textContent = i18n[lang].privacyText;
     document.getElementById('idol-match-label').textContent = i18n[lang].matchLabel;
     
-    // Position/Rank Labels (if present in DOM)
     const posLabel = document.getElementById('pos-label');
     const rankLabel = document.getElementById('rank-label');
     if (posLabel) posLabel.textContent = i18n[lang].positionLabel;
@@ -77,46 +89,48 @@ function handleFile(file) {
     reader.onload = (e) => {
         imagePreview.src = e.target.result;
         imagePreview.classList.remove('hidden');
+        dropZone.classList.add('scanning'); // Trigger Laser Animation
         startAnalysis();
     };
     reader.readAsDataURL(file);
 }
 
 async function startAnalysis() {
-    setupSection.classList.add('hidden');
-    analysisSection.classList.remove('hidden');
+    // We stay in setup-section for a moment to show the "Scanning" on the image
+    setTimeout(() => {
+        analysisSection.classList.remove('hidden');
+    }, 500);
     
     try {
         await loadModels();
         
         let prog = 0;
         const interval = setInterval(() => {
-            prog += 5;
-            if (prog <= 95) loadingBar.style.width = prog + '%';
-        }, 100);
+            prog += 2;
+            if (prog <= 98) loadingBar.style.width = prog + '%';
+        }, 50);
 
         const result = await analyzeDebutFace(imagePreview);
         clearInterval(interval);
         
         if (!result) {
-            alert(currentLang === 'ko' ? "얼굴을 찾을 수 없습니다." : "No face detected.");
+            alert(currentLang === 'ko' ? "얼굴 감지 실패! 정면 사진을 사용해주세요." : "Face detection failed. Please use a clear front-facing photo.");
             resetApp();
             return;
         }
 
         loadingBar.style.width = '100%';
         
-        // Find Twin
+        // Match Idol
         const pool = idols[selectedGender].filter(i => i.archetype === result.archetype);
         const candidates = pool.length > 0 ? pool : idols[selectedGender];
         const twin = candidates[Math.floor(Math.random() * candidates.length)];
         
         lastResult = { twin, analysis: result };
-        setTimeout(updateResultDisplay, 800);
+        setTimeout(updateResultDisplay, 1000);
 
     } catch (err) {
         console.error(err);
-        alert("Evaluation Error.");
         resetApp();
     }
 }
@@ -124,32 +138,38 @@ async function startAnalysis() {
 function updateResultDisplay() {
     if (!lastResult) return;
     
+    setupSection.classList.add('hidden');
     analysisSection.classList.add('hidden');
     resultSection.classList.remove('hidden');
     
     const { twin, analysis } = lastResult;
     const lang = i18n[currentLang];
     
-    // Core Results
     document.getElementById('result-title').textContent = twin.id;
     document.getElementById('similarity-score').textContent = analysis.similarity;
     
     const posVal = document.getElementById('pos-val');
     const rankVal = document.getElementById('rank-val');
-    if (posVal) posVal.textContent = lang.positions[analysis.position];
-    if (rankVal) rankVal.textContent = lang.ranks[analysis.rank];
+    const namePrimary = document.getElementById('val-primary');
 
-    // Aesthetics
+    if (posVal) posVal.textContent = lang.positions[analysis.position];
+    if (rankVal) rankVal.textContent = lang.ranks[analysis.rank].split(':')[0]; // Just the rank letter for visual
+    if (namePrimary) namePrimary.textContent = twin.id;
+
     let emoji = '🤩';
     if (analysis.rank === 'B') emoji = '🔥';
     else if (analysis.rank === 'A') emoji = '✨';
     document.getElementById('similarity-emoji').textContent = emoji;
+
+    // Haptic-like effect if supported
+    if (window.navigator.vibrate) window.navigator.vibrate(50);
 }
 
 function resetApp() {
     resultSection.classList.add('hidden');
     analysisSection.classList.add('hidden');
     setupSection.classList.remove('hidden');
+    dropZone.classList.remove('scanning');
     imagePreview.classList.add('hidden');
     imagePreview.src = '';
     fileInput.value = '';
@@ -162,12 +182,15 @@ function shareResult() {
     const { twin, analysis } = lastResult;
     const pos = i18n[currentLang].positions[analysis.position];
     const text = currentLang === 'ko' ? 
-        `[데뷔 평가] 저는 ${pos} 포지션으로 합격! 닮은꼴은 ${twin.id}입니다. 당신의 랭크는?` :
-        `[Debut Pass] I'm assigned as ${pos}! My twin is ${twin.id}. Find your rank!`;
+        `[데뷔 평가 합격] 저는 ${pos} 포지션으로 합격! 닮은꼴 아이돌은 ${twin.id}입니다. 테스트 결과 보기:` :
+        `[Official Debut Pass] I'm assigned as ${pos}! My twin is ${twin.id}. Start your evaluation:`;
 
     if (navigator.share) {
         navigator.share({ title: 'K-Idol Debut Evaluation', text, url: window.location.href });
     } else {
-        alert(text + "\n" + window.location.href);
+        const copyText = `${text}\n${window.location.href}`;
+        navigator.clipboard.writeText(copyText).then(() => {
+            alert(currentLang === 'ko' ? "결과가 클립보드에 복사되었습니다!" : "Result copied to clipboard!");
+        });
     }
 }

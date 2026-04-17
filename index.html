@@ -2,199 +2,114 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K-Idol Face Test & Name Generator | AI Personality Analysis</title>
-    <meta name="description" content="Discover which K-Pop idol you look like with our AI facial analysis. Get your unique K-Pop name in Korean, English, Japanese, and Chinese. 100% Privacy.">
-    <meta name="keywords" content="kpop name generator, idol look alike, korean name, k-idol face test, ai face analysis, animal face test, kpop personality">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>K-Idol Debut Evaluation | AI Face Test</title>
+    <meta name="description" content="Official AI Debut Evaluation. Find your K-Pop twin and group position using 2026 state-of-the-art face analysis.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8075905401818908"
-     crossorigin="anonymous"></script>
-    <meta name="google-adsense-account" content="ca-pub-8075905401818908">
     <script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>
 </head>
 <body>
     <nav class="navbar">
-        <a href="/" class="nav-logo">K-Idol AI</a>
-        <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/blog/">Blog</a>
-            <a href="/about.html">About</a>
-            <a href="/contact.html">Contact</a>
+        <a href="index.html" class="nav-logo">IDOL AGENCY</a>
+        <div class="language-selector">
+            <button id="lang-en" class="lang-btn active">EN</button>
+            <button id="lang-ko" class="lang-btn">KO</button>
         </div>
     </nav>
 
-    <div class="container">
-        <header>
-            <div class="language-selector">
-                <button id="lang-en" class="lang-btn active">English</button>
-                <button id="lang-ko" class="lang-btn">한국어</button>
-            </div>
-            <h1 class="main-title">K-Idol Face Test & Name Generator</h1>
-            <p class="subtitle">AI-powered facial analysis to find your idol look-alike</p>
+    <main class="container">
+        <header class="main-header">
+            <h1 class="main-title">DEBUT EVALUATION</h1>
+            <p class="subtitle">AI Analysis: Twin & Position</p>
         </header>
 
-        <main>
-            <div class="test-area">
-                <!-- Top Ad Unit -->
-                <div class="ad-container">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-8075905401818908"
-                         data-ad-slot="YOUR_AD_SLOT_ID"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-
-                <section id="setup-section">
-                    <div class="gender-selection">
-                        <span class="selection-label">Select Gender:</span>
-                        <div class="toggle-container">
-                            <input type="radio" id="gender-female" name="gender" value="female" checked>
-                            <label for="gender-female" class="toggle-btn">👩 Female</label>
-                            <input type="radio" id="gender-male" name="gender" value="male">
-                            <label for="gender-male" class="toggle-btn">👨 Male</label>
-                        </div>
-                    </div>
-
-                    <div class="upload-container" id="drop-zone">
-                        <div class="upload-content">
-                            <span class="upload-icon">📷</span>
-                            <p class="upload-text">Upload your photo</p>
-                            <p class="upload-hint">(JPG, PNG up to 10MB)</p>
-                        </div>
-                        <input type="file" id="file-input" accept="image/*" hidden>
-                        <img id="image-preview" class="image-preview hidden">
-                    </div>
-                </section>
-
-                <section id="analysis-section" class="hidden">
-                    <div class="analysis-status">
-                        <div class="loading-bar-container">
-                            <div class="loading-bar" id="loading-bar"></div>
-                        </div>
-                        <p id="analysis-text" class="status-text">⚡ Analyzing your features...</p>
-                    </div>
-                </section>
-
-                <section id="result-section" class="hidden">
-                    <div class="result-card">
-                        <div class="result-header">
-                            <div class="similarity-container">
-                                <div class="similarity-badge">
-                                    <span id="similarity-emoji">😊</span>
-                                    <span id="similarity-score">99</span>%
-                                </div>
-                            </div>
-                            <div class="idol-match-info">
-                                <p id="idol-match-label" class="match-label">You look like</p>
-                                <h2 id="result-title" class="result-title">Jennie</h2>
-                            </div>
-                        </div>
-                        
-                        <div class="debut-details">
-                            <div class="detail-box">
-                                <span class="detail-label" id="rank-label">Debut Rank</span>
-                                <span class="detail-value rank" id="rank-val">S</span>
-                            </div>
-                            <div class="detail-box">
-                                <span class="detail-label" id="pos-label">Assigned Position</span>
-                                <span class="detail-value position" id="pos-val">Main Visual</span>
-                            </div>
-                        </div>
-
-                        <div class="names-container">
-                            <div class="name-box emphasized" id="name-primary">
-                                <span class="name-lang" id="lang-label-primary">KOREAN</span>
-                                <span class="name-value" id="val-primary">김제니</span>
-                            </div>
-                        </div>
-
-                        <div class="action-buttons">
-                            <button id="btn-retry" class="btn secondary">Try Again</button>
-                            <button id="btn-share" class="btn primary">Share Result</button>
-                        </div>
-                    </div>
-                </section>
-
-                <div class="privacy-notice">
-                    <span class="lock-icon">🔒</span>
-                    <span id="privacy-text-short">Photos are never saved. Analysis is done 100% locally.</span>
+        <!-- Initial Setup Section -->
+        <section id="setup-section">
+            <div class="gender-selection">
+                <div class="toggle-container">
+                    <label>
+                        <input type="radio" name="gender" value="female" checked>
+                        <span class="toggle-btn">FEMALE</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="male">
+                        <span class="toggle-btn">MALE</span>
+                    </label>
                 </div>
             </div>
 
-            <!-- Enhanced Content Section -->
-            <article class="info-article">
-                <section class="info-section">
-                    <h2>How Our AI Identifies Your K-Pop Twin</h2>
-                    <p>Our K-Idol Face Test leverages state-of-the-art computer vision models designed specifically for facial landmark detection. By identifying 128 unique points on your face, the AI calculates geometric ratios that are then compared against our proprietary database of hundreds of K-Pop idols. This process ensures a more nuanced match than traditional "look-alike" apps.</p>
-                </section>
-
-                <section class="info-section">
-                    <h2>The Science of Animal Face Archetypes</h2>
-                    <p>Korean beauty standards often categorize faces into "animal types." A "Cat Face" (like Jennie or Yeji) features slightly upturned eyes and sharp features, suggesting charisma. A "Puppy Face" (like Kang Daniel or Jisoo) has rounder, softer features that convey friendliness. Our tool integrates these cultural archetypes into the AI model, providing results that resonate with Korean aesthetic trends.</p>
-                </section>
-
-                <section class="info-section">
-                    <h2>Why Your Multilingual K-Pop Name Matters</h2>
-                    <p>In the global K-Pop community, fans often adopt "fandom names" to express their identity. We provide your name in Hangul (Korean), Kanji/Katakana (Japanese), and Hanzi (Chinese) characters, along with their phonetic English spelling. This helps you engage with international fanbases and understand the cultural nuances behind name structures in East Asia.</p>
-                </section>
-
-                <section class="info-section">
-                    <h2>Privacy & Security: Why Local Analysis?</h2>
-                    <p>Most AI apps upload your photos to a server, posing a significant privacy risk. We built this tool using TensorFlow.js, which allows the AI model to run directly inside your browser. This means your biometric data never leaves your device. We are committed to "Privacy by Design," ensuring you can have fun without compromising your personal data.</p>
-                </section>
-                
-                <section class="info-section">
-                    <h2>K-Pop Influence on Global Fashion</h2>
-                    <p>Beyond facial features, K-Pop idols are global trendsetters in fashion and beauty. From "glass skin" skincare routines to avant-garde streetwear, the "Idol Look" is about more than just a face—it's an aesthetic. Our generator also suggests names that fit the specific "vibe" (concept) associated with your idol match, whether it's "Girl Crush," "Elegant," or "Cutesy."</p>
-                </section>
-            </article>
-
-            <!-- Bottom Ad Unit -->
-            <div class="ad-container">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-8075905401818908"
-                     data-ad-slot="YOUR_AD_SLOT_ID"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+            <div id="drop-zone" class="upload-container">
+                <div class="scan-line"></div>
+                <div class="upload-inner">
+                    <span class="upload-icon">📸</span>
+                    <p class="upload-text">START SCAN</p>
+                    <p class="upload-hint">Upload or Take Photo</p>
+                </div>
+                <input type="file" id="file-input" class="hidden" accept="image/*">
+                <img id="image-preview" src="" alt="Preview" class="hidden">
             </div>
+        </section>
 
-            <section id="affiliate-section" class="affiliate-section">
-                <h3 id="affiliate-title" class="section-title">Affiliate & Collaboration Inquiry</h3>
-                <form action="https://formspree.io/f/mreojanw" method="POST" class="affiliate-form">
-                    <div class="form-group">
-                        <label for="name" id="label-name">Name / Company</label>
-                        <input type="text" id="name" name="name" required placeholder="Your name or company">
+        <!-- Evaluation Status Section -->
+        <section id="analysis-section" class="hidden">
+            <div class="analysis-status">
+                <p id="analysis-text" class="status-text">INITIALIZING SCAN...</p>
+                <div class="loading-bar-container">
+                    <div id="loading-bar" class="loading-bar"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Result Section: Official Pass Card -->
+        <section id="result-section" class="hidden">
+            <div class="result-card">
+                <div class="similarity-badge">
+                    <span id="similarity-emoji">✨</span>
+                    <span id="similarity-score">99</span>%
+                </div>
+
+                <div class="idol-match-info">
+                    <p id="idol-match-label" class="match-label">YOUR TWIN</p>
+                    <h2 id="result-title" class="result-title">JENNIE</h2>
+                </div>
+
+                <div class="debut-details">
+                    <div class="detail-box">
+                        <span class="detail-label" id="rank-label">RANK</span>
+                        <span class="detail-value rank" id="rank-val">S</span>
                     </div>
-                    <div class="form-group">
-                        <label for="email" id="label-email">Email</label>
-                        <input type="email" id="email" name="_replyto" required placeholder="your@email.com">
+                    <div class="detail-box">
+                        <span class="detail-label" id="pos-label">POSITION</span>
+                        <span class="detail-value position" id="pos-val">VISUAL</span>
                     </div>
-                    <div class="form-group">
-                        <label for="message" id="label-message">Message</label>
-                        <textarea id="message" name="message" rows="4" required placeholder="How can we collaborate?"></textarea>
-                    </div>
-                    <button type="submit" id="btn-affiliate" class="btn primary">Send Inquiry</button>
-                </form>
+                </div>
+
+                <div class="name-box emphasized" id="name-primary">
+                    <span class="name-value" id="val-primary">KIM JENNIE</span>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="btn-retry" class="btn secondary">RE-SCAN</button>
+                    <button id="btn-share" class="btn primary">SHARE PASS</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="privacy-notice">
+            <span id="privacy-text-short">Local AI Secure Analysis. Photos not saved.</span>
+        </div>
+
+        <!-- Collapsible Info for SEO -->
+        <article class="info-article">
+            <section class="info-section">
+                <h2>Evaluation Protocol</h2>
+                <p>Our AI scans 68 facial landmarks to calculate symmetry, feature ratios, and stylistic aura based on 2026 K-Pop standards.</p>
             </section>
-            </main>
-
-        <footer>
-            <p>&copy; 2026 K-Idol Face Test. All rights reserved.</p>
-            <div class="footer-links" style="margin-top: 10px; display: flex; justify-content: center; gap: 15px;">
-                <a href="/about.html" class="footer-link">About Us</a>
-                <a href="/privacy.html" class="footer-link">Privacy Policy</a>
-                <a href="/terms.html" class="footer-link">Terms of Service</a>
-            </div>
-        </footer>
-    </div>
+        </article>
+    </main>
 
     <script type="module" src="main.js"></script>
 </body>
