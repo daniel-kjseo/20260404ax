@@ -1,54 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | K-Idol Face Test & Name Generator</title>
-    <meta name="description" content="Learn more about the K-Idol Face Test & Name Generator project.">
+    <title>QARAH 소개 — 당신의 인상에 어울리는 이름</title>
+    <meta name="description" content="QARAH(카라)는 히브리어 '부르다, 이름짓다'에서 유래한 이름 추천 서비스입니다. 얼굴 인상을 분석하여 어울리는 이름을 추천합니다.">
     <link rel="stylesheet" href="style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8075905401818908" crossorigin="anonymous"></script>
-    <meta name="google-adsense-account" content="ca-pub-8075905401818908">
 </head>
 <body>
-    <nav class="navbar">
-        <a href="/" class="nav-logo">K-Idol AI</a>
-        <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/blog/">Blog</a>
-            <a href="/about.html">About</a>
-            <a href="/contact.html">Contact</a>
-        </div>
-    </nav>
 
-    <div class="container" style="text-align: left;">
-        <a href="/" style="display: inline-block; margin-bottom: 20px; color: var(--primary-color); text-decoration: none; font-weight: bold;">← Back to Home</a>
-        <h1>About Us</h1>
-        <p>Welcome to K-Idol Face Test & Name Generator, your ultimate destination for discovering your K-Pop identity through the power of AI.</p>
-        
-        <h2 style="margin-top: 30px; margin-bottom: 15px;">Our Mission</h2>
-        <p>Our mission is to bring joy and cultural connection to K-Pop fans worldwide. We believe that technology should be fun, accessible, and privacy-conscious. By combining modern AI facial analysis concepts with the global phenomenon of K-Pop, we've created a unique experience that allows fans to see themselves through the lens of their favorite idols.</p>
-
-        <h2 style="margin-top: 30px; margin-bottom: 15px;">Why We Built This</h2>
-        <p>The idea was born from the "Animal Face Archetype" culture in Korea, where people are often compared to animals like cats, puppies, or bunnies based on their facial features. We wanted to take this a step further by matching those archetypes with famous K-Pop idols and generating localized names in four different languages.</p>
-
-        <h2 style="margin-top: 30px; margin-bottom: 15px;">Privacy First</h2>
-        <p>In an era where data privacy is paramount, we've designed our tool to work entirely within your browser. We don't want your photos; we just want you to have fun. That's why we don't use any backend servers to process your images.</p>
-
-        <h2 style="margin-top: 30px; margin-bottom: 15px;">Our Team</h2>
-        <p>We are a small group of K-Pop enthusiasts and developers who love building interactive web experiences. We hope you enjoy using our tool as much as we enjoyed building it!</p>
-
-        <p>Thank you for being part of our community.</p>
-
-        <footer style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border-dim); text-align: center;">
-            <p style="color: var(--text-muted); font-size: 0.8rem;">&copy; 2026 IDOL AGENCY. All rights reserved.</p>
-            <div class="footer-links" style="margin-top: 10px; display: flex; justify-content: center; gap: 15px; font-size: 0.8rem;">
-                <a href="/index.html" style="text-decoration: none; color: var(--text-muted);">Home</a>
-                <a href="/about.html" style="text-decoration: none; color: var(--text-muted);">About Us</a>
-                <a href="/privacy.html" style="text-decoration: none; color: var(--text-muted);">Privacy Policy</a>
-                <a href="/terms.html" style="text-decoration: none; color: var(--text-muted);">Terms of Service</a>
-                <a href="/contact.html" style="text-decoration: none; color: var(--text-muted);">Contact</a>
-            </div>
-        </footer>
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand"><span>QARAH</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">테스트</a></li>
+            <li><a href="about.html">소개</a></li>
+        </ul>
+        <button class="nav-hamburger" id="navHamburger" aria-label="메뉴">
+            <span></span><span></span><span></span>
+        </button>
     </div>
+</nav>
+
+<main class="container">
+    <div class="page-content">
+        <h1>QARAH 소개</h1>
+
+        <h2>QARAH(카라)란?</h2>
+        <p>
+            QARAH(קָרָא)는 히브리어로 "부르다, 이름짓다"라는 뜻을 가진 단어입니다.
+            성경 창세기 1장 5절에서 "하나님이 빛을 낮이라 부르시고(קָרָא)"에 사용된 바로 그 단어입니다.
+            세상에서 처음으로 이루어진 이름짓기의 행위에서 영감을 받아,
+            당신의 고유한 인상에 가장 잘 어울리는 이름을 찾아드리는 서비스입니다.
+        </p>
+
+        <h2>어떻게 작동하나요?</h2>
+        <p>
+            QARAH는 사진에서 얼굴의 기하학적 특성을 분석합니다.
+            눈매의 각도, 얼굴 비율(상·중·하), 입 너비, 턱선의 윤곽, 좌우 대칭도 등
+            5가지 지표를 측정하여 8가지 인상 유형 중 하나를 매칭합니다.
+        </p>
+        <p>
+            이 인상 유형에 기반하여, 각 유형에 가장 잘 어울리는 이름 3개를 추천합니다.
+            한국 이름, 영어 이름, 일본 이름, 아기 이름, 연예인 예명, 반려동물 이름,
+            판타지 이름 등 다양한 카테고리를 제공합니다.
+        </p>
+
+        <h2>8가지 인상 유형</h2>
+        <p>🌊 <strong>맑은물형</strong> — 투명하고 깨끗한 인상</p>
+        <p>🔥 <strong>불꽃형</strong> — 강렬하고 카리스마 있는 인상</p>
+        <p>🌿 <strong>숲속형</strong> — 편안하고 따뜻한 인상</p>
+        <p>✨ <strong>별빛형</strong> — 균형잡히고 빛나는 인상</p>
+        <p>🏔️ <strong>바위형</strong> — 듬직하고 신뢰감 있는 인상</p>
+        <p>🌸 <strong>꽃잎형</strong> — 섬세하고 우아한 인상</p>
+        <p>🌙 <strong>달빛형</strong> — 신비롭고 깊이 있는 인상</p>
+        <p>☀️ <strong>햇살형</strong> — 밝고 활기찬 인상</p>
+
+        <h2>개인정보 보호</h2>
+        <p>
+            QARAH는 사진을 서버에 전송하거나 저장하지 않습니다.
+            모든 분석은 사용자의 기기(브라우저) 내에서 직접 이루어지며,
+            분석이 완료된 후 사진 데이터는 즉시 폐기됩니다.
+            당신의 사진은 오직 당신의 기기 안에서만 처리됩니다.
+        </p>
+
+        <h2>오락 목적 서비스</h2>
+        <p>
+            본 서비스는 순수한 오락 및 엔터테인먼트 목적으로 제공됩니다.
+            QARAH의 이름 추천은 과학적 근거에 기반한 것이 아니며,
+            실제 작명이나 개명을 위한 전문적인 조언이 아닙니다.
+            재미있는 경험으로 즐겨주세요.
+        </p>
+
+        <h2>문의</h2>
+        <p>
+            QARAH에 대한 문의사항이 있으시면 <a href="contact.html">문의 페이지</a>를 통해 연락해 주세요.
+        </p>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <ul class="footer-links">
+            <li><a href="about.html">소개</a></li>
+            <li><a href="privacy.html">개인정보처리방침</a></li>
+            <li><a href="terms.html">이용약관</a></li>
+            <li><a href="contact.html">문의</a></li>
+        </ul>
+        <p class="footer-disclaimer">© 2026 QARAH. 본 서비스는 오락 목적으로 제공됩니다.</p>
+    </div>
+</footer>
+
+<script>
+document.getElementById('navHamburger')?.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
 </body>
 </html>

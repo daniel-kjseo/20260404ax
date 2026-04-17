@@ -1,67 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | K-Idol Face Test & Name Generator</title>
-    <meta name="description" content="Contact the K-Idol Face Test team for inquiries, feedback, or support.">
+    <title>문의 — QARAH</title>
+    <meta name="description" content="QARAH 서비스에 대한 문의사항을 보내주세요.">
     <link rel="stylesheet" href="style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8075905401818908" crossorigin="anonymous"></script>
-    <meta name="google-adsense-account" content="ca-pub-8075905401818908">
-    <style>
-        .content-page {
-            max-width: 800px;
-            margin: 40px auto;
-            text-align: left;
-            padding: 40px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-        }
-        .content-page h1 { margin-bottom: 20px; color: var(--primary-color); }
-        .content-page h2 { margin-top: 30px; margin-bottom: 15px; }
-        .content-page p { margin-bottom: 15px; color: var(--text-color); }
-        .back-link { display: inline-block; margin-bottom: 20px; color: var(--primary-color); text-decoration: none; font-weight: bold; }
-        .contact-email { font-weight: bold; color: var(--primary-color); }
-    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="/index.html" class="nav-logo">IDOL AGENCY</a>
-        <div class="language-selector">
-            <button id="lang-en" class="lang-btn active">EN</button>
-            <button id="lang-ko" class="lang-btn">KO</button>
-        </div>
-    </nav>
 
-    <div class="content-page">
-        <a href="/" class="back-link">← Back to Home</a>
-        <h1>Contact Us</h1>
-        <p>We value your feedback and are here to help with any questions or inquiries you may have about the K-Idol Face Test & Name Generator.</p>
-        
-        <h2>General Inquiries</h2>
-        <p>If you have questions about how our AI works, want to report a bug, or just want to say hello, feel free to reach out to us at:</p>
-        <p class="contact-email">contact@k-idol-ai.com</p>
-
-        <h2>Collaborations & Partnerships</h2>
-        <p>Are you a content creator, blogger, or brand looking to collaborate? We'd love to hear from you! Please contact us at the email address above with "Partnership Inquiry" in the subject line.</p>
-
-        <h2>Technical Support</h2>
-        <p>For any technical issues you encounter while using our site, please provide details such as your device type, browser, and a description of the issue. This will help us resolve it as quickly as possible.</p>
-
-        <h2>Our Commitment</h2>
-        <p>We strive to respond to all inquiries within 48 business hours. Thank you for your patience and for being part of our global community!</p>
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand"><span>QARAH</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">테스트</a></li>
+            <li><a href="about.html">소개</a></li>
+        </ul>
+        <button class="nav-hamburger" id="navHamburger" aria-label="메뉴"><span></span><span></span><span></span></button>
     </div>
+</nav>
 
-    <footer style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border-dim); text-align: center;">
-        <p style="color: var(--text-muted); font-size: 0.8rem;">&copy; 2026 IDOL AGENCY. All rights reserved.</p>
-        <div class="footer-links" style="margin-top: 10px; display: flex; justify-content: center; gap: 15px; font-size: 0.8rem;">
-            <a href="/index.html" style="text-decoration: none; color: var(--text-muted);">Home</a>
-            <a href="/about.html" style="text-decoration: none; color: var(--text-muted);">About Us</a>
-            <a href="/privacy.html" style="text-decoration: none; color: var(--text-muted);">Privacy Policy</a>
-            <a href="/terms.html" style="text-decoration: none; color: var(--text-muted);">Terms of Service</a>
-            <a href="/contact.html" style="text-decoration: none; color: var(--text-muted);">Contact</a>
+<main class="container">
+    <div class="page-content">
+        <h1>문의</h1>
+        <p>QARAH 서비스에 대한 문의사항이 있으시면 아래 방법을 이용해 주세요.</p>
+
+        <h2>이메일 문의</h2>
+        <p>서비스 관련 문의, 광고 문의, 제휴 제안 등은 아래 이메일로 보내주세요.</p>
+        <div class="glass-card" style="text-align: center; padding: 2rem;">
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">이메일</p>
+            <p style="font-size: 1.2rem; font-weight: 700; color: var(--color-purple);">contact@qarah.web.app</p>
         </div>
-    </footer>
+
+        <h2>자주 묻는 질문</h2>
+
+        <div class="glass-card" style="margin-bottom: 1rem;">
+            <p style="font-weight: 700; margin-bottom: 0.5rem;">Q. 사진이 저장되나요?</p>
+            <p style="color: var(--text-secondary);">아니요. 사진은 사용자의 기기 내에서만 분석되며, 서버에 전송되거나 저장되지 않습니다.</p>
+        </div>
+
+        <div class="glass-card" style="margin-bottom: 1rem;">
+            <p style="font-weight: 700; margin-bottom: 0.5rem;">Q. 분석 결과가 매번 달라지나요?</p>
+            <p style="color: var(--text-secondary);">같은 사진으로 분석하면 인상 유형은 동일하게 나옵니다. 단, 추천 이름의 순서는 카테고리 내에서 약간 달라질 수 있습니다.</p>
+        </div>
+
+        <div class="glass-card" style="margin-bottom: 1rem;">
+            <p style="font-weight: 700; margin-bottom: 0.5rem;">Q. 얼굴이 인식되지 않아요.</p>
+            <p style="color: var(--text-secondary);">밝은 환경에서 정면을 바라보고, 얼굴이 사진의 70% 이상을 차지하도록 촬영해 주세요. 선글라스나 마스크를 착용하면 인식이 어려울 수 있습니다.</p>
+        </div>
+
+        <div class="glass-card" style="margin-bottom: 1rem;">
+            <p style="font-weight: 700; margin-bottom: 0.5rem;">Q. 이 서비스는 무료인가요?</p>
+            <p style="color: var(--text-secondary);">네, QARAH의 모든 이름 추천 서비스는 무료로 제공됩니다. 서비스 운영 비용은 광고 수익으로 충당됩니다.</p>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <ul class="footer-links">
+            <li><a href="about.html">소개</a></li>
+            <li><a href="privacy.html">개인정보처리방침</a></li>
+            <li><a href="terms.html">이용약관</a></li>
+            <li><a href="contact.html">문의</a></li>
+        </ul>
+        <p class="footer-disclaimer">© 2026 QARAH. 본 서비스는 오락 목적으로 제공됩니다.</p>
+    </div>
+</footer>
+<script>document.getElementById('navHamburger')?.addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});</script>
 </body>
 </html>
