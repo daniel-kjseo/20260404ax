@@ -20,8 +20,11 @@ const btnRetry = document.getElementById('btn-retry');
 const btnShare = document.getElementById('btn-share');
 
 export function initUI() {
-    document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
-    document.getElementById('lang-ko').addEventListener('click', () => setLanguage('ko'));
+    const langEn = document.getElementById('lang-en');
+    const langKo = document.getElementById('lang-ko');
+    
+    if (langEn) langEn.addEventListener('click', () => setLanguage('en'));
+    if (langKo) langKo.addEventListener('click', () => setLanguage('ko'));
     
     document.querySelectorAll('input[name="gender"]').forEach(input => {
         input.addEventListener('change', (e) => { 
@@ -61,16 +64,26 @@ function setLanguage(lang) {
     currentLang = lang;
     document.documentElement.lang = lang;
     
-    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-    document.getElementById('lang-ko').classList.toggle('active', lang === 'ko');
+    const langEn = document.getElementById('lang-en');
+    const langKo = document.getElementById('lang-ko');
+    if (langEn) langEn.classList.toggle('active', lang === 'en');
+    if (langKo) langKo.classList.toggle('active', lang === 'ko');
 
-    document.querySelector('.main-title').textContent = i18n[lang].title;
-    document.querySelector('.subtitle').textContent = i18n[lang].subtitle;
-    document.querySelector('.upload-text').textContent = i18n[lang].uploadText;
-    document.querySelector('.upload-hint').textContent = i18n[lang].uploadHint;
-    document.getElementById('analysis-text').textContent = i18n[lang].statusText;
-    document.getElementById('privacy-text-short').textContent = i18n[lang].privacyText;
-    document.getElementById('idol-match-label').textContent = i18n[lang].matchLabel;
+    const title = document.querySelector('.main-title');
+    const subtitle = document.querySelector('.subtitle');
+    const uploadText = document.querySelector('.upload-text');
+    const uploadHint = document.querySelector('.upload-hint');
+    const analysisText = document.getElementById('analysis-text');
+    const privacyText = document.getElementById('privacy-text-short');
+    const matchLabel = document.getElementById('idol-match-label');
+
+    if (title) title.textContent = i18n[lang].title;
+    if (subtitle) subtitle.textContent = i18n[lang].subtitle;
+    if (uploadText) uploadText.textContent = i18n[lang].uploadText;
+    if (uploadHint) uploadHint.textContent = i18n[lang].uploadHint;
+    if (analysisText) analysisText.textContent = i18n[lang].statusText;
+    if (privacyText) privacyText.textContent = i18n[lang].privacyText;
+    if (matchLabel) matchLabel.textContent = i18n[lang].matchLabel;
     
     const posLabel = document.getElementById('pos-label');
     const rankLabel = document.getElementById('rank-label');
