@@ -44,6 +44,7 @@ export function matchNames(impressionType, gender, nameDB, baseScore = 92) {
             hanjaDetail: name.hanjaDetail || null,
             origin: name.origin || '',
             reading: name.reading || '',
+            desc: name.desc || '',
             score,
             rarity
         };

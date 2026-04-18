@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성경 이름 추천 — QARAH</title>
+    <meta name="description" content="사진 한 장으로 나에게 어울리는 성경 속 이름을 찾아보세요. QARAH가 인상을 분석하여 성경 인물의 성품과 이름을 추천합니다.">
+    <link rel="stylesheet" href="../style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.min.js"></script>
+    <style>
+        .bible-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+            line-height: 1.5;
+            padding: 0.75rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: var(--radius-sm);
+            border-left: 2px solid var(--color-gold);
+        }
+        .bible-origin {
+            font-family: var(--font-brand);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="../index.html" class="nav-brand"><span>QARAH</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../index.html">이름추천</a></li>
+            <li><a href="../blog/index.html">블로그</a></li>
+            <li><a href="../about.html">소개</a></li>
+        </ul>
+        <button class="nav-hamburger" id="navHamburger" aria-label="메뉴">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<main class="container">
+
+    <!-- PHASE 1: Setup -->
+    <section id="phase-setup" class="section" style="padding-top: 2rem;">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <h1 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem;">📖 성경 이름 추천</h1>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">당신의 인상에 어울리는 성경 속 인물의 이름과 고유한 성품을 찾아드립니다</p>
+        </div>
+
+        <!-- Gender Select -->
+        <div class="gender-select">
+            <button class="gender-btn active" data-gender="female" id="genderFemale">👩 여성</button>
+            <button class="gender-btn" data-gender="male" id="genderMale">👨 남성</button>
+        </div>
+
+        <!-- Upload Zone -->
+        <input type="file" id="fileInput" accept="image/*" style="display:none">
+        <input type="file" id="cameraInput" accept="image/*" capture="user" style="display:none">
+        <div class="upload-zone" id="uploadZone">
+            <span class="upload-zone-icon">📸</span>
+            <p class="upload-zone-text">사진을 올려주세요</p>
+            <p class="upload-zone-hint">성경 속 인물과의 닮은꼴을 분석합니다</p>
+            <div class="upload-buttons">
+                <button class="btn-upload" id="btnUpload">📁 파일 선택</button>
+                <button class="btn-camera" id="btnCamera">📷 카메라 촬영</button>
+            </div>
+        </div>
+
+        <ul class="tips-list" style="margin-top: 1.5rem;">
+            <li>정면 사진이 가장 정확합니다</li>
+            <li>밝은 조명 아래서 촬영해 주세요</li>
+            <li>안경이나 모자는 벗는 것이 좋습니다</li>
+        </ul>
+
+        <div class="privacy-notice">
+            🔒 사진은 서버에 전송되지 않으며 분석 즉시 삭제됩니다.
+        </div>
+
+        <div class="ad-slot" id="adSetup"></div>
+    </section>
+
+    <!-- PHASE 2: Countdown -->
+    <section id="phase-countdown" class="section hidden" style="padding-top: 2rem;">
+        <div class="countdown-container" id="countdownContainer">
+            <img id="countdownPhoto" class="countdown-photo" src="" alt="업로드된 사진">
+            <div class="countdown-overlay" id="countdownOverlay"></div>
+        </div>
+        <div class="ad-slot" id="adCountdown" style="margin-top: 1.5rem;"></div>
+        <p style="text-align: center; color: var(--text-secondary); font-size: 0.85rem; margin-top: 1rem;">
+            💡 성경 속 인물들의 성품과 인상을 매칭 중입니다...
+        </p>
+    </section>
+
+    <!-- PHASE 3: Result -->
+    <section id="phase-result" class="section hidden" style="padding-top: 2rem;">
+
+        <!-- Impression Badge -->
+        <div class="glass-card impression-badge" id="impressionBadge">
+            <span class="impression-emoji" id="impressionEmoji">✨</span>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.25rem;">당신의 인상 유형</p>
+            <h2 class="impression-type" id="impressionType">유형 명칭</h2>
+            <p class="impression-desc" id="impressionDesc">유형 설명</p>
+            <div class="impression-traits" id="impressionTraits"></div>
+        </div>
+
+        <div class="ad-slot" id="adResultTop"></div>
+
+        <!-- Name Cards -->
+        <div id="nameCardsContainer" class="name-cards-grid"></div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="hero-cta" id="btnRetry">🔄 다시 하기</button>
+            <button class="btn-camera" id="btnMore">📚 다른 이름 더보기</button>
+        </div>
+
+        <!-- Share -->
+        <div class="share-section">
+            <p class="share-title">결과 공유하기</p>
+            <div class="share-buttons">
+                <button class="share-btn twitter" id="shareX">𝕏</button>
+                <button class="share-btn link" id="shareCopy">🔗 링크복사</button>
+                <button class="share-btn download" id="shareDownload">💾 이미지 저장</button>
+            </div>
+        </div>
+
+        <div class="ad-slot" id="adResultBottom"></div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <ul class="footer-links">
+            <li><a href="../index.html">이름추천</a></li>
+            <li><a href="../blog/index.html">블로그</a></li>
+            <li><a href="../about.html">소개</a></li>
+            <li><a href="../privacy.html">개인정보처리방침</a></li>
+        </ul>
+        <p class="footer-disclaimer">© 2026 QARAH. 하나님의 부르심이 당신에게 있습니다.</p>
+    </div>
+</footer>
+
+<script type="module">
+import { analyzeFace } from '../src/face-analyzer.js';
+import { determineImpression } from '../src/impression-engine.js';
+import { matchNames } from '../src/name-matcher.js';
+import { bibleNames } from '../src/name-db-bible.js';
+
+const phaseSetup = document.getElementById('phase-setup');
+const phaseCountdown = document.getElementById('phase-countdown');
+const phaseResult = document.getElementById('phase-result');
+const uploadZone = document.getElementById('uploadZone');
+const fileInput = document.getElementById('fileInput');
+const cameraInput = document.getElementById('cameraInput');
+const countdownPhoto = document.getElementById('countdownPhoto');
+const countdownContainer = document.getElementById('countdownContainer');
+const countdownOverlay = document.getElementById('countdownOverlay');
+const nameCardsContainer = document.getElementById('nameCardsContainer');
+
+let selectedGender = 'female';
+
+// Gender toggle
+document.querySelectorAll('.gender-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedGender = btn.dataset.gender;
+    });
+});
+
+// Upload handlers
+document.getElementById('btnUpload').addEventListener('click', () => fileInput.click());
+document.getElementById('btnCamera').addEventListener('click', () => cameraInput.click());
+
+fileInput.addEventListener('change', e => handleFile(e.target.files[0]));
+cameraInput.addEventListener('change', e => handleFile(e.target.files[0]));
+
+async function handleFile(file) {
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+        const img = new Image();
+        img.src = e.target.result;
+        img.onload = async () => {
+            phaseSetup.classList.add('hidden');
+            phaseCountdown.classList.remove('hidden');
+            countdownPhoto.src = img.src;
+
+            const [traits] = await Promise.all([
+                analyzeFace(img).catch(() => null),
+                runCountdown()
+            ]);
+
+            if (!traits) {
+                alert('얼굴을 인식하지 못했습니다. 다른 사진으로 다시 시도해 주세요.');
+                resetToSetup(); return;
+            }
+
+            const impression = determineImpression(traits);
+            const names = matchNames(impression.type, selectedGender, bibleNames, impression.score);
+            showResult(impression, names);
+        };
+    };
+    reader.readAsDataURL(file);
+}
+
+async function runCountdown() {
+    const numbers = [5, 4, 3, 2, 1];
+    for (const num of numbers) {
+        countdownOverlay.className = 'countdown-overlay phase-' + num;
+        const el = document.createElement('div');
+        el.className = `countdown-number size-80 anim-${num}`;
+        el.textContent = num;
+        countdownContainer.appendChild(el);
+        if (num <= 3 && num > 1) countdownContainer.classList.add('shake');
+        if (num === 1) { countdownContainer.classList.remove('shake'); countdownContainer.classList.add('intense-shake'); }
+        await delay(num === 1 ? 500 : 1000);
+        el.remove();
+    }
+    countdownContainer.classList.remove('shake', 'intense-shake');
+    const flash = document.createElement('div');
+    flash.className = 'flash-overlay';
+    countdownContainer.appendChild(flash);
+    await delay(600);
+    flash.remove();
+}
+
+function showResult(impression, names) {
+    phaseCountdown.classList.add('hidden');
+    phaseResult.classList.remove('hidden');
+
+    document.getElementById('impressionEmoji').textContent = impression.emoji;
+    document.getElementById('impressionType').textContent = impression.label;
+    document.getElementById('impressionDesc').textContent = impression.desc;
+
+    const traitsContainer = document.getElementById('impressionTraits');
+    traitsContainer.innerHTML = '';
+    impression.traits.forEach(trait => {
+        const span = document.createElement('span');
+        span.className = 'impression-trait';
+        span.textContent = trait;
+        traitsContainer.appendChild(span);
+    });
+
+    nameCardsContainer.innerHTML = '';
+    names.forEach((nameData, index) => {
+        const card = createNameCard(nameData, index);
+        nameCardsContainer.appendChild(card);
+        setTimeout(() => {
+            const bar = card.querySelector('.score-bar-fill');
+            if (bar) bar.style.width = nameData.score + '%';
+        }, 500 + index * 1000);
+    });
+
+    phaseResult.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function createNameCard(nameData, index) {
+    const { rank, name, meaning, origin, desc, score, rarity } = nameData;
+    const wrapper = document.createElement('div');
+    wrapper.className = 'card-wrapper';
+
+    const card = document.createElement('div');
+    card.className = `glass-card result-card card-${rarity.tier}`;
+    if (index === 0) card.classList.add('card-reveal');
+    else card.classList.add('card-reveal', `card-reveal-delay-${index}`);
+
+    const medals = ['🥇', '🥈', '🥉'];
+    card.innerHTML = `
+        <div style="text-align: center;">
+            <span class="rarity-badge ${rarity.tier}">${rarity.stars} ${rarity.label}</span>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">${medals[index]} #${rank} 추천</p>
+            <div class="bible-origin">${origin}</div>
+            <div class="name-text" style="font-size: 2rem;">${name}</div>
+            <p class="name-meaning" style="font-weight: 700; color: var(--color-gold); margin-top: 0.5rem;">"${meaning}"</p>
+            
+            <div class="score-bar" style="margin: 1rem 0 0.5rem;">
+                <div class="score-bar-fill ${rarity.tier}" style="width: 0%;"></div>
+            </div>
+            <p class="score-text ${rarity.tier}">인상 적합도 ${score}%</p>
+            
+            <div class="bible-desc">
+                ${desc}
+            </div>
+        </div>
+    `;
+
+    wrapper.appendChild(card);
+    return wrapper;
+}
+
+function resetToSetup() {
+    phaseResult.classList.add('hidden');
+    phaseCountdown.classList.add('hidden');
+    phaseSetup.classList.remove('hidden');
+    fileInput.value = '';
+    cameraInput.value = '';
+}
+
+document.getElementById('btnRetry').addEventListener('click', resetToSetup);
+document.getElementById('btnMore').addEventListener('click', () => location.reload());
+
+document.getElementById('shareCopy').addEventListener('click', async () => {
+    try {
+        await navigator.clipboard.writeText(location.href);
+        alert('링크가 복사되었습니다!');
+    } catch (e) {
+        prompt('링크를 복사해주세요:', location.href);
+    }
+});
+
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Nav hamburger
+document.getElementById('navHamburger')?.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+
+</body>
+</html>
