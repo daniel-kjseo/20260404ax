@@ -96,11 +96,9 @@
         formElement: '#contact-form', 
         formId: 'mreojanw',
         onSuccess: function() {
-            // 성공 시 별도의 화면 전환 없이 인라인 메시지만 보여줍니다.
-            // Formspree 라이브러리가 data-fs-success 요소를 자동으로 보여주지만,
-            // 추가적인 피드백(스크롤 등)이 필요하다면 여기에 작성합니다.
             const successView = document.querySelector('[data-fs-success]');
             if (successView) {
+                successView.style.display = 'block';
                 successView.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
         }
