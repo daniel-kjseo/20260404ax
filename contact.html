@@ -30,9 +30,8 @@
             <span style="font-size: 0.85rem; color: var(--color-purple); font-weight: 600;">✨ 보통 1~2 영업일 이내에 답변을 드립니다.</span>
         </p>
 
-        <div class="glass-card" id="contact-container" style="padding: 0; overflow: hidden; min-height: 480px; display: flex; align-items: center; justify-content: center;">
-            <!-- Form View -->
-            <form id="contact-form" style="width: 100%; padding: 2.5rem;">
+        <div class="glass-card" id="contact-container" style="padding: 2.5rem; overflow: hidden;">
+            <form id="contact-form" style="width: 100%;">
                 <div class="form-group">
                     <label class="form-label" for="name">성함 / 단체명</label>
                     <input class="form-input" type="text" id="name" name="name" placeholder="홍길동" data-fs-field>
@@ -42,29 +41,23 @@
                     <input class="form-input" type="email" id="email" name="email" placeholder="example@email.com" required data-fs-field>
                     <span class="error-msg" data-fs-error="email"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="margin-bottom: 1.5rem;">
                     <label class="form-label" for="message">문의 내용</label>
                     <textarea class="form-input" id="message" name="message" placeholder="궁금하신 내용을 자세히 입력해 주세요." required data-fs-field></textarea>
                     <span class="error-msg" data-fs-error="message"></span>
                 </div>
                 
-                <div class="form-status error" data-fs-error></div>
+                <div class="form-status error" data-fs-error style="margin-bottom: 1.5rem;"></div>
 
-                <button type="submit" class="hero-cta" data-fs-submit-btn style="width: 100%; justify-content: center; margin-top: 1rem; height: 56px;">
+                <button type="submit" class="hero-cta" data-fs-submit-btn style="width: 100%; justify-content: center; height: 56px;">
                     문의 보내기
                 </button>
-            </form>
 
-            <!-- Success View (Managed by Formspree attributes + JS) -->
-            <div class="contact-success-view" data-fs-success style="display: none; padding: 3rem 2rem; width: 100%;">
-                <div class="success-icon-wrap">✨</div>
-                <h2 class="success-title">감사합니다!</h2>
-                <p class="success-desc">
-                    메시지가 성공적으로 전달되었습니다.<br>
-                    최대한 빠르게 확인 후 답변 드리겠습니다.
-                </p>
-                <a href="index.html" class="hero-cta btn-ghost" style="padding: 0.8rem 2rem; height: auto; box-shadow: none;">홈으로 돌아가기</a>
-            </div>
+                <!-- Success Message (Inline below the button) -->
+                <div class="form-status success" data-fs-success style="display: none;">
+                    소중한 문의가 정중히 접수되었습니다. 감사합니다.
+                </div>
+            </form>
         </div>
 
         <div class="divider" style="margin: 4rem 0;"></div>
@@ -103,12 +96,12 @@
         formElement: '#contact-form', 
         formId: 'mreojanw',
         onSuccess: function() {
-            const form = document.getElementById('contact-form');
+            // 성공 시 별도의 화면 전환 없이 인라인 메시지만 보여줍니다.
+            // Formspree 라이브러리가 data-fs-success 요소를 자동으로 보여주지만,
+            // 추가적인 피드백(스크롤 등)이 필요하다면 여기에 작성합니다.
             const successView = document.querySelector('[data-fs-success]');
-            if (form) form.style.display = 'none';
             if (successView) {
-                successView.style.display = 'block';
-                successView.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                successView.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
         }
     });
