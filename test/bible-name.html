@@ -136,17 +136,17 @@
 <footer class="footer">
     <div class="container">
         <ul class="footer-links">
-            <li><a href="../index.html">이름추천</a></li>
-            <li><a href="../blog/index.html">블로그</a></li>
             <li><a href="../about.html">소개</a></li>
             <li><a href="../privacy.html">개인정보처리방침</a></li>
+            <li><a href="../terms.html">이용약관</a></li>
+            <li><a href="../contact.html">문의</a></li>
         </ul>
         <p class="footer-disclaimer">© 2026 QARAH. 하나님의 부르심이 당신에게 있습니다.</p>
     </div>
 </footer>
 
 <script type="module">
-import { analyzeFace } from '../src/face-analyzer.js';
+import { preloadModels, analyzeFace } from '../src/face-analyzer.js';
 import { determineImpression } from '../src/impression-engine.js';
 import { matchNames } from '../src/name-matcher.js';
 import { bibleNames } from '../src/name-db-bible.js';
@@ -164,6 +164,9 @@ const nameCardsContainer = document.getElementById('nameCardsContainer');
 
 let selectedGender = 'female';
 
+// === Model Preloading (on page load) ===
+preloadModels('../models').catch(err => console.warn('Model preload failed:', err));
+
 // Gender toggle
 document.querySelectorAll('.gender-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -177,34 +180,42 @@ document.querySelectorAll('.gender-btn').forEach(btn => {
 document.getElementById('btnUpload').addEventListener('click', () => fileInput.click());
 document.getElementById('btnCamera').addEventListener('click', () => cameraInput.click());
 
-fileInput.addEventListener('change', e => handleFile(e.target.files[0]));
-cameraInput.addEventListener('change', e => handleFile(e.target.files[0]));
+fileInput.addEventListener('change', e => { if(e.target.files[0]) handleFile(e.target.files[0]); });
+cameraInput.addEventListener('change', e => { if(e.target.files[0]) handleFile(e.target.files[0]); });
 
 async function handleFile(file) {
     if (!file) return;
 
     const reader = new FileReader();
     reader.onload = async (e) => {
+        const imgSrc = e.target.result;
+        countdownPhoto.src = imgSrc;
+        
+        phaseSetup.classList.add('hidden');
+        phaseCountdown.classList.remove('hidden');
+
         const img = new Image();
-        img.src = e.target.result;
+        img.src = imgSrc;
         img.onload = async () => {
-            phaseSetup.classList.add('hidden');
-            phaseCountdown.classList.remove('hidden');
-            countdownPhoto.src = img.src;
+            try {
+                const [traits] = await Promise.all([
+                    analyzeFace(img).catch(err => { console.error('Analysis error:', err); return null; }),
+                    runCountdown()
+                ]);
 
-            const [traits] = await Promise.all([
-                analyzeFace(img).catch(() => null),
-                runCountdown()
-            ]);
+                if (!traits) {
+                    alert('얼굴을 인식하지 못했습니다. 다른 사진으로 다시 시도해 주세요.');
+                    resetToSetup(); return;
+                }
 
-            if (!traits) {
-                alert('얼굴을 인식하지 못했습니다. 다른 사진으로 다시 시도해 주세요.');
-                resetToSetup(); return;
+                const impression = determineImpression(traits);
+                const names = matchNames(impression.type, selectedGender, bibleNames, impression.score);
+                showResult(impression, names);
+            } catch (err) {
+                console.error('Flow error:', err);
+                alert('처리 중 오류가 발생했습니다.');
+                resetToSetup();
             }
-
-            const impression = determineImpression(traits);
-            const names = matchNames(impression.type, selectedGender, bibleNames, impression.score);
-            showResult(impression, names);
         };
     };
     reader.readAsDataURL(file);
@@ -241,14 +252,22 @@ function showResult(impression, names) {
 
     const traitsContainer = document.getElementById('impressionTraits');
     traitsContainer.innerHTML = '';
-    impression.traits.forEach(trait => {
-        const span = document.createElement('span');
-        span.className = 'impression-trait';
-        span.textContent = trait;
-        traitsContainer.appendChild(span);
-    });
+    
+    if (impression.traits) {
+        impression.traits.forEach(trait => {
+            const span = document.createElement('span');
+            span.className = 'impression-trait';
+            span.textContent = trait;
+            traitsContainer.appendChild(span);
+        });
+    }
 
     nameCardsContainer.innerHTML = '';
+    // Use flex column style for stability
+    nameCardsContainer.style.display = 'flex';
+    nameCardsContainer.style.flexDirection = 'column';
+    nameCardsContainer.style.gap = '1.5rem';
+
     names.forEach((nameData, index) => {
         const card = createNameCard(nameData, index);
         nameCardsContainer.appendChild(card);
@@ -264,7 +283,7 @@ function showResult(impression, names) {
 function createNameCard(nameData, index) {
     const { rank, name, meaning, origin, desc, score, rarity } = nameData;
     const wrapper = document.createElement('div');
-    wrapper.className = 'card-wrapper';
+    wrapper.style.position = 'relative';
 
     const card = document.createElement('div');
     card.className = `glass-card result-card card-${rarity.tier}`;
