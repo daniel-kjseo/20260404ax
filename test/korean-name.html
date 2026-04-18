@@ -40,6 +40,8 @@
         </div>
 
         <!-- Upload Zone -->
+        <input type="file" id="fileInput" accept="image/*" style="display:none">
+        <input type="file" id="cameraInput" accept="image/*" capture="user" style="display:none">
         <div class="upload-zone" id="uploadZone">
             <span class="upload-zone-icon">📸</span>
             <p class="upload-zone-text">사진을 올려주세요</p>
@@ -48,8 +50,6 @@
                 <button class="btn-upload" id="btnUpload">📁 파일 선택</button>
                 <button class="btn-camera" id="btnCamera">📷 카메라 촬영</button>
             </div>
-            <input type="file" id="fileInput" accept="image/*" style="display:none">
-            <input type="file" id="cameraInput" accept="image/*" capture="user" style="display:none">
         </div>
 
         <ul class="tips-list" style="margin-top: 1.5rem;">
@@ -198,9 +198,13 @@ document.querySelectorAll('.gender-btn').forEach(btn => {
 });
 
 // === File Upload ===
-btnUpload.addEventListener('click', (e) => { e.stopPropagation(); fileInput.click(); });
-btnCamera.addEventListener('click', (e) => { e.stopPropagation(); cameraInput.click(); });
-uploadZone.addEventListener('click', () => fileInput.click());
+btnUpload.addEventListener('click', (e) => { e.stopPropagation(); e.preventDefault(); fileInput.click(); });
+btnCamera.addEventListener('click', (e) => { e.stopPropagation(); e.preventDefault(); cameraInput.click(); });
+uploadZone.addEventListener('click', (e) => {
+    // Don't trigger if clicking on buttons inside
+    if (e.target.closest('.upload-buttons')) return;
+    fileInput.click();
+});
 
 uploadZone.addEventListener('dragover', (e) => { e.preventDefault(); uploadZone.classList.add('dragover'); });
 uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));

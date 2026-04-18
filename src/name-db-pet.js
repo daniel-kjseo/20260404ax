@@ -1,0 +1,108 @@
+/**
+ * QARAH — Pet Name Database
+ * 인상 유형별 반려동물 이름 (구분 없이 공용)
+ */
+export const petNames = {
+    female: {
+        water: [
+            { name: '물방울', meaning: '맑은 눈의 조용한 파트너' },
+            { name: '이슬', meaning: '아침 이슬처럼 깨끗한 아이' },
+            { name: '미스티', meaning: '안개처럼 신비로운 친구 (Misty)' },
+            { name: '코랄', meaning: '산호처럼 아름다운 아이 (Coral)' },
+            { name: '아쿠아', meaning: '물처럼 맑은 눈의 친구 (Aqua)' },
+            { name: '브룩', meaning: '시냇물처럼 졸졸 흐르는 아이 (Brooke)' },
+            { name: '마리나', meaning: '바다를 좋아하는 친구 (Marina)' },
+            { name: '펄', meaning: '진주처럼 귀한 아이 (Pearl)' },
+            { name: '씨', meaning: '바다처럼 넓은 마음의 친구 (Sea)' },
+            { name: '크리스탈', meaning: '수정처럼 맑은 아이 (Crystal)' },
+        ],
+        fire: [
+            { name: '불꽃이', meaning: '에너지가 넘치는 활발한 아이' },
+            { name: '레드', meaning: '빨간 에너지의 장난꾸러기 (Red)' },
+            { name: '스파크', meaning: '불꽃처럼 튀는 아이 (Spark)' },
+            { name: '피닉스', meaning: '불사조처럼 강한 친구 (Phoenix)' },
+            { name: '블레이즈', meaning: '불길처럼 뜨거운 아이 (Blaze)' },
+            { name: '루비', meaning: '루비처럼 빨갛고 귀한 친구 (Ruby)' },
+            { name: '타이거', meaning: '호랑이처럼 용맹한 아이 (Tiger)' },
+            { name: '치타', meaning: '치타처럼 빠른 친구 (Cheetah)' },
+            { name: '볼케이노', meaning: '화산처럼 에너지 넘치는 아이' },
+            { name: '페퍼', meaning: '후추처럼 짜릿한 친구 (Pepper)' },
+        ],
+        forest: [
+            { name: '나무', meaning: '숲에서 온 듯한 편안한 친구' },
+            { name: '올리브', meaning: '평화로운 성격의 아이 (Olive)' },
+            { name: '미도리', meaning: '초록빛처럼 편안한 친구' },
+            { name: '버디', meaning: '가장 좋은 친구 (Buddy)' },
+            { name: '모스', meaning: '이끼처럼 포근한 아이 (Moss)' },
+            { name: '허니', meaning: '꿀처럼 달콤한 친구 (Honey)' },
+            { name: '클로버', meaning: '행운의 네잎클로버 (Clover)' },
+            { name: '피넛', meaning: '땅콩처럼 작고 귀여운 친구 (Peanut)' },
+            { name: '코코', meaning: '코코넛처럼 달콤한 아이 (Coco)' },
+            { name: '단풍이', meaning: '가을 단풍처럼 아름다운 친구' },
+        ],
+        star: [
+            { name: '별이', meaning: '밤하늘 별처럼 빛나는 아이' },
+            { name: '스텔라', meaning: '별처럼 빛나는 친구 (Stella)' },
+            { name: '반짝이', meaning: '반짝반짝 빛나는 귀여운 아이' },
+            { name: '루나', meaning: '달빛처럼 아름다운 친구 (Luna)' },
+            { name: '노바', meaning: '신성처럼 빛나는 아이 (Nova)' },
+            { name: '마블', meaning: '대리석처럼 고급스러운 친구 (Marble)' },
+            { name: '다이아', meaning: '다이아몬드처럼 빛나는 아이' },
+            { name: '오로라', meaning: '오로라처럼 신비로운 친구 (Aurora)' },
+            { name: '티아라', meaning: '왕관처럼 고귀한 아이 (Tiara)' },
+            { name: '프리즘', meaning: '무지개 빛의 친구 (Prism)' },
+        ],
+        rock: [
+            { name: '바위', meaning: '듬직하고 든든한 친구' },
+            { name: '록키', meaning: '바위처럼 강한 아이 (Rocky)' },
+            { name: '탱크', meaning: '튼튼한 체격의 든든한 친구 (Tank)' },
+            { name: '캡틴', meaning: '대장 기질의 리더 친구 (Captain)' },
+            { name: '킹', meaning: '왕처럼 위엄 있는 아이 (King)' },
+            { name: '아이언', meaning: '철처럼 강한 친구 (Iron)' },
+            { name: '브루투스', meaning: '강인한 수호자 (Brutus)' },
+            { name: '타이탄', meaning: '거대한 존재감의 아이 (Titan)' },
+            { name: '볼트', meaning: '번개처럼 빠르고 강한 친구 (Bolt)' },
+            { name: '렉스', meaning: '왕처럼 당당한 아이 (Rex)' },
+        ],
+        flower: [
+            { name: '꽃이', meaning: '꽃처럼 예쁜 사랑스런 친구' },
+            { name: '로즈', meaning: '장미처럼 아름다운 아이 (Rose)' },
+            { name: '데이지', meaning: '데이지처럼 밝은 친구 (Daisy)' },
+            { name: '릴리', meaning: '백합처럼 순수한 아이 (Lily)' },
+            { name: '봄이', meaning: '봄처럼 화사한 친구' },
+            { name: '재스민', meaning: '재스민향처럼 향기로운 아이 (Jasmine)' },
+            { name: '바이올렛', meaning: '보라꽃처럼 우아한 친구 (Violet)' },
+            { name: '사쿠라', meaning: '벚꽃처럼 아름다운 아이 (Sakura)' },
+            { name: '포피', meaning: '양귀비처럼 화사한 친구 (Poppy)' },
+            { name: '카멜리아', meaning: '동백처럼 고귀한 아이 (Camellia)' },
+        ],
+        moon: [
+            { name: '달이', meaning: '달빛처럼 은은한 친구' },
+            { name: '미스터리', meaning: '신비로운 매력의 아이 (Mystery)' },
+            { name: '섀도우', meaning: '그림자처럼 조용한 친구 (Shadow)' },
+            { name: '밤이', meaning: '밤처럼 조용하고 깊은 아이' },
+            { name: '미드나잇', meaning: '한밤중의 신비로운 친구 (Midnight)' },
+            { name: '오닉스', meaning: '흑요석처럼 깊은 아이 (Onyx)' },
+            { name: '벨벳', meaning: '벨벳처럼 부드러운 친구 (Velvet)' },
+            { name: '살렘', meaning: '신비로운 밤의 친구 (Salem)' },
+            { name: '네뷸라', meaning: '성운처럼 신비한 아이 (Nebula)' },
+            { name: '위스퍼', meaning: '속삭이듯 조용한 친구 (Whisper)' },
+        ],
+        sun: [
+            { name: '해피', meaning: '행복을 주는 밝은 친구 (Happy)' },
+            { name: '츄', meaning: '뽀뽀 좋아하는 사랑둥이' },
+            { name: '써니', meaning: '햇살처럼 밝은 아이 (Sunny)' },
+            { name: '골디', meaning: '금빛처럼 빛나는 친구 (Goldie)' },
+            { name: '망고', meaning: '달콤한 과일 같은 아이 (Mango)' },
+            { name: '선샤인', meaning: '햇살처럼 따뜻한 친구 (Sunshine)' },
+            { name: '또또', meaning: '또 보고 싶은 귀여운 아이' },
+            { name: '레몬', meaning: '상큼한 매력의 친구 (Lemon)' },
+            { name: '치즈', meaning: '치즈처럼 노란 귀여운 아이' },
+            { name: '쿠키', meaning: '달콤한 쿠키 같은 친구 (Cookie)' },
+        ]
+    },
+    male: null // male 데이터는 female과 동일하게 사용 (반려동물은 성별 구분 없음)
+};
+
+// 반려동물은 성별 구분 없이 female 데이터를 공용으로 사용
+petNames.male = petNames.female;

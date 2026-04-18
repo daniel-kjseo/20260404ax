@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>판타지 이름 추천 — QARAH</title>
+    <meta name="description" content="판타지 세계에서 당신의 이름은? 인상 유형을 분석하여 판타지 게임, 소설에 어울리는 캐릭터 이름을 추천합니다.">
+    <link rel="stylesheet" href="../style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.min.js"></script>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="../index.html" class="nav-brand"><span>QARAH</span></a><ul class="nav-links" id="navLinks"><li><a href="../index.html">테스트</a></li><li><a href="../about.html">소개</a></li></ul><button class="nav-hamburger" id="navHamburger" aria-label="메뉴"><span></span><span></span><span></span></button></div></nav>
+
+<main class="container">
+    <section id="phase-setup" class="section" style="padding-top: 2rem;">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <h1 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem;">🏰 판타지 이름 추천</h1>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">판타지 세계에서 당신의 이름은 무엇일까요?</p>
+        </div>
+        <div class="gender-select">
+            <button class="gender-btn active" data-gender="female">🧝‍♀️ 여성</button>
+            <button class="gender-btn" data-gender="male">🧝‍♂️ 남성</button>
+        </div>
+        <input type="file" id="fileInput" accept="image/*" style="display:none">
+        <input type="file" id="cameraInput" accept="image/*" capture="user" style="display:none">
+        <div class="upload-zone" id="uploadZone">
+            <span class="upload-zone-icon">📸</span>
+            <p class="upload-zone-text">사진을 올려주세요</p>
+            <p class="upload-zone-hint">또는 카메라로 촬영하세요</p>
+            <div class="upload-buttons">
+                <button class="btn-upload" id="btnUpload">📁 파일 선택</button>
+                <button class="btn-camera" id="btnCamera">📷 카메라 촬영</button>
+            </div>
+        </div>
+        <ul class="tips-list" style="margin-top: 1.5rem;"><li>정면을 바라보세요</li><li>밝은 곳에서 촬영하세요</li><li>얼굴이 화면의 70% 이상 차지하게</li></ul>
+        <div class="privacy-notice">🔒 사진은 기기 내에서만 분석됩니다. 서버에 저장되지 않습니다.</div>
+        <div class="ad-slot" id="adSetup"></div>
+    </section>
+
+    <section id="phase-countdown" class="section hidden" style="padding-top: 2rem;">
+        <div class="countdown-container" id="countdownContainer">
+            <img id="countdownPhoto" class="countdown-photo" src="" alt="업로드된 사진">
+            <div class="countdown-overlay" id="countdownOverlay"></div>
+        </div>
+        <div class="ad-slot" id="adCountdown" style="margin-top: 1.5rem;"></div>
+    </section>
+
+    <section id="phase-result" class="section hidden" style="padding-top: 2rem;">
+        <div class="glass-card impression-badge">
+            <span class="impression-emoji" id="impressionEmoji">✨</span>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.25rem;">당신의 인상 유형</p>
+            <h2 class="impression-type" id="impressionType">별빛형</h2>
+            <p class="impression-desc" id="impressionDesc">균형잡히고 빛나는 인상</p>
+            <div class="impression-traits" id="impressionTraits"></div>
+        </div>
+        <div class="ad-slot" id="adResult1"></div>
+        <h2 class="section-title" style="margin-top: 1.5rem;">⚔️ 판타지 세계에서의 당신의 이름</h2>
+        <div id="nameCardsContainer" style="display: flex; flex-direction: column; gap: 1.5rem;"></div>
+        <div class="share-bar" style="margin-top: 2rem;">
+            <button class="share-btn" id="shareX">𝕏 공유</button>
+            <button class="share-btn" id="shareCopy">🔗 링크복사</button>
+            <button class="share-btn" id="shareDownload">📥 카드 저장</button>
+        </div>
+        <div class="ad-slot" id="adResult2"></div>
+        <h2 class="section-title" style="margin-top: 1.5rem;">🔮 다른 이름도 추천받아 보세요!</h2>
+        <div class="test-grid">
+            <a href="korean-name.html" class="glass-card test-card"><span class="test-card-emoji">🇰🇷</span><p class="test-card-title">한국 이름</p><p class="test-card-desc">Korean Name 추천</p></a>
+            <a href="japanese-name.html" class="glass-card test-card"><span class="test-card-emoji">🇯🇵</span><p class="test-card-title">일본 이름</p><p class="test-card-desc">일본 이름 추천</p></a>
+            <a href="stage-name.html" class="glass-card test-card"><span class="test-card-emoji">🌟</span><p class="test-card-title">예명 추천</p><p class="test-card-desc">Stage Name</p></a>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;"><button class="btn-ghost" id="btnRetry">🔄 다시 하기</button></div>
+        <div class="ad-slot" id="adResult3"></div>
+        <p class="footer-disclaimer" style="margin-top: 1rem;">ℹ️ 본 서비스는 오락 목적으로 제공됩니다</p>
+    </section>
+</main>
+
+<footer class="footer"><div class="container"><ul class="footer-links"><li><a href="../about.html">소개</a></li><li><a href="../privacy.html">개인정보처리방침</a></li><li><a href="../terms.html">이용약관</a></li><li><a href="../contact.html">문의</a></li></ul><p class="footer-disclaimer">© 2026 QARAH. 본 서비스는 오락 목적으로 제공됩니다.</p></div></footer>
+
+<script type="module">
+import { initTestPage } from '../src/test-common.js';
+import { fantasyNames } from '../src/name-db-fantasy.js';
+initTestPage({ nameDB: fantasyNames, lang: 'ko' });
+</script>
+</body>
+</html>

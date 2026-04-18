@@ -39,10 +39,11 @@ export function matchNames(impressionType, gender, nameDB, baseScore = 92) {
         return {
             rank: index + 1,
             name: name.name,
-            hanja: name.hanja || '',
+            hanja: name.hanja || name.reading || '',
             meaning: name.meaning || '',
             hanjaDetail: name.hanjaDetail || null,
             origin: name.origin || '',
+            reading: name.reading || '',
             score,
             rarity
         };
