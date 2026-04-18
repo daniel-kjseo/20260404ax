@@ -27,10 +27,41 @@
         <p>QARAH 서비스에 대한 문의사항이 있으시면 아래 방법을 이용해 주세요.</p>
 
         <h2>이메일 문의</h2>
-        <p>서비스 관련 문의, 광고 문의, 제휴 제안 등은 아래 이메일로 보내주세요.</p>
-        <div class="glass-card" style="text-align: center; padding: 2rem;">
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">이메일</p>
-            <p style="font-size: 1.2rem; font-weight: 700; color: var(--color-purple);">contact@qarah.web.app</p>
+        <p>서비스 관련 문의, 광고 문의, 제휴 제안 등은 아래 양식을 작성해 주세요.</p>
+        
+        <div class="glass-card" style="margin-bottom: 2rem;">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label class="form-label" for="name">성함 / 단체명</label>
+                    <input class="form-input" type="text" id="name" name="name" placeholder="홍길동" data-fs-field>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">이메일 주소</label>
+                    <input class="form-input" type="email" id="email" name="email" placeholder="example@email.com" required data-fs-field>
+                    <span class="error-msg" data-fs-error="email"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="message">문의 내용</label>
+                    <textarea class="form-input" id="message" name="message" placeholder="문의하실 내용을 입력해 주세요." required data-fs-field></textarea>
+                    <span class="error-msg" data-fs-error="message"></span>
+                </div>
+                
+                <div id="form-status-success" class="form-status success" data-fs-success>
+                    문의가 성공적으로 접수되었습니다. 감사합니다!
+                </div>
+                <div id="form-status-error" class="form-status error" data-fs-error>
+                    오류가 발생했습니다. 다시 시도해 주세요.
+                </div>
+
+                <button type="submit" class="hero-cta" data-fs-submit-btn style="width: 100%; justify-content: center; margin-top: 1rem;">
+                    문의 보내기
+                </button>
+            </form>
+        </div>
+
+        <div class="glass-card" style="text-align: center; padding: 1.5rem; margin-bottom: 2rem;">
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.3rem;">직접 이메일 보내기</p>
+            <p style="font-size: 1.1rem; font-weight: 700; color: var(--color-purple);">contact@qarah.web.app</p>
         </div>
 
         <h2>자주 묻는 질문</h2>
@@ -68,6 +99,11 @@
         <p class="footer-disclaimer">© 2026 QARAH. 모든 이름에는 부름이 있습니다.</p>
     </div>
 </footer>
+<script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#contact-form', formId: 'mreojanw' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 <script>document.getElementById('navHamburger')?.addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});</script>
 </body>
 </html>
