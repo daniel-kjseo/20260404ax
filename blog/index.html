@@ -1,206 +1,163 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K-Idol & Beauty Blog | AI Face Analysis Insights</title>
-    <meta name="description" content="Explore our blog for insights into K-Pop beauty standards, animal face archetypes, AI facial analysis technology, and K-Beauty trends.">
+    <title>QARAH 블로그 — 이름에 담긴 이야기</title>
+    <meta name="description" content="이름의 유래와 의미, 나라 이름의 역사, 이름이 가진 힘에 대한 이야기를 나눕니다. QARAH 블로그에서 이름의 세계를 탐험하세요.">
     <link rel="stylesheet" href="../style.css">
     <style>
-        .blog-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-            text-align: left;
+        .blog-header {
+            text-align: center;
+            padding: 3rem 0 2rem;
         }
-        .blog-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-            text-decoration: none;
-            color: inherit;
+        .blog-header h1 {
+            font-weight: 900;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--color-purple), var(--color-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .blog-header p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        .blog-list {
             display: flex;
             flex-direction: column;
+            gap: 1.25rem;
+            margin-top: 2rem;
         }
-        .blog-card:hover {
-            transform: translateY(-5px);
+        .blog-item {
+            display: flex;
+            gap: 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all var(--transition-normal);
+            align-items: center;
         }
-        .blog-card-content {
-            padding: 1.5rem;
+        .blog-item:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(167,139,250,0.1);
         }
-        .blog-card-title {
-            font-size: 1.25rem;
+        .blog-thumb {
+            flex-shrink: 0;
+            width: 140px;
+            height: 100px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: var(--bg-secondary);
+        }
+        .blog-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .blog-item-body {
+            flex: 1;
+            min-width: 0;
+        }
+        .blog-item-tag {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 99px;
+            background: rgba(167,139,250,0.12);
+            color: var(--color-purple);
+            font-size: 0.7rem;
             font-weight: 700;
-            margin-bottom: 0.75rem;
-            color: var(--text-color);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
         }
-        .blog-card-excerpt {
-            font-size: 0.9rem;
-            color: var(--secondary-text);
-            margin-bottom: 1rem;
+        .blog-item-title {
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+            line-height: 1.3;
         }
-        .blog-card-meta {
+        .blog-item-excerpt {
             font-size: 0.8rem;
-            color: var(--primary-color);
-            font-weight: 600;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .blog-item-meta {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.4rem;
+        }
+        @media (max-width: 480px) {
+            .blog-item { flex-direction: column; }
+            .blog-thumb { width: 100%; height: 160px; }
         }
     </style>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8075905401818908" crossorigin="anonymous"></script>
-    <meta name="google-adsense-account" content="ca-pub-8075905401818908">
 </head>
 <body>
-    <nav class="navbar">
-        <a href="/index.html" class="nav-logo">IDOL AGENCY</a>
-        <div class="language-selector">
-            <button id="lang-en" class="lang-btn active">EN</button>
-            <button id="lang-ko" class="lang-btn">KO</button>
-        </div>
-    </nav>
 
-    <div class="container" style="max-width: 1000px;">
-        <header style="text-align: center; margin-bottom: 4rem;">
-            <h1 class="main-title">K-Idol & Beauty Blog</h1>
-            <p class="subtitle">Insights into K-Pop, AI, and Beauty Trends</p>
-        </header>
-
-        <div class="blog-list">
-            <a href="/blog/animal-face-types-introduction.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">April 13, 2026 • K-Beauty</div>
-                    <h3 class="blog-card-title">Introduction to Animal Face Types in Korea</h3>
-                    <p class="blog-card-excerpt">Ever wondered why some idols are called 'Cat-like' or 'Puppy-like'? Discover the fascinating world of Korean animal face archetypes.</p>
-                </div>
-            </a>
-
-            <a href="/blog/how-ai-facial-analysis-works.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">April 12, 2026 • Technology</div>
-                    <h3 class="blog-card-title">How AI Facial Analysis Works: A Deep Dive</h3>
-                    <p class="blog-card-excerpt">Uncover the magic behind computer vision and how our AI identifies unique facial features locally in your browser.</p>
-                </div>
-            </a>
-
-            <a href="/blog/k-pop-idol-animal-nicknames.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">April 11, 2026 • K-Pop</div>
-                    <h3 class="blog-card-title">Why K-Pop Idols Have 'Animal' Nicknames</h3>
-                    <p class="blog-card-excerpt">From BTS to BLACKPINK, we explore the cultural significance of animal nicknames in the K-Pop industry.</p>
-                </div>
-            </a>
-
-            <a href="/blog/cat-vs-fox-face-archetypes.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">April 10, 2026 • K-Beauty</div>
-                    <h3 class="blog-card-title">Cat Face vs. Fox Face: What's the Difference?</h3>
-                    <p class="blog-card-excerpt">Sharp, charismatic, and alluring. Learn how to distinguish between these two popular 'sharp' facial archetypes.</p>
-                </div>
-            </a>
-
-            <a href="/blog/popularity-of-puppy-face-archetype.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">April 09, 2026 • Trends</div>
-                    <h3 class="blog-card-title">Why 'Puppy Face' is the Most Popular Idol Archetype</h3>
-                    <p class="blog-card-excerpt">Friendly, approachable, and universally loved. We analyze why the puppy-like charm dominates K-Pop visuals.</p>
-                </div>
-            </a>
-
-            <a href="/blog/how-to-get-the-k-idol-look.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">April 08, 2026 • Makeup</div>
-                    <h3 class="blog-card-title">How to Get the 'K-Idol Look' Based on Your Face Type</h3>
-                    <p class="blog-card-excerpt">Makeup tips and styling advice tailored to your specific animal face archetype to enhance your natural features.</p>
-                </div>
-            </a>
-
-            <a href="/blog/evolution-of-korean-beauty-standards.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">April 07, 2026 • Culture</div>
-                    <h3 class="blog-card-title">The Evolution of Korean Beauty Standards: 90s vs 2020s</h3>
-                    <p class="blog-card-excerpt">How facial preferences and the 'ideal look' have changed from the first generation of K-Pop to today.</p>
-                </div>
-            </a>
-
-            <a href="/blog/privacy-in-ai-on-device-processing.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">April 06, 2026 • Privacy</div>
-                    <h3 class="blog-card-title">Privacy in AI: Why On-Device Processing Matters</h3>
-                    <p class="blog-card-excerpt">Your data is your own. Learn why local AI analysis is the future of privacy-conscious web applications.</p>
-                </div>
-            </a>
-
-            <a href="/blog/choosing-perfect-k-pop-fandom-name.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">April 05, 2026 • Community</div>
-                    <h3 class="blog-card-title">Choosing the Perfect K-Pop Fandom Name</h3>
-                    <p class="blog-card-excerpt">Tips on creating a unique and meaningful Korean name that reflects your personality and fandom identity.</p>
-                </div>
-            </a>
-
-            <a href="/blog/cultural-significance-of-glass-skin.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">April 04, 2026 • Skincare</div>
-                    <h3 class="blog-card-title">The Cultural Significance of 'Glass Skin' in K-Beauty</h3>
-                    <p class="blog-card-excerpt">Why luminous, hydrated skin is the ultimate beauty goal in Korea and how it relates to facial archetypes.</p>
-                </div>
-            </a>
-
-            <a href="/blog/find-celebrity-look-alike-safely.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">April 03, 2026 • Safety</div>
-                    <h3 class="blog-card-title">How to Find Your Celebrity Look-Alike Safely</h3>
-                    <p class="blog-card-excerpt">A guide to using face-matching apps without compromising your biometric data or personal privacy.</p>
-                </div>
-            </a>
-
-            <a href="/blog/unique-facial-features-k-pop-idols.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">April 02, 2026 • Visuals</div>
-                    <h3 class="blog-card-title">Top 5 K-Pop Idols with the Most Unique Facial Features</h3>
-                    <p class="blog-card-excerpt">Celebrating the idols who break standard beauty molds and create new trends with their unique visuals.</p>
-                </div>
-            </a>
-
-            <a href="/blog/understanding-aegyo-sal-role.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">April 01, 2026 • Anatomy</div>
-                    <h3 class="blog-card-title">Understanding 'Aegyo-sal' and Its Role in Facial Archetypes</h3>
-                    <p class="blog-card-excerpt">The 'charming fat' under the eyes. Why this feature is essential for a youthful, friendly 'Puppy' or 'Bunny' face.</p>
-                </div>
-            </a>
-
-            <a href="/blog/western-vs-eastern-beauty-standards.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">March 31, 2026 • Analysis</div>
-                    <h3 class="blog-card-title">How Western vs. Eastern Beauty Standards Compare</h3>
-                    <p class="blog-card-excerpt">A comparative analysis of facial preferences and archetypes between different global cultures.</p>
-                </div>
-            </a>
-
-            <a href="/blog/future-of-ai-personalized-beauty.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="blog-card-meta">March 30, 2026 • Future</div>
-                    <h3 class="blog-card-title">The Future of AI in Personalized Beauty and Fashion</h3>
-                    <p class="blog-card-excerpt">How AI-driven analysis will revolutionize the way we choose products and styles tailored to our unique features.</p>
-                </div>
-            </a>
-        </div>
-
-        <footer style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border-dim); text-align: center;">
-            <p style="color: var(--text-muted); font-size: 0.8rem;">&copy; 2026 IDOL AGENCY. All rights reserved.</p>
-            <div class="footer-links" style="margin-top: 10px; display: flex; justify-content: center; gap: 15px; font-size: 0.8rem;">
-                <a href="/index.html" style="text-decoration: none; color: var(--text-muted);">Home</a>
-                <a href="/about.html" style="text-decoration: none; color: var(--text-muted);">About Us</a>
-                <a href="/privacy.html" style="text-decoration: none; color: var(--text-muted);">Privacy Policy</a>
-                <a href="/terms.html" style="text-decoration: none; color: var(--text-muted);">Terms of Service</a>
-                <a href="/contact.html" style="text-decoration: none; color: var(--text-muted);">Contact</a>
-            </div>
-        </footer>
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="../index.html" class="nav-brand"><span>QARAH</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../index.html">이름추천</a></li>
+            <li><a href="index.html">블로그</a></li>
+            <li><a href="../about.html">소개</a></li>
+        </ul>
+        <button class="nav-hamburger" id="navHamburger" aria-label="메뉴">
+            <span></span><span></span><span></span>
+        </button>
     </div>
+</nav>
+
+<main class="container">
+    <section class="blog-header">
+        <h1>QARAH 블로그</h1>
+        <p>이름에 담긴 이야기를 탐험합니다</p>
+    </section>
+
+    <div class="blog-list">
+
+        <a href="oecd-country-name-origins.html" class="blog-item">
+            <div class="blog-thumb">
+                <img src="oecd-map.png" alt="OECD 국가 지도">
+            </div>
+            <div class="blog-item-body">
+                <span class="blog-item-tag">🌍 이름 이야기</span>
+                <h2 class="blog-item-title">OECD 38개국 이름의 유래 — 나라 이름에 담긴 놀라운 뜻</h2>
+                <p class="blog-item-excerpt">프랑스는 "자유인의 땅", 일본은 "해 뜨는 곳", 한국은 "고려"에서. OECD 38개 회원국 이름에 숨겨진 수천 년의 역사를 가입 순서대로 풀어봅니다.</p>
+                <div class="blog-item-meta">2026년 4월 18일 · 읽기 약 15분</div>
+            </div>
+        </a>
+
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <ul class="footer-links">
+            <li><a href="../about.html">소개</a></li>
+            <li><a href="../privacy.html">개인정보처리방침</a></li>
+            <li><a href="../terms.html">이용약관</a></li>
+            <li><a href="../contact.html">문의</a></li>
+        </ul>
+        <p class="footer-disclaimer">© 2026 QARAH. 모든 이름에는 부름이 있습니다.</p>
+    </div>
+</footer>
+
+<script>
+document.getElementById('navHamburger')?.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+
 </body>
 </html>
-
-
-

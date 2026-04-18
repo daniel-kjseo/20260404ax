@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OECD 38개국 이름의 유래 — 나라 이름에 담긴 뜻 | QARAH 블로그</title>
+    <meta name="description" content="OECD 38개 회원국의 이름은 어디서 왔을까? 프랑스는 '자유인의 땅', 일본은 '해 뜨는 곳', 한국은 '고려'에서. 각 나라 이름에 숨겨진 역사와 의미를 OECD 가입 순서대로 알아봅니다.">
+    <meta property="og:title" content="OECD 38개국 이름의 유래 — 나라 이름에 담긴 뜻">
+    <meta property="og:description" content="프랑스는 왜 France일까? 한국은 왜 Korea일까? OECD 38개국 이름에 담긴 놀라운 역사를 알아보세요.">
+    <meta property="og:type" content="article">
+    <link rel="canonical" href="https://qarah.web.app/blog/oecd-country-name-origins.html">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Blog-specific styles */
+        .blog-hero {
+            text-align: center;
+            padding: 3rem 0 2rem;
+        }
+        .blog-hero-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 99px;
+            background: rgba(167,139,250,0.15);
+            color: var(--color-purple);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .blog-hero h1 {
+            font-weight: 900;
+            font-size: 2rem;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--color-purple), var(--color-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .blog-hero-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .blog-hero-img {
+            width: 100%;
+            max-width: 720px;
+            margin: 2rem auto;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+        .blog-hero-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .blog-body {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+        .blog-body h2 {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin: 3rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .blog-body h3 {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin: 2rem 0 0.5rem;
+        }
+        .blog-body p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        .blog-body strong {
+            color: var(--text-primary);
+        }
+        .blog-img-inline {
+            width: 100%;
+            border-radius: var(--radius-md);
+            margin: 1.5rem 0;
+        }
+        .blog-img-caption {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: -1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Country card grid */
+        .country-section {
+            margin: 2rem 0;
+        }
+        .country-section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--color-gold);
+            margin-bottom: 1.5rem;
+            padding: 0.75rem 1rem;
+            background: rgba(251,191,36,0.06);
+            border-radius: var(--radius-md);
+            border-left: 3px solid var(--color-gold);
+        }
+        .country-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            transition: all var(--transition-normal);
+        }
+        .country-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(167,139,250,0.08);
+        }
+        .country-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .country-flag {
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .country-info {
+            flex: 1;
+        }
+        .country-name-ko {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+        .country-name-en {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: var(--font-brand);
+        }
+        .country-year {
+            font-family: var(--font-brand);
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--color-purple);
+            background: rgba(167,139,250,0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 99px;
+        }
+        .country-etymology {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        .country-etymology .origin-word {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            background: rgba(251,191,36,0.1);
+            border: 1px solid rgba(251,191,36,0.2);
+            border-radius: 4px;
+            font-weight: 700;
+            color: var(--color-gold);
+            font-size: 0.85rem;
+            margin: 0 0.1rem;
+        }
+        .country-meaning {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            background: rgba(167,139,250,0.08);
+            border-radius: 99px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-purple);
+        }
+
+        /* Quote box */
+        .blog-quote {
+            border-left: 3px solid var(--color-purple);
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+            background: rgba(167,139,250,0.05);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        .blog-quote p {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin: 0;
+        }
+
+        /* Stats box */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 1.25rem 0.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+        }
+        .stat-number {
+            font-family: var(--font-brand);
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--color-gold);
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* CTA banner */
+        .blog-cta {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            margin: 3rem 0;
+            background: linear-gradient(135deg, rgba(167,139,250,0.1), rgba(251,191,36,0.08));
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-xl);
+        }
+        .blog-cta h3 {
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        .blog-cta p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        .blog-cta .hero-cta {
+            display: inline-flex;
+        }
+
+        /* TOC */
+        .toc {
+            padding: 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            margin: 1.5rem 0;
+        }
+        .toc-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+        .toc-list {
+            list-style: none;
+            padding: 0;
+        }
+        .toc-list li {
+            padding: 0.3rem 0;
+        }
+        .toc-list a {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .toc-list a:hover {
+            color: var(--color-purple);
+        }
+
+        @media (max-width: 480px) {
+            .blog-hero h1 { font-size: 1.5rem; }
+            .stats-grid { grid-template-columns: repeat(3, 1fr); }
+            .stat-number { font-size: 1.4rem; }
+            .country-card { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="../index.html" class="nav-brand"><span>QARAH</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../index.html">이름추천</a></li>
+            <li><a href="index.html">블로그</a></li>
+            <li><a href="../about.html">소개</a></li>
+        </ul>
+        <button class="nav-hamburger" id="navHamburger" aria-label="메뉴">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<main class="container">
+
+    <!-- Hero -->
+    <section class="blog-hero">
+        <span class="blog-hero-tag">🌍 이름 이야기</span>
+        <h1>OECD 38개국 이름의 유래<br>— 나라 이름에 담긴 놀라운 뜻</h1>
+        <p class="blog-hero-meta">2026년 4월 18일 · 읽기 약 15분 · QARAH 블로그</p>
+    </section>
+
+    <div class="blog-hero-img">
+        <img src="oecd-map.png" alt="OECD 38개 회원국 세계 지도">
+    </div>
+
+    <div class="blog-body">
+
+        <!-- 인트로 -->
+        <p>
+            우리가 매일 사용하는 나라 이름에는 수천 년의 역사가 녹아 있습니다.
+            <strong>"프랑스"는 창을 던지던 전사 부족에서</strong>, <strong>"일본"은 해가 뜨는 동쪽 나라라는 뜻</strong>에서,
+            <strong>"한국"은 고려 왕조를 만난 아랍 상인들</strong>의 발음에서 시작되었습니다.
+        </p>
+        <p>
+            QARAH는 이름의 의미를 탐구합니다.
+            이번 글에서는 <strong>OECD(경제협력개발기구) 38개 회원국</strong>의 이름이
+            어디서 왔는지, 어떤 뜻을 담고 있는지를 <strong>OECD 가입 순서대로</strong> 풀어봅니다.
+        </p>
+
+        <!-- 통계 -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">38</div>
+                <div class="stat-label">OECD 회원국</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">20</div>
+                <div class="stat-label">1961년 창립 회원</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">65</div>
+                <div class="stat-label">년의 역사</div>
+            </div>
+        </div>
+
+        <!-- 목차 -->
+        <div class="toc">
+            <div class="toc-title">📋 목차</div>
+            <ul class="toc-list">
+                <li><a href="#founders">🏛️ 1961년 창립 회원국 (20개국)</a></li>
+                <li><a href="#expansion">🌏 확장기 회원국 (1964~1996, 9개국)</a></li>
+                <li><a href="#modern">🌐 21세기 회원국 (2000~2021, 9개국)</a></li>
+                <li><a href="#patterns">🔎 이름에서 발견한 흥미로운 패턴</a></li>
+            </ul>
+        </div>
+
+        <div class="blog-quote">
+            <p>"이름은 그것이 부르는 대상의 본질을 담고 있다." — 고대 히브리 격언</p>
+        </div>
+
+        <img src="etymology-scrolls.png" alt="고대 문서와 필사본 — 나라 이름의 역사" class="blog-img-inline">
+        <p class="blog-img-caption">나라 이름은 라틴어, 게르만어, 아랍어, 원주민 언어 등 다양한 뿌리에서 탄생했습니다</p>
+
+        <!-- ========== SECTION 1: 창립 회원국 ========== -->
+        <h2 id="founders">🏛️ 1961년 창립 회원국 (20개국)</h2>
+        <p>OECD는 1961년 9월 30일에 출범했습니다. 전신인 OEEC(유럽경제협력기구)에서 발전한 이 조직의 20개 창립 회원국을 만나보세요.</p>
+
+        <div class="country-section">
+
+            <!-- 오스트리아 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇦🇹</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">오스트리아</div>
+                        <div class="country-name-en">Austria · Österreich</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    고대 고지 독일어 <span class="origin-word">Ostarrîchi</span> (동쪽 왕국)에서 유래했습니다.
+                    프랑크 왕국의 동쪽 변경지로서의 위치를 나타내며, 976년 문서에 처음 등장합니다.
+                    현지어 이름 <strong>Österreich</strong>는 문자 그대로 "동쪽의 영역"을 뜻합니다.
+                    <div class="country-meaning">💡 의미: "동쪽 왕국"</div>
+                </div>
+            </div>
+
+            <!-- 벨기에 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇧🇪</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">벨기에</div>
+                        <div class="country-name-en">Belgium · Belgique</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    로마 시대에 이 지역에 살던 켈트-게르만 혼합 부족 <span class="origin-word">Belgae</span> (벨가이)에서 유래했습니다.
+                    이 이름의 원래 뜻은 "부풀어오른" 또는 "용맹한"으로 해석됩니다.
+                    카이사르의 『갈리아 전쟁기』에서 "갈리아인 중 가장 용감한 자들"로 묘사된 부족입니다.
+                    <div class="country-meaning">💡 의미: "용맹한 사람들의 땅"</div>
+                </div>
+            </div>
+
+            <!-- 캐나다 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇨🇦</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">캐나다</div>
+                        <div class="country-name-en">Canada</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    휴런-이로쿼이 원주민어 <span class="origin-word">kanata</span> (마을, 정착지)에서 유래했습니다.
+                    1535년 프랑스 탐험가 자크 카르티에가 세인트로렌스강 유역의 원주민 안내인에게
+                    이 지역 이름을 물었을 때, 그들이 자신들의 "마을"을 가리키며 한 말이었습니다.
+                    카르티에는 이것을 지역 전체의 이름으로 이해하여 지도에 기록했습니다.
+                    <div class="country-meaning">💡 의미: "마을" — 소박한 시작에서 세계 2위 면적의 나라로</div>
+                </div>
+            </div>
+
+            <!-- 덴마크 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇩🇰</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">덴마크</div>
+                        <div class="country-name-en">Denmark · Danmark</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    <span class="origin-word">Dan</span> (데인족) + <span class="origin-word">mark</span> (변경지, 영토)의 합성어입니다.
+                    말 그대로 "데인족의 영토"를 뜻합니다. "Dan"은 "평평한 땅"을 뜻하는 게르만어에서 유래했을 가능성이 있습니다.
+                    바이킹 시대 이전부터 사용된 매우 오래된 지명입니다.
+                    <div class="country-meaning">💡 의미: "데인족의 변경지"</div>
+                </div>
+            </div>
+
+            <!-- 프랑스 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇫🇷</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">프랑스</div>
+                        <div class="country-name-en">France · Francia</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    라틴어 <span class="origin-word">Francia</span> (프랑크족의 땅)에서 유래했습니다.
+                    프랑크족(Franks)은 던지는 도끼 <strong>프란시스카(francisca)</strong>를 무기로 사용했던 게르만 부족 연합체입니다.
+                    "Frank"라는 이름은 원래 "창"을 뜻하는 게르만어에서 왔으나,
+                    프랑크족이 갈리아를 정복한 후에는 <strong>"자유인"</strong>이라는 뜻으로 진화했습니다 — 프랑크족만이 자유민 신분을 가졌기 때문입니다.
+                    <div class="country-meaning">💡 의미: "자유인의 땅" (원래는 "창의 민족")</div>
+                </div>
+            </div>
+
+            <!-- 독일 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇩🇪</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">독일</div>
+                        <div class="country-name-en">Germany · Deutschland</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    가장 많은 이름을 가진 나라! 영어 <strong>Germany</strong>는 라틴어 <span class="origin-word">Germania</span>에서 왔으며,
+                    카이사르가 라인강 동쪽 부족을 부른 이름입니다.
+                    독일어 이름 <span class="origin-word">Deutschland</span>는 고대 고지 독일어 <strong>diutisc</strong>(민중의)에서 유래했으며,
+                    "평민의 언어" (라틴어 대비)를 뜻했습니다. 프랑스어 Allemagne은 "모든 사람들"을 뜻하는 알레만니족에서,
+                    슬라브어 Niemcy는 "말이 통하지 않는 자"를 뜻합니다. 하나의 나라가 언어마다 완전히 다른 이름을 가진 독특한 사례입니다.
+                    <div class="country-meaning">💡 의미: "민중의 나라" (Deutschland) / "게르마니아" (Germany)</div>
+                </div>
+            </div>
+
+            <!-- 그리스 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇬🇷</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">그리스</div>
+                        <div class="country-name-en">Greece · Hellas (Ελλάδα)</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    영어 이름 <strong>Greece</strong>는 라틴어 <span class="origin-word">Graecia</span>에서 왔으며,
+                    이탈리아 남부에 정착한 그리스 부족 <strong>그라이코이(Graikoi)</strong>에서 유래했습니다.
+                    그러나 그리스인 스스로는 자신들의 나라를 <span class="origin-word">Ελλάδα</span> (엘라다, Hellas)라고 부르며,
+                    이는 신화 속의 시조 <strong>헬렌(Hellen)</strong>에서 유래합니다.
+                    <div class="country-meaning">💡 의미: "헬렌의 후손들의 땅"</div>
+                </div>
+            </div>
+
+            <!-- 아이슬란드 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇮🇸</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">아이슬란드</div>
+                        <div class="country-name-en">Iceland · Ísland</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    고대 노르드어로 문자 그대로 <span class="origin-word">Ísland</span> (얼음의 땅)입니다.
+                    전설에 따르면, 노르웨이 바이킹 <strong>플로키 빌게르다르손</strong>이 이 섬의 피오르드에서
+                    유빙을 보고 이 이름을 붙였습니다. 다른 이주자들이 오지 못하도록 일부러 무시무시한 이름을 붙였다는 설도 있습니다.
+                    반면 이웃 <strong>그린란드</strong>는 실제로 더 추운데도 "녹색의 땅"이라고 불립니다!
+                    <div class="country-meaning">💡 의미: "얼음의 땅" (의도적 과장?)</div>
+                </div>
+            </div>
+
+            <!-- 아일랜드 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇮🇪</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">아일랜드</div>
+                        <div class="country-name-en">Ireland · Éire</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    고대 아일랜드어 <span class="origin-word">Ériu</span>에서 유래했습니다. 에리우는 아일랜드 신화의 대지 여신 이름이며,
+                    "풍요로운", "비옥한"을 뜻합니다. 현대 아일랜드어로 <strong>Éire</strong>라고 합니다.
+                    영어 이름 Ireland는 Éire + land의 합성어입니다.
+                    <div class="country-meaning">💡 의미: "풍요로운 여신의 땅"</div>
+                </div>
+            </div>
+
+            <!-- 이탈리아 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇮🇹</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">이탈리아</div>
+                        <div class="country-name-en">Italy · Italia</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    라틴어 <span class="origin-word">Italia</span>는 고대 오스크어 <strong>Víteliú</strong>(송아지의 땅)에서
+                    유래했다는 설이 가장 유력합니다. 이탈리아 남부에서 소(특히 황소)를 상징으로 삼던 부족에서 비롯되었으며,
+                    로마인들이 반도 전체로 이름을 확장했습니다.
+                    <div class="country-meaning">💡 의미: "송아지의 땅" — 목축 문화의 유산</div>
+                </div>
+            </div>
+
+            <!-- 룩셈부르크 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇱🇺</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">룩셈부르크</div>
+                        <div class="country-name-en">Luxembourg</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    고대 고지 독일어 <span class="origin-word">Lucilinburhuc</span> (작은 성)에서 유래했습니다.
+                    963년 아르덴 백작 지그프리트가 "보크 바위" 위에 작은 성곽을 세우면서 시작된 이름입니다.
+                    이 "작은 성"이 오늘날 유럽에서 가장 부유한 나라 중 하나가 되었습니다.
+                    <div class="country-meaning">💡 의미: "작은 요새"</div>
+                </div>
+            </div>
+
+            <!-- 네덜란드 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇳🇱</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">네덜란드</div>
+                        <div class="country-name-en">Netherlands · Nederland</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    네덜란드어 <span class="origin-word">Nederland</span>는 문자 그대로 "낮은 땅"을 뜻합니다.
+                    국토의 약 26%가 해수면보다 낮고, 3분의 1이 해수면에서 1미터 이내에 있을 정도로
+                    실제로 "낮은 나라"입니다. 흔히 "Holland(홀란트)"라고도 부르지만,
+                    이는 12개 주 중 2개(남홀란트, 북홀란트)만을 가리키는 이름입니다.
+                    <div class="country-meaning">💡 의미: "낮은 땅" — 이름 그대로의 지리</div>
+                </div>
+            </div>
+
+            <!-- 노르웨이 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇳🇴</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">노르웨이</div>
+                        <div class="country-name-en">Norway · Norge</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    고대 노르드어 <span class="origin-word">Norðrvegr</span> (북쪽으로 가는 길)에서 유래했습니다.
+                    스칸디나비아 해안을 따라 북쪽으로 항해하는 바닷길을 뜻했던 것이 나라 전체의 이름이 되었습니다.
+                    바이킹들의 해양 문화가 이름에 그대로 담겨 있습니다.
+                    <div class="country-meaning">💡 의미: "북쪽으로 가는 길"</div>
+                </div>
+            </div>
+
+            <!-- 포르투갈 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇵🇹</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">포르투갈</div>
+                        <div class="country-name-en">Portugal</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    로마-켈트 정착지 <span class="origin-word">Portus Cale</span>에서 유래했습니다.
+                    <strong>Portus</strong>는 라틴어로 "항구", <strong>Cale</strong>은 켈트어로 "아름다운" 또는 현지 신의 이름으로 추정됩니다.
+                    현재의 포르투(Porto) 시가 바로 이 이름의 시작점입니다.
+                    <div class="country-meaning">💡 의미: "아름다운 항구"</div>
+                </div>
+            </div>
+
+            <!-- 스페인 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇪🇸</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">스페인</div>
+                        <div class="country-name-en">Spain · España</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    로마 시대 이름 <span class="origin-word">Hispania</span>에서 유래했습니다.
+                    가장 흥미로운 설은 페니키아어 <strong>I-shpan-ya</strong> (바위너구리의 땅)에서 왔다는 것입니다.
+                    페니키아 상인들이 이베리아 반도의 토끼(실은 바위너구리)를 보고 붙인 이름이라고 합니다.
+                    <div class="country-meaning">💡 의미: "토끼(바위너구리)의 땅" — 의외의 어원!</div>
+                </div>
+            </div>
+
+            <!-- 스웨덴 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇸🇪</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">스웨덴</div>
+                        <div class="country-name-en">Sweden · Sverige</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    고대 노르드어 <span class="origin-word">Svíþjóð</span> (스베아르족의 나라)에서 유래했습니다.
+                    스베아르(Svear)는 북게르만 부족으로, 이름의 뜻은 "우리 자신의 사람들"로 해석됩니다.
+                    현대 스웨덴어 <strong>Sverige</strong>는 "Svea rike"(스베아의 왕국)의 축약형입니다.
+                    <div class="country-meaning">💡 의미: "우리 민족의 왕국"</div>
+                </div>
+            </div>
+
+            <!-- 스위스 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇨🇭</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">스위스</div>
+                        <div class="country-name-en">Switzerland · Schweiz</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    중앙 주(칸톤)인 <span class="origin-word">Schwyz</span>에서 유래했습니다.
+                    Schwyz는 고대 고지 독일어 <strong>sûen</strong>(불태우다)에서 온 것으로,
+                    숲을 불태워 개간해 정착한 땅을 뜻합니다. 공식 명칭은 라틴어 <strong>Confoederatio Helvetica</strong>(CH)로,
+                    이는 로마 시대 이 지역에 살던 켈트 부족 <strong>헬베티이</strong>에서 유래합니다.
+                    <div class="country-meaning">💡 의미: "불태워 개간한 땅" / "헬베티이의 연방"</div>
+                </div>
+            </div>
+
+            <!-- 튀르키예 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇹🇷</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">튀르키예</div>
+                        <div class="country-name-en">Türkiye (Turkey)</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    투르크계 민족의 이름 <span class="origin-word">Türk</span>에서 유래했으며, "힘" 또는 "태어난 자"를 뜻합니다.
+                    2022년 공식적으로 영문 명칭을 Turkey에서 <strong>Türkiye</strong>로 변경했습니다.
+                    이는 칠면조(turkey)와의 혼동을 피하고 국가 정체성을 더 정확히 반영하기 위한 결정이었습니다.
+                    <div class="country-meaning">💡 의미: "힘센 사람들의 땅"</div>
+                </div>
+            </div>
+
+            <!-- 영국 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇬🇧</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">영국</div>
+                        <div class="country-name-en">United Kingdom · Britain</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    <span class="origin-word">Britain</span>은 라틴어 <strong>Britannia</strong>에서 왔으며,
+                    켈트어 <strong>Pritanī</strong>(문신을 한 사람들)에서 유래했습니다.
+                    고대 브리튼인들이 전투 전에 몸에 파란 물감(워드)으로 문양을 그리던 풍습에서 비롯된 이름입니다.
+                    한국어 "영국"은 "England"의 "英"(영)에서 온 한자 표기입니다.
+                    <div class="country-meaning">💡 의미: "문신을 한 사람들의 땅"</div>
+                </div>
+            </div>
+
+            <!-- 미국 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇺🇸</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">미국</div>
+                        <div class="country-name-en">United States of America</div>
+                    </div>
+                    <span class="country-year">1961</span>
+                </div>
+                <div class="country-etymology">
+                    <span class="origin-word">America</span>는 이탈리아 탐험가 <strong>아메리고 베스푸치(Amerigo Vespucci)</strong>의
+                    이름에서 유래했습니다. 1507년 독일 지도 제작자 마르틴 발트제뮐러가 신대륙을 그의 이름을 따서
+                    "America"라고 표기한 것이 굳어졌습니다. 베스푸치의 이름 Amerigo는 게르만어 <strong>Emmerich</strong>(지배자)에서 유래합니다.
+                    <div class="country-meaning">💡 의미: "아메리고의 연합된 주들" — 한 탐험가의 이름이 대륙 이름이 되다</div>
+                </div>
+            </div>
+
+        </div><!-- country-section -->
+
+        <img src="landmarks.png" alt="세계 주요 랜드마크 — 에펠탑, 후지산, 경복궁" class="blog-img-inline">
+        <p class="blog-img-caption">각 나라의 이름에는 그 문화와 역사가 고스란히 담겨 있습니다</p>
+
+        <!-- ========== SECTION 2: 확장기 회원국 ========== -->
+        <h2 id="expansion">🌏 확장기 회원국 (1964~1996)</h2>
+        <p>유럽 중심이던 OECD가 아시아-태평양, 아메리카, 동유럽으로 확대된 시기의 9개국입니다.</p>
+
+        <div class="country-section">
+
+            <!-- 일본 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇯🇵</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">일본</div>
+                        <div class="country-name-en">Japan · 日本 (Nihon/Nippon)</div>
+                    </div>
+                    <span class="country-year">1964</span>
+                </div>
+                <div class="country-etymology">
+                    일본어 <span class="origin-word">日本</span> (니혼/닛폰)은 "해가 뜨는 곳"이라는 뜻입니다.
+                    일본이 중국에서 보면 동쪽, 즉 해가 뜨는 방향에 있었기 때문입니다.
+                    영어 <strong>Japan</strong>은 중국어 발음이 말레이어와 포르투갈어 상인을 거쳐 변형된 것이며,
+                    마르코 폴로는 이 나라를 <strong>Cipangu</strong>라고 기록했습니다.
+                    <div class="country-meaning">💡 의미: "해 뜨는 곳" — 동방의 아름다운 별명</div>
+                </div>
+            </div>
+
+            <!-- 핀란드 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇫🇮</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">핀란드</div>
+                        <div class="country-name-en">Finland · Suomi</div>
+                    </div>
+                    <span class="country-year">1969</span>
+                </div>
+                <div class="country-etymology">
+                    영어 <strong>Finland</strong>는 "핀족의 땅"을 뜻하며, 핀(Finn)은 "방랑자" 또는 "사냥꾼"을 의미할 수 있습니다.
+                    그러나 핀란드인들은 자국을 <span class="origin-word">Suomi</span>라고 부릅니다.
+                    Suomi의 어원은 여전히 논쟁 중이지만, 발트어 <strong>zeme</strong>(땅)에서 왔다는 설과
+                    "늪지의 땅"을 뜻한다는 설이 있습니다.
+                    <div class="country-meaning">💡 의미: "핀족(방랑자)의 땅" / "Suomi — 늪지의 땅"</div>
+                </div>
+            </div>
+
+            <!-- 호주 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇦🇺</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">호주</div>
+                        <div class="country-name-en">Australia</div>
+                    </div>
+                    <span class="country-year">1971</span>
+                </div>
+                <div class="country-etymology">
+                    라틴어 <span class="origin-word">Terra Australis</span> (남쪽의 대륙)에서 유래했습니다.
+                    고대부터 지리학자들이 지구의 균형을 위해 남반구에도 큰 대륙이 있을 것이라 믿었고,
+                    이를 "미지의 남쪽 땅"(Terra Australis Incognita)이라 불렀습니다.
+                    1824년에 공식 국명으로 채택되었습니다.
+                    <div class="country-meaning">💡 의미: "남쪽 땅" — 2천 년간 상상만 했던 대륙</div>
+                </div>
+            </div>
+
+            <!-- 뉴질랜드 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇳🇿</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">뉴질랜드</div>
+                        <div class="country-name-en">New Zealand · Aotearoa</div>
+                    </div>
+                    <span class="country-year">1973</span>
+                </div>
+                <div class="country-etymology">
+                    네덜란드어 <span class="origin-word">Nieuw Zeeland</span>에서 유래했습니다.
+                    1642년 탐험가 아벨 타스만이 발견한 후, 네덜란드의 제일란트(Zeeland, "바다의 땅") 주의 이름을 따서 명명했습니다.
+                    마오리어 이름 <span class="origin-word">Aotearoa</span>는 <strong>"길고 흰 구름의 나라"</strong>를 뜻하며,
+                    마오리 항해자들이 멀리서 섬의 산봉우리에 걸린 흰 구름을 보고 붙인 이름입니다.
+                    <div class="country-meaning">💡 의미: "새로운 바다의 땅" / "길고 흰 구름의 나라" (Aotearoa)</div>
+                </div>
+            </div>
+
+            <!-- 멕시코 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇲🇽</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">멕시코</div>
+                        <div class="country-name-en">Mexico · México</div>
+                    </div>
+                    <span class="country-year">1994</span>
+                </div>
+                <div class="country-etymology">
+                    아즈텍(메시카)인들의 수도 <span class="origin-word">Mēxihco</span>에서 유래했습니다.
+                    나와틀어로 "달의 배꼽" 또는 "메시틀리(달의 신)의 장소"를 뜻한다는 설이 유력합니다.
+                    아즈텍인들은 스스로를 <strong>메시카(Mexica)</strong>라고 불렀으며, 그들의 전쟁의 신
+                    <strong>메시틀리(Meztli)</strong>에서 그 이름이 유래했을 수 있습니다.
+                    <div class="country-meaning">💡 의미: "달의 배꼽" — 아즈텍 문명의 유산</div>
+                </div>
+            </div>
+
+            <!-- 체코 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇨🇿</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">체코</div>
+                        <div class="country-name-en">Czech Republic · Česko</div>
+                    </div>
+                    <span class="country-year">1995</span>
+                </div>
+                <div class="country-etymology">
+                    전설적인 시조 <span class="origin-word">Čech</span> (체흐)에서 유래했습니다.
+                    체코 건국 신화에 따르면, 체흐는 슬라브 부족을 이끌고 보헤미아 땅에 정착한 지도자입니다.
+                    2016년에는 비공식 약칭으로 <strong>Czechia</strong>(체키아)를 채택했습니다.
+                    <div class="country-meaning">💡 의미: "체흐의 사람들" — 신화적 시조의 이름</div>
+                </div>
+            </div>
+
+            <!-- 헝가리 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇭🇺</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">헝가리</div>
+                        <div class="country-name-en">Hungary · Magyarország</div>
+                    </div>
+                    <span class="country-year">1996</span>
+                </div>
+                <div class="country-etymology">
+                    영어 <strong>Hungary</strong>는 투르크어 <span class="origin-word">Onoğur</span> (열 개의 화살/부족)에서
+                    유래했을 가능성이 높으며, 훈족(Hun)과의 연관도 있습니다.
+                    헝가리인들은 자국을 <span class="origin-word">Magyarország</span> (마자르의 나라)이라 부릅니다.
+                    마자르(Magyar)는 7개 유목부족 중 가장 주요한 부족 <strong>메게르(Megyer)</strong>에서 왔으며,
+                    원시 우그르어로 "사람"을 뜻합니다.
+                    <div class="country-meaning">💡 의미: "열 부족의 동맹" (Hungary) / "마자르인의 나라" (Magyarország)</div>
+                </div>
+            </div>
+
+            <!-- 폴란드 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇵🇱</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">폴란드</div>
+                        <div class="country-name-en">Poland · Polska</div>
+                    </div>
+                    <span class="country-year">1996</span>
+                </div>
+                <div class="country-etymology">
+                    서슬라브 부족 <span class="origin-word">Polanie</span> (들판의 사람들)에서 유래했습니다.
+                    폴란드어 <strong>pole</strong>은 "들판"을 뜻하며, 대평원 지대에 살던 농업 부족을 가리킵니다.
+                    광활한 평야가 끝없이 펼쳐진 지리적 특성이 이름에 그대로 담겨 있습니다.
+                    <div class="country-meaning">💡 의미: "들판 사람들의 나라"</div>
+                </div>
+            </div>
+
+            <!-- 대한민국 -->
+            <div class="country-card" style="border-color: rgba(167,139,250,0.4); background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(251,191,36,0.04));">
+                <div class="country-header">
+                    <span class="country-flag">🇰🇷</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">대한민국</div>
+                        <div class="country-name-en">South Korea · 大韓民國</div>
+                    </div>
+                    <span class="country-year">1996</span>
+                </div>
+                <div class="country-etymology">
+                    영어 <strong>Korea</strong>는 고려 왕조 <span class="origin-word">高麗</span> (918~1392)에서 유래했습니다.
+                    아랍, 페르시아 상인들이 "고려"를 자신들의 발음으로 관화한 것이 서양에 전파되었습니다.
+                    공식 국호 <span class="origin-word">大韓民國</span> (대한민국)은 "위대한 한(韓)의 국민국가"를 뜻하며,
+                    "韓"은 구한말 <strong>대한제국</strong>에서 온 것입니다. 일상적으로는 <strong>한국(韓國)</strong>이라 부르며,
+                    조선(朝鮮)은 "아침이 선명한 곳", 즉 <strong>"고요한 아침의 나라"</strong>라는 아름다운 별칭을 남겼습니다.
+                    <div class="country-meaning">💡 의미: "위대한 한의 나라" / "고요한 아침의 나라" (조선)</div>
+                </div>
+            </div>
+
+        </div><!-- country-section -->
+
+        <!-- ========== SECTION 3: 21세기 회원국 ========== -->
+        <h2 id="modern">🌐 21세기 회원국 (2000~2021)</h2>
+        <p>2000년 이후 합류한 9개국입니다. 동유럽, 남미, 중동까지 OECD의 지리적 범위가 크게 넓어졌습니다.</p>
+
+        <div class="country-section">
+
+            <!-- 슬로바키아 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇸🇰</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">슬로바키아</div>
+                        <div class="country-name-en">Slovakia · Slovensko</div>
+                    </div>
+                    <span class="country-year">2000</span>
+                </div>
+                <div class="country-etymology">
+                    고대 슬라브어 <span class="origin-word">slovo</span> (말, 언어)에서 유래했으며,
+                    "같은 말을 하는 사람들"이라는 뜻입니다. 슬로바키아인들은 같은 슬라브어를 사용하는 사람들로서의 정체성을 이름에 담았습니다.
+                    비슷한 이름의 슬로베니아와 자주 혼동되지만, 둘 다 같은 "슬라브" 어근을 공유합니다.
+                    <div class="country-meaning">💡 의미: "같은 말을 하는 사람들의 나라"</div>
+                </div>
+            </div>
+
+            <!-- 칠레 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇨🇱</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">칠레</div>
+                        <div class="country-name-en">Chile</div>
+                    </div>
+                    <span class="country-year">2010</span>
+                </div>
+                <div class="country-etymology">
+                    어원이 확실하지 않은 흥미로운 나라입니다. 유력한 설들:
+                    마푸체어 또는 케추아어로 <span class="origin-word">"땅이 끝나는 곳"</span>,
+                    <strong>"추운 곳"</strong>, 또는 현지 새의 울음소리를 흉내낸 의성어라는 설이 있습니다.
+                    잉카인들이 아콩카과 계곡을 "Chilli"라고 부른 것을 스페인 정복자들이 채택했습니다.
+                    참고로, 고추(chili pepper)와는 전혀 관계가 없습니다!
+                    <div class="country-meaning">💡 의미: "땅이 끝나는 곳" (유력 설)</div>
+                </div>
+            </div>
+
+            <!-- 에스토니아 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇪🇪</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">에스토니아</div>
+                        <div class="country-name-en">Estonia · Eesti</div>
+                    </div>
+                    <span class="country-year">2010</span>
+                </div>
+                <div class="country-etymology">
+                    로마 역사가 타키투스가 98년 기록한 <span class="origin-word">Aestii</span>에서 유래했습니다.
+                    "동쪽 사람들" 또는 "물가에 사는 사람들"을 뜻할 수 있습니다.
+                    에스토니아인들은 19세기 민족 각성기에 <strong>Eesti</strong>를 자국 이름으로 채택했습니다.
+                    <div class="country-meaning">💡 의미: "동쪽(또는 물가)의 사람들"</div>
+                </div>
+            </div>
+
+            <!-- 이스라엘 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇮🇱</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">이스라엘</div>
+                        <div class="country-name-en">Israel · יִשְׂרָאֵל</div>
+                    </div>
+                    <span class="country-year">2010</span>
+                </div>
+                <div class="country-etymology">
+                    히브리어 <span class="origin-word">יִשְׂרָאֵל</span> (이스라엘)은
+                    <strong>"하나님과 겨루다"</strong> 또는 <strong>"하나님이 다스리다"</strong>를 뜻합니다.
+                    성경 창세기에서 야곱이 천사와 밤새 씨름한 후 받은 새 이름이 바로 "이스라엘"이며,
+                    이것이 유대 민족과 국가의 이름이 되었습니다.
+                    <div class="country-meaning">💡 의미: "하나님과 겨룬 자" — 성경 속 이름이 국가명으로</div>
+                </div>
+            </div>
+
+            <!-- 슬로베니아 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇸🇮</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">슬로베니아</div>
+                        <div class="country-name-en">Slovenia · Slovenija</div>
+                    </div>
+                    <span class="country-year">2010</span>
+                </div>
+                <div class="country-etymology">
+                    고대 슬라브 부족명 <span class="origin-word">Slověne</span>에서 유래했습니다.
+                    슬로바키아와 마찬가지로 <strong>slovo</strong>(말)에서 왔으며,
+                    "말이 통하는 사람들"이라는 뜻입니다. 슬라브 민족 공통의 이름이 국가명으로 자리잡은 사례입니다.
+                    <div class="country-meaning">💡 의미: "같은 언어를 쓰는 사람들의 나라"</div>
+                </div>
+            </div>
+
+            <!-- 라트비아 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇱🇻</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">라트비아</div>
+                        <div class="country-name-en">Latvia · Latvija</div>
+                    </div>
+                    <span class="country-year">2016</span>
+                </div>
+                <div class="country-etymology">
+                    고대 발트 부족 <span class="origin-word">Latgaļi</span> (라트갈리아인)에서 유래했습니다.
+                    현대 라트비아 민족의 핵심을 이루었던 부족입니다.
+                    19세기 민족 각성기에 <strong>Latvija</strong>라는 이름이 정착되었습니다.
+                    <div class="country-meaning">💡 의미: "라트갈리아인의 땅"</div>
+                </div>
+            </div>
+
+            <!-- 리투아니아 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇱🇹</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">리투아니아</div>
+                        <div class="country-name-en">Lithuania · Lietuva</div>
+                    </div>
+                    <span class="country-year">2018</span>
+                </div>
+                <div class="country-etymology">
+                    <span class="origin-word">Lietuva</span>의 어원은 논쟁 중이지만,
+                    리투아니아어 <strong>lietus</strong>(비) 또는 소규모 강 <strong>Lietava</strong>에서 유래했다는 설이 유력합니다.
+                    "비가 오는 땅" 또는 "강가의 땅"이라는 뜻으로, 습한 기후와 하천 지형을 반영합니다.
+                    <div class="country-meaning">💡 의미: "비의 땅" (유력 설)</div>
+                </div>
+            </div>
+
+            <!-- 콜롬비아 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇨🇴</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">콜롬비아</div>
+                        <div class="country-name-en">Colombia</div>
+                    </div>
+                    <span class="country-year">2020</span>
+                </div>
+                <div class="country-etymology">
+                    탐험가 <span class="origin-word">크리스토퍼 콜럼버스</span>(Cristóbal Colón)의 이름에서 유래했습니다.
+                    19세기 독립 영웅 시몬 볼리바르가 "신대륙을 발견한" 콜럼버스를 기념하여 이 이름을 지었습니다.
+                    콜럼버스의 이름 자체는 라틴어 <strong>Columbus</strong>(비둘기)에서 왔습니다.
+                    <div class="country-meaning">💡 의미: "콜럼버스(비둘기)의 땅"</div>
+                </div>
+            </div>
+
+            <!-- 코스타리카 -->
+            <div class="country-card">
+                <div class="country-header">
+                    <span class="country-flag">🇨🇷</span>
+                    <div class="country-info">
+                        <div class="country-name-ko">코스타리카</div>
+                        <div class="country-name-en">Costa Rica</div>
+                    </div>
+                    <span class="country-year">2021</span>
+                </div>
+                <div class="country-etymology">
+                    스페인어로 <span class="origin-word">Costa Rica</span>는 문자 그대로 <strong>"부유한 해안"</strong>입니다.
+                    1502년 콜럼버스가 이 해안에 도착했을 때, 원주민들이 금장식을 착용한 것을 보고
+                    이곳에 금이 풍부할 것이라 기대하며 "풍요로운 해안"이라 이름 붙였습니다.
+                    아이러니하게도 실제로는 금이 그리 많지 않았지만, 아름다운 이름은 남았습니다.
+                    <div class="country-meaning">💡 의미: "풍요로운 해안" — 콜럼버스의 헛된 기대가 남긴 이름</div>
+                </div>
+            </div>
+
+        </div><!-- country-section -->
+
+        <!-- ========== SECTION 4: 패턴 분석 ========== -->
+        <h2 id="patterns">🔎 이름에서 발견한 흥미로운 패턴</h2>
+
+        <h3>1. 부족·민족 이름 → 나라 이름 (가장 많음)</h3>
+        <p>
+            프랑스(프랑크족), 덴마크(데인족), 스웨덴(스베아르족), 폴란드(폴란족),
+            튀르키예(투르크족) 등 — <strong>부족의 이름이 곧 나라의 이름이 된 경우</strong>가 가장 많습니다.
+            이름이 곧 "우리는 누구인가"에 대한 대답이었던 셈입니다.
+        </p>
+
+        <h3>2. 지리적 특성 → 나라 이름</h3>
+        <p>
+            네덜란드(낮은 땅), 노르웨이(북쪽 길), 아이슬란드(얼음의 땅), 호주(남쪽 땅) 등 —
+            <strong>자연 환경과 위치가 이름이 된 경우</strong>도 많습니다.
+        </p>
+
+        <h3>3. 탐험가·인물 이름 → 나라 이름</h3>
+        <p>
+            아메리카(아메리고 베스푸치), 콜롬비아(콜럼버스) 등 —
+            유럽인의 이름이 대륙과 나라의 이름이 된, 식민지 시대의 유산입니다.
+        </p>
+
+        <h3>4. "같은 나라, 다른 이름" 현상</h3>
+        <p>
+            독일은 가장 대표적인 사례입니다. 영어로 Germany, 독일어로 Deutschland, 프랑스어로 Allemagne,
+            폴란드어로 Niemcy — <strong>각 언어마다 완전히 다른 뿌리의 이름</strong>을 사용합니다.
+            한국도 Korea(고려), 한국(韓國), 조선(朝鮮) 등 복수의 이름을 가진 흥미로운 사례입니다.
+        </p>
+
+        <div class="blog-quote">
+            <p>나라의 이름을 이해한다는 것은, 그 나라가 "나는 누구인가"라는 질문에 어떻게 답했는지를 이해하는 것입니다.</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="blog-cta">
+            <h3>당신의 이름은 어떤 인상을 갖고 있나요?</h3>
+            <p>QARAH가 당신의 인상을 분석하고, 가장 어울리는 이름을 추천합니다.</p>
+            <a href="../test/korean-name.html" class="hero-cta">📸 나에게 어울리는 이름 찾기</a>
+        </div>
+
+    </div><!-- blog-body -->
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <ul class="footer-links">
+            <li><a href="../about.html">소개</a></li>
+            <li><a href="../privacy.html">개인정보처리방침</a></li>
+            <li><a href="../terms.html">이용약관</a></li>
+            <li><a href="../contact.html">문의</a></li>
+        </ul>
+        <p class="footer-disclaimer">© 2026 QARAH. 모든 이름에는 부름이 있습니다.</p>
+    </div>
+</footer>
+
+<script>
+document.getElementById('navHamburger')?.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+
+</body>
+</html>
