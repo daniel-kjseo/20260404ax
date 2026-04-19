@@ -1291,6 +1291,9 @@ textarea.form-input {
     .card-legendary .name-text { font-size: 2.2rem; }
     .card-epic .name-text { font-size: 1.8rem; }
     .card-rare .name-text { font-size: 1.6rem; }
+
+    /* Contact Page Overrides */
+    .glass-card { padding: 1.5rem; }
 }
 
 @media (max-width: 480px) {
@@ -1304,6 +1307,10 @@ textarea.form-input {
 
     .share-bar { gap: 0.4rem; }
     .share-btn { font-size: 0.75rem; padding: 0.5rem 0.8rem; }
+
+    .glass-card { padding: 1.25rem; }
+    .form-group { margin-bottom: 1.5rem; }
+    .divider { margin: 2rem 0 !important; }
 }
 
 /* --- Page-level styles for static pages --- */
@@ -1336,4 +1343,30 @@ textarea.form-input {
 
 .page-content ul, .page-content ol {
     padding-left: 1.5rem;
+}
+
+/* --- Contact Page Specifics --- */
+.contact-page {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-desc {
+    margin-bottom: 2.5rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.contact-hint {
+    font-size: 0.85rem;
+    color: var(--color-purple);
+    font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    .contact-desc {
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+    }
 }
