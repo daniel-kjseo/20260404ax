@@ -40,9 +40,11 @@
 
 ## 4. 비주얼 표준 (Visual Excellence)
 
-- **Hero Image**: `generate_image` 활용 시 "Minimalist, Premium, Deep Purple & Gold Palette, Cinematic Lighting" 키워드를 포함합니다.
+- **Hero Image**: `generate_image` 활용 시 반드시 **"Photorealistic, 8k, raw photo, high-end DSLR, realistic lighting, natural textures"** 키워드를 포함합니다.
+    - **Forbidden**: 일러스트, 3D 렌더링, 애니메이션 스타일, 인위적인 실루엣 등 '가짜' 느낌이 나는 스타일은 배제합니다.
+    - **Theme**: QARAH 브랜드 테마(Deep Purple & Gold)를 자연스러운 광원이나 소품의 색상으로 녹여내어 실제 사진처럼 연출합니다.
 - **정보 그래픽**: 복잡한 정보는 표(Table)나 강조 카드를 사용하여 시각화합니다.
-- **이미지 배치**: 텍스트 500자당 1장 이상의 고품질 이미지를 배치하여 리듬감을 조절합니다.
+- **이미지 배치**: 텍스트 500자당 1장 이상의 고품질 실사 이미지를 배치하여 리듬감을 조절합니다.
 
 ---
 
