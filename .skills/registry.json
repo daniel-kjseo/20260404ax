@@ -1,0 +1,14 @@
+{
+  "skills": [
+    {
+      "id": "blog-writing-v1",
+      "name": "QARAH Blog Writing Skill",
+      "version": "1.0.0",
+      "description": "네이버/티스토리 하이브리드 전략 기반 프리미엄 블로그 포스트 생성 스킬",
+      "path": ".skills/blog-writing.md",
+      "language": "ko",
+      "author": "Antigravity",
+      "tags": ["blog", "seo", "branding", "premium", "aeo"]
+    }
+  ]
+}
