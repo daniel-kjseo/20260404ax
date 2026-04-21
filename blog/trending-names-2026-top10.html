@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026년 실시간 검색 1위를 차지한 이름 TOP 10 — 이름에 담긴 운명의 힘 | QARAH 블로그</title>
+    <meta name="description" content="2026년 대한민국 실시간 검색어 1위를 차지한 인물 TOP 10의 이름을 분석합니다. 아이유, 변우석, 장원영 등 화제의 이름에 담긴 한자 의미와 운명적 해석을 확인하세요.">
+    <meta property="og:title" content="2026년 실시간 검색 1위 이름 TOP 10 — 이름에 담긴 운명의 힘">
+    <meta property="og:description" content="검색창을 지배한 이름들에는 어떤 비밀이 숨겨져 있을까? 2026년 대한민국을 뜨겁게 달군 10개의 이름을 QARAH가 심층 분석합니다.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://qarah.web.app/blog/trending-names-hero.png">
+    <link rel="canonical" href="https://qarah.web.app/blog/trending-names-2026-top10.html">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Blog-specific styles */
+        .blog-hero { text-align: center; padding: 3rem 0 2rem; }
+        .blog-hero-tag {
+            display: inline-block; padding: 0.3rem 0.8rem; border-radius: 99px;
+            background: rgba(167,139,250,0.15); color: var(--color-purple);
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; margin-bottom: 1rem;
+        }
+        .blog-hero h1 {
+            font-weight: 900; font-size: 2.2rem; line-height: 1.3; margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--color-purple), var(--color-gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .blog-hero-meta { font-size: 0.85rem; color: var(--text-muted); }
+        .blog-hero-img {
+            width: 100%; max-width: 800px; margin: 2rem auto;
+            border-radius: var(--radius-lg); overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .blog-hero-img img { width: 100%; height: auto; display: block; }
+        .blog-body { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+        .blog-body h2 {
+            font-weight: 800; font-size: 1.6rem; color: var(--text-primary);
+            margin: 4rem 0 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-subtle);
+        }
+        .blog-body h3 { font-weight: 700; font-size: 1.25rem; color: var(--color-gold); margin: 2.5rem 0 1rem; }
+        .blog-body p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; font-size: 1rem; }
+        .highlight-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2rem;
+        }
+
+        /* Name Card Styles */
+        .name-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 0;
+            margin-bottom: 3rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .name-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 12px 40px rgba(167,139,250,0.12);
+            transform: translateY(-2px);
+        }
+        .name-card-img {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+        .name-card-img img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .name-card:hover .name-card-img img {
+            transform: scale(1.03);
+        }
+        .name-card-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(10,10,20,0.95) 0%, transparent 100%);
+            padding: 2rem 1.5rem 1rem;
+        }
+        .name-card-rank {
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 900;
+            font-size: 3rem;
+            line-height: 1;
+            background: linear-gradient(135deg, var(--color-gold), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+        .name-card-body { padding: 1.5rem 2rem 2rem; }
+        .name-card-name {
+            display: flex; align-items: baseline; gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .name-card-name h3 {
+            font-weight: 900; font-size: 1.6rem;
+            color: var(--text-primary); margin: 0;
+            font-family: 'Noto Serif KR', serif;
+        }
+        .name-card-name .hanja {
+            font-size: 0.9rem; color: var(--color-purple);
+            font-weight: 600; letter-spacing: 0.05em;
+        }
+        .name-card-meaning {
+            display: inline-block;
+            background: rgba(251,191,36,0.1);
+            color: var(--color-gold);
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .name-card-issue {
+            background: rgba(167,139,250,0.08);
+            border-left: 3px solid var(--color-purple);
+            padding: 1rem 1.25rem;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin-bottom: 1.25rem;
+        }
+        .name-card-issue-label {
+            font-size: 0.7rem; font-weight: 700; color: var(--color-purple);
+            letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem;
+        }
+        .name-card-issue p {
+            font-size: 0.9rem; color: var(--text-secondary);
+            line-height: 1.6; margin: 0;
+        }
+        .name-analysis { margin-top: 1rem; }
+        .name-analysis-title {
+            font-size: 0.75rem; font-weight: 700; color: var(--color-gold);
+            letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem;
+        }
+        .name-analysis p {
+            font-size: 0.9rem; color: var(--text-secondary);
+            line-height: 1.7; margin: 0;
+        }
+        .name-hanja-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        .hanja-item {
+            text-align: center;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 0.75rem 0.5rem;
+        }
+        .hanja-char {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+        .hanja-read { font-size: 0.75rem; color: var(--color-purple); font-weight: 600; }
+        .hanja-mean { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+        /* Summary Table */
+        .summary-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 2rem 0;
+            font-size: 0.85rem;
+        }
+        .summary-table thead th {
+            background: rgba(167,139,250,0.12);
+            color: var(--color-purple);
+            font-weight: 700;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 2px solid var(--border-subtle);
+        }
+        .summary-table thead th:first-child { border-radius: var(--radius-md) 0 0 0; }
+        .summary-table thead th:last-child { border-radius: 0 var(--radius-md) 0 0; }
+        .summary-table tbody td {
+            padding: 0.65rem 1rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .summary-table tbody tr:hover td { background: rgba(255,255,255,0.02); }
+
+        /* Q&A */
+        .qa-section { margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border-subtle); }
+        .qa-item { margin-bottom: 2rem; }
+        .qa-item strong { display: block; font-size: 1.1rem; color: var(--color-purple); margin-bottom: 0.5rem; }
+
+        @media (max-width: 480px) {
+            .blog-hero h1 { font-size: 1.65rem; }
+            .name-card-img { height: 200px; }
+            .name-card-body { padding: 1.25rem; }
+            .name-card-name h3 { font-size: 1.3rem; }
+            .name-hanja-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "2026년 실시간 검색 1위를 차지한 이름 TOP 10",
+        "description": "2026년 대한민국 실시간 검색어 1위를 차지한 인물 TOP 10의 이름을 분석합니다.",
+        "image": "https://qarah.web.app/blog/trending-names-hero.png",
+        "author": { "@type": "Organization", "name": "QARAH 전문 분석팀" },
+        "publisher": { "@type": "Organization", "name": "QARAH" },
+        "datePublished": "2026-04-21",
+        "dateModified": "2026-04-21"
+    }
+    </script>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="../index.html" class="nav-brand"><span>QARAH</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../index.html">이름추천</a></li>
+            <li><a href="index.html">블로그</a></li>
+            <li><a href="../about.html">소개</a></li>
+        </ul>
+        <button class="nav-hamburger" id="navHamburger" aria-label="메뉴">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<main class="container">
+    <section class="blog-hero">
+        <span class="blog-hero-tag">🔥 화제의 이름 분석</span>
+        <h1>2026년 실시간 검색 1위를 차지한<br>이름 TOP 10</h1>
+        <p class="blog-hero-meta">2026년 4월 21일 · 읽기 약 15분 · QARAH 전문 분석</p>
+    </section>
+
+    <div class="blog-hero-img">
+        <img src="trending-names-hero.png" alt="2026년 실시간 검색 1위 이름 TOP 10 히어로 이미지">
+    </div>
+
+    <div class="blog-body">
+        <!-- Intro: Naver Style Storytelling -->
+        <section class="intro">
+            <p>
+                2026년, 대한민국의 검색창은 단순한 정보 탐색의 도구를 넘어 <strong>'시대의 감정 지표'</strong>가 되었습니다.
+                수천만 명이 동시에 같은 이름을 검색하는 그 순간, 그 이름은 단순한 고유명사를 넘어 하나의 <strong>문화 현상</strong>이 됩니다.
+            </p>
+            <p>
+                올해 검색창을 지배한 이름들 속에는 놀라운 공통점이 숨겨져 있었습니다. 
+                빛(明), 도움(佑), 보석(瑛), 희망(Hope)... 이 이름들은 마치 처음부터 세상의 주목을 받도록 <strong>'부름 받은'</strong> 것처럼, 
+                그 한자 속에 운명적 에너지를 품고 있었습니다. QARAH가 2026년 실시간 검색 1위를 차지한 10개의 이름을 심층 분석합니다.
+            </p>
+        </section>
+
+        <!-- Summary Table -->
+        <div class="highlight-card">
+            <h3 style="margin-top:0; color: var(--text-primary);">📊 한눈에 보는 2026 실검 1위 이름 TOP 10</h3>
+            <table class="summary-table">
+                <thead>
+                    <tr><th>순위</th><th>이름</th><th>한자</th><th>핵심 의미</th><th>화제 이유</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>이지은 (아이유)</td><td>李知恩</td><td>은혜를 아는 자</td><td>드라마 '21세기 대군부인' 화제성 1위</td></tr>
+                    <tr><td>2</td><td>변우석</td><td>邊佑錫</td><td>하늘이 돕고 베푸는 자</td><td>드라마 출연자 화제성 2위</td></tr>
+                    <tr><td>3</td><td>장원영</td><td>張員瑛</td><td>영원히 빛나는 보석</td><td>걸그룹 개인 브랜드평판 1위</td></tr>
+                    <tr><td>4</td><td>심석희</td><td>沈錫希</td><td>빛나는 것을 바라다</td><td>밀라노 쇼트트랙 금메달</td></tr>
+                    <tr><td>5</td><td>정호석 (제이홉)</td><td>鄭號錫</td><td>이름을 세상에 떨치다</td><td>생일 맞이 3.5억 기부</td></tr>
+                    <tr><td>6</td><td>옥택연</td><td>玉澤演</td><td>보석이 못에서 펼쳐지다</td><td>10년 열애 끝 결혼 발표</td></tr>
+                    <tr><td>7</td><td>유재석</td><td>劉在錫</td><td>존재하며 하사하다</td><td>예능방송인 브랜드평판 1위</td></tr>
+                    <tr><td>8</td><td>박지훈</td><td>朴志訓</td><td>뜻을 세우고 가르침을 받들다</td><td>보이그룹 개인 브랜드평판 1위 / 영화배우 평판 1위</td></tr>
+                    <tr><td>9</td><td>이재명</td><td>李在明</td><td>밝음이 존재하다</td><td>대통령 국정 운영 / 정치 이슈</td></tr>
+                    <tr><td>10</td><td>신현송</td><td>申鉉松</td><td>솥귀를 보좌하는 소나무</td><td>한국은행 총재 취임</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>🏆 TOP 10 이름 심층 분석</h2>
+
+        <!-- #1 아이유 -->
+        <div class="name-card" id="name-1">
+            <div class="name-card-img">
+                <img src="trending-drama-scene.png" alt="2026년 화제의 사극 드라마 세트">
+                <div class="name-card-overlay">
+                    <span class="name-card-rank">#1</span>
+                </div>
+            </div>
+            <div class="name-card-body">
+                <div class="name-card-name">
+                    <h3>이지은 (아이유)</h3>
+                    <span class="hanja">李知恩 · IU</span>
+                </div>
+                <span class="name-card-meaning">💎 은혜를 아는 자 · 나와 너를 잇는 음악</span>
+
+                <div class="name-card-issue">
+                    <div class="name-card-issue-label">🔥 실검 1위 이유</div>
+                    <p>드라마 <strong>'21세기 대군부인'</strong>이 방영 2주 만에 TV-OTT 화제성 1위를 기록하며, 아이유는 출연자 화제성 부문에서 <strong>3주 연속 1위</strong>를 차지했습니다. 디즈니+를 통해 글로벌 시장(아시아, 북미, 유럽)에서도 폭발적인 시청률을 기록 중입니다.</p>
+                </div>
+
+                <div class="name-hanja-grid">
+                    <div class="hanja-item">
+                        <div class="hanja-char">李</div>
+                        <div class="hanja-read">이</div>
+                        <div class="hanja-mean">오얏나무</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">知</div>
+                        <div class="hanja-read">지</div>
+                        <div class="hanja-mean">알다</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">恩</div>
+                        <div class="hanja-read">은</div>
+                        <div class="hanja-mean">은혜</div>
+                    </div>
+                </div>
+
+                <div class="name-analysis">
+                    <div class="name-analysis-title">💡 QARAH 이름 분석</div>
+                    <p>'알 지(知)'와 '은혜 은(恩)'의 결합은 <strong>"은혜를 깊이 아는 자"</strong>라는 뜻을 담고 있습니다. 단순히 받는 것에 그치지 않고, 은혜의 본질을 이해하고 되돌려 주는 사람이라는 의미입니다. 예명 'IU'는 'I(나)'와 'You(너)'의 합성어로 <strong>"음악으로 너와 내가 하나가 된다"</strong>는 철학을 담고 있습니다. 인스타그램 아이디 '이지금(dlwlrma)'은 은(銀)보다 금(金)이 되겠다는 중의적 포부를 보여줍니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- #2 변우석 -->
+        <div class="name-card" id="name-2">
+            <div class="name-card-img">
+                <img src="trending-drama-scene.png" alt="사극 드라마 궁전 세트">
+                <div class="name-card-overlay">
+                    <span class="name-card-rank">#2</span>
+                </div>
+            </div>
+            <div class="name-card-body">
+                <div class="name-card-name">
+                    <h3>변우석</h3>
+                    <span class="hanja">邊佑錫</span>
+                </div>
+                <span class="name-card-meaning">💎 하늘이 돕고 베푸는 삶</span>
+
+                <div class="name-card-issue">
+                    <div class="name-card-issue-label">🔥 실검 1위 이유</div>
+                    <p>'21세기 대군부인'에서 <strong>이안대군 이완 역</strong>으로 출연하며 출연자 화제성 <strong>2위</strong>를 기록. 아이유와 함께 드라마의 폭발적 인기를 이끌며 대세 배우로서의 입지를 확고히 다졌습니다.</p>
+                </div>
+
+                <div class="name-hanja-grid">
+                    <div class="hanja-item">
+                        <div class="hanja-char">邊</div>
+                        <div class="hanja-read">변</div>
+                        <div class="hanja-mean">가(성씨)</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">佑</div>
+                        <div class="hanja-read">우</div>
+                        <div class="hanja-mean">돕다</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">錫</div>
+                        <div class="hanja-read">석</div>
+                        <div class="hanja-mean">주다, 하사하다</div>
+                    </div>
+                </div>
+
+                <div class="name-analysis">
+                    <div class="name-analysis-title">💡 QARAH 이름 분석</div>
+                    <p>'도울 우(佑)'와 '줄 석(錫)'의 조합은 <strong>"하늘의 도움을 받아 세상에 베푸는 자"</strong>라는 뜻입니다. 이름학적으로 '佑'는 신의 보호와 축복을, '錫'은 하사와 내려줌을 의미하여, 스스로의 힘을 발휘하면서도 복을 자연스럽게 만들어가는 기운을 품고 있습니다. 이름 그대로 대중에게 깊은 감동을 '베풀고' 있는 셈입니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- #3 장원영 -->
+        <div class="name-card" id="name-3">
+            <div class="name-card-img">
+                <img src="trending-kpop-stage.png" alt="K-POP 콘서트 스테이지">
+                <div class="name-card-overlay">
+                    <span class="name-card-rank">#3</span>
+                </div>
+            </div>
+            <div class="name-card-body">
+                <div class="name-card-name">
+                    <h3>장원영</h3>
+                    <span class="hanja">張員瑛</span>
+                </div>
+                <span class="name-card-meaning">💎 영원히 빛나는 보석</span>
+
+                <div class="name-card-issue">
+                    <div class="name-card-issue-label">🔥 실검 1위 이유</div>
+                    <p>2026년 4월 걸그룹 개인 브랜드평판 <strong>압도적 1위</strong>를 기록. 아이브(IVE)의 글로벌 활동과 함께 K-POP 업계에서 가장 핫한 이름으로 자리매김했습니다.</p>
+                </div>
+
+                <div class="name-hanja-grid">
+                    <div class="hanja-item">
+                        <div class="hanja-char">張</div>
+                        <div class="hanja-read">장</div>
+                        <div class="hanja-mean">펼치다</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">員</div>
+                        <div class="hanja-read">원</div>
+                        <div class="hanja-mean">구성원, 둥글다</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">瑛</div>
+                        <div class="hanja-read">영</div>
+                        <div class="hanja-mean">옥 광채</div>
+                    </div>
+                </div>
+
+                <div class="name-analysis">
+                    <div class="name-analysis-title">💡 QARAH 이름 분석</div>
+                    <p>'옥 광채 영(瑛)' 자는 옥에서 반사되는 은은한 빛을 의미합니다. 이름 전체는 <strong>"보석처럼 빛나는 매력을 세상에 펼치는 존재"</strong>로 해석됩니다. 흥미롭게도 어머니가 중성적 느낌의 이름을 원했다고 알려져 있으며, '원영'이라는 발음 자체가 '영원(永遠)'을 연상시켜 팬들 사이에서 <strong>"영원히 빛나는 보석 상자"</strong>로 불립니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- #4 심석희 -->
+        <div class="name-card" id="name-4">
+            <div class="name-card-img">
+                <img src="trending-skating-gold.png" alt="올림픽 금메달과 빙상 경기장">
+                <div class="name-card-overlay">
+                    <span class="name-card-rank">#4</span>
+                </div>
+            </div>
+            <div class="name-card-body">
+                <div class="name-card-name">
+                    <h3>심석희</h3>
+                    <span class="hanja">沈錫希</span>
+                </div>
+                <span class="name-card-meaning">💎 빛나는 것을 바라며 나아가는 자</span>
+
+                <div class="name-card-issue">
+                    <div class="name-card-issue-label">🔥 실검 1위 이유</div>
+                    <p>밀라노 대회 쇼트트랙 여자 3,000m 계주에서 <strong>8년 만의 금메달</strong>을 획득하며 대한민국을 감동의 도가니로 만들었습니다. 스포츠 역사에 새로운 장을 열었습니다.</p>
+                </div>
+
+                <div class="name-hanja-grid">
+                    <div class="hanja-item">
+                        <div class="hanja-char">沈</div>
+                        <div class="hanja-read">심</div>
+                        <div class="hanja-mean">잠기다(성씨)</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">錫</div>
+                        <div class="hanja-read">석</div>
+                        <div class="hanja-mean">주석, 빛나다</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">希</div>
+                        <div class="hanja-read">희</div>
+                        <div class="hanja-mean">바라다</div>
+                    </div>
+                </div>
+
+                <div class="name-analysis">
+                    <div class="name-analysis-title">💡 QARAH 이름 분석</div>
+                    <p>'錫(석)'은 삼척 심씨 검교공파 25세손의 항렬자로, 가문의 전통을 잇는 글자입니다. '希(희)'는 '바라다'라는 뜻으로, 이름 전체는 <strong>"빛나는 것을 간절히 바라는 자"</strong>라는 의미를 담고 있습니다. 8년간의 역경을 딛고 빙판 위에서 찬란한 금빛을 되찾은 그녀의 이야기가 이름의 뜻과 정확히 일치합니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- #5 정호석 -->
+        <div class="name-card" id="name-5">
+            <div class="name-card-img">
+                <img src="trending-charity-hope.png" alt="기부와 희망의 상징">
+                <div class="name-card-overlay">
+                    <span class="name-card-rank">#5</span>
+                </div>
+            </div>
+            <div class="name-card-body">
+                <div class="name-card-name">
+                    <h3>정호석 (제이홉)</h3>
+                    <span class="hanja">鄭號錫 · J-Hope</span>
+                </div>
+                <span class="name-card-meaning">💎 이름을 세상에 떨치는 희망의 사람</span>
+
+                <div class="name-card-issue">
+                    <div class="name-card-issue-label">🔥 실검 1위 이유</div>
+                    <p>2026년 2월, 생일을 맞아 <strong>3억 5천만 원</strong>을 기부한 사실이 알려지며 실시간 검색어를 장악했습니다. BTS 멤버로서의 선한 영향력이 다시 한번 증명된 순간이었습니다.</p>
+                </div>
+
+                <div class="name-hanja-grid">
+                    <div class="hanja-item">
+                        <div class="hanja-char">鄭</div>
+                        <div class="hanja-read">정</div>
+                        <div class="hanja-mean">나라 이름</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">號</div>
+                        <div class="hanja-read">호</div>
+                        <div class="hanja-mean">부르짖다, 이름</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">錫</div>
+                        <div class="hanja-read">석</div>
+                        <div class="hanja-mean">주다</div>
+                    </div>
+                </div>
+
+                <div class="name-analysis">
+                    <div class="name-analysis-title">💡 QARAH 이름 분석</div>
+                    <p>'號(호)'는 '이름을 떨치다', '錫(석)'은 '하사하다'라는 뜻으로, <strong>"자신의 이름을 세상에 널리 떨치는 자"</strong>라는 의미입니다. 예명 'J-Hope'는 본명의 이니셜 'J'와 'Hope(희망)'의 합성어로, 리더 RM이 판도라 상자에 마지막까지 남은 것이 '희망'이라는 점에서 영감을 받아 추천한 이름입니다. 3.5억 기부로 '희망'의 의미를 글자 그대로 실현하고 있습니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- #6 옥택연 -->
+        <div class="name-card" id="name-6">
+            <div class="name-card-img">
+                <img src="trending-wedding-bells.png" alt="웨딩 청첩장과 금반지">
+                <div class="name-card-overlay">
+                    <span class="name-card-rank">#6</span>
+                </div>
+            </div>
+            <div class="name-card-body">
+                <div class="name-card-name">
+                    <h3>옥택연</h3>
+                    <span class="hanja">玉澤演</span>
+                </div>
+                <span class="name-card-meaning">💎 보석이 못에서 펼쳐지듯 빛나다</span>
+
+                <div class="name-card-issue">
+                    <div class="name-card-issue-label">🔥 실검 1위 이유</div>
+                    <p><strong>10년 교제</strong>한 4살 연하 비연예인과 2026년 4월 24일 결혼을 발표. 2PM 히트곡 '10점 만점에 10점'을 활용한 <strong>센스 있는 청첩장</strong>이 화제를 모았습니다.</p>
+                </div>
+
+                <div class="name-hanja-grid">
+                    <div class="hanja-item">
+                        <div class="hanja-char">玉</div>
+                        <div class="hanja-read">옥</div>
+                        <div class="hanja-mean">구슬, 보석</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">澤</div>
+                        <div class="hanja-read">택</div>
+                        <div class="hanja-mean">못, 은택</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">演</div>
+                        <div class="hanja-read">연</div>
+                        <div class="hanja-mean">펼치다</div>
+                    </div>
+                </div>
+
+                <div class="name-analysis">
+                    <div class="name-analysis-title">💡 QARAH 이름 분석</div>
+                    <p>'구슬 옥(玉)', '못 택(澤)', '펼 연(演)'의 조합은 <strong>"보석이 깊은 못에서 빛을 펼쳐 나가듯"</strong>이라는 시적인 의미를 담고 있습니다. 성씨까지 합하면 '옥(玉)'은 보석 그 자체를 의미하여, 이름에 이미 '보석의 빛남'이 새겨져 있습니다. 10년간의 깊은 사랑이 마침내 결실을 맺은 것은, 깊은 못에서 보석이 빛을 발하는 이름의 서사와 놀랍도록 닮아 있습니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- #7 유재석 -->
+        <div class="name-card" id="name-7">
+            <div class="name-card-img">
+                <img src="trending-kpop-stage.png" alt="예능 방송 무대 조명">
+                <div class="name-card-overlay">
+                    <span class="name-card-rank">#7</span>
+                </div>
+            </div>
+            <div class="name-card-body">
+                <div class="name-card-name">
+                    <h3>유재석</h3>
+                    <span class="hanja">劉在錫</span>
+                </div>
+                <span class="name-card-meaning">💎 존재하며 은혜를 내리는 자</span>
+
+                <div class="name-card-issue">
+                    <div class="name-card-issue-label">🔥 실검 1위 이유</div>
+                    <p>2026년 4월 예능방송인 브랜드평판 <strong>부동의 1위</strong> 기록. 30년 가까운 세월 동안 대한민국 예능의 상징으로 군림하며, 세대를 초월한 영향력을 입증했습니다.</p>
+                </div>
+
+                <div class="name-hanja-grid">
+                    <div class="hanja-item">
+                        <div class="hanja-char">劉</div>
+                        <div class="hanja-read">유</div>
+                        <div class="hanja-mean">성씨</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">在</div>
+                        <div class="hanja-read">재</div>
+                        <div class="hanja-mean">있다, 존재하다</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">錫</div>
+                        <div class="hanja-read">석</div>
+                        <div class="hanja-mean">주다, 하사하다</div>
+                    </div>
+                </div>
+
+                <div class="name-analysis">
+                    <div class="name-analysis-title">💡 QARAH 이름 분석</div>
+                    <p>'있을 재(在)'와 '줄 석(錫)'의 결합은 <strong>"그 자리에 존재하며 은혜를 내려 주는 자"</strong>로 해석됩니다. 성명학적으로 37획의 이름 구성은 사회적·가정적 성공을 상징한다고 합니다. '在(존재)'는 한결같이 자리를 지키는 속성을, '錫(하사)'은 주변에 웃음과 기쁨을 나누어 주는 성품을 반영합니다. 30년간 변함없이 '국민 MC'의 자리를 지키며 웃음을 <strong>하사</strong>하는 그의 커리어가 이름과 완벽히 부합합니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- #8 박지훈 -->
+        <div class="name-card" id="name-8">
+            <div class="name-card-img">
+                <img src="trending-kpop-stage.png" alt="포토월 시상식 무대">
+                <div class="name-card-overlay">
+                    <span class="name-card-rank">#8</span>
+                </div>
+            </div>
+            <div class="name-card-body">
+                <div class="name-card-name">
+                    <h3>박지훈</h3>
+                    <span class="hanja">朴志訓</span>
+                </div>
+                <span class="name-card-meaning">💎 뜻을 세우고 가르침을 받드는 자</span>
+
+                <div class="name-card-issue">
+                    <div class="name-card-issue-label">🔥 실검 1위 이유</div>
+                    <p>3월 보이그룹 개인 브랜드평판 <strong>1위</strong>, 4월 영화배우 브랜드평판 <strong>1위</strong>를 동시에 기록. 아이돌에서 영화배우로의 성공적인 전환을 이루며 화제를 모았습니다.</p>
+                </div>
+
+                <div class="name-hanja-grid">
+                    <div class="hanja-item">
+                        <div class="hanja-char">朴</div>
+                        <div class="hanja-read">박</div>
+                        <div class="hanja-mean">소박하다</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">志</div>
+                        <div class="hanja-read">지</div>
+                        <div class="hanja-mean">뜻, 의지</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">訓</div>
+                        <div class="hanja-read">훈</div>
+                        <div class="hanja-mean">가르치다</div>
+                    </div>
+                </div>
+
+                <div class="name-analysis">
+                    <div class="name-analysis-title">💡 QARAH 이름 분석</div>
+                    <p>'뜻 지(志)'와 '가르칠 훈(訓)'의 결합은 <strong>"큰 뜻을 세우고 가르침을 온전히 받들어 올바르게 사는 자"</strong>라는 의미입니다. 프로듀스 101에서 시작하여 워너원으로 데뷔하고, 이제는 영화 배우로 영역을 확장한 그의 여정은 '뜻(志)'을 세우고 끊임없이 배움(訓)의 길을 걸어온 이름의 예언과 같습니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- #9 이재명 -->
+        <div class="name-card" id="name-9">
+            <div class="name-card-img">
+                <img src="trending-politics-podium.png" alt="대한민국 정치 무대">
+                <div class="name-card-overlay">
+                    <span class="name-card-rank">#9</span>
+                </div>
+            </div>
+            <div class="name-card-body">
+                <div class="name-card-name">
+                    <h3>이재명</h3>
+                    <span class="hanja">李在明</span>
+                </div>
+                <span class="name-card-meaning">💎 밝음이 존재하는 자</span>
+
+                <div class="name-card-issue">
+                    <div class="name-card-issue-label">🔥 실검 1위 이유</div>
+                    <p>제21대 대통령으로서 경제 대도약, 청년 대책, 중동 사태 대응 등 <strong>국정 운영 전반</strong>의 행보가 지속적으로 화제가 되며 1분기 내내 검색 상위를 유지했습니다.</p>
+                </div>
+
+                <div class="name-hanja-grid">
+                    <div class="hanja-item">
+                        <div class="hanja-char">李</div>
+                        <div class="hanja-read">이</div>
+                        <div class="hanja-mean">오얏나무</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">在</div>
+                        <div class="hanja-read">재</div>
+                        <div class="hanja-mean">있다</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">明</div>
+                        <div class="hanja-read">명</div>
+                        <div class="hanja-mean">밝다</div>
+                    </div>
+                </div>
+
+                <div class="name-analysis">
+                    <div class="name-analysis-title">💡 QARAH 이름 분석</div>
+                    <p>'밝을 명(明)'은 해(日)와 달(月)이 합쳐진 글자로, 낮과 밤 모두를 비추는 완전한 밝음을 상징합니다. '在(있다)'와 결합하여 <strong>"밝음이 항상 존재한다"</strong>는 뜻으로, 어둠 속에서도 빛을 발하는 지도자의 이미지를 내포하고 있습니다. 이름에 '해와 달의 빛'이 동시에 담겨 있는, 정치 리더답게 무게감 있는 작명입니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- #10 신현송 -->
+        <div class="name-card" id="name-10">
+            <div class="name-card-img">
+                <img src="trending-economy-bank.png" alt="중앙은행 건물">
+                <div class="name-card-overlay">
+                    <span class="name-card-rank">#10</span>
+                </div>
+            </div>
+            <div class="name-card-body">
+                <div class="name-card-name">
+                    <h3>신현송</h3>
+                    <span class="hanja">申鉉松</span>
+                </div>
+                <span class="name-card-meaning">💎 국정을 보좌하는 변치 않는 소나무</span>
+
+                <div class="name-card-issue">
+                    <div class="name-card-issue-label">🔥 실검 1위 이유</div>
+                    <p>국제결제은행(BIS) 통화경제국장 출신의 세계적 석학이 2026년 4월 21일 <strong>한국은행 총재로 공식 취임</strong>하며, 경제계 최대 화제 인물로 부상했습니다.</p>
+                </div>
+
+                <div class="name-hanja-grid">
+                    <div class="hanja-item">
+                        <div class="hanja-char">申</div>
+                        <div class="hanja-read">신</div>
+                        <div class="hanja-mean">펴다(성씨)</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">鉉</div>
+                        <div class="hanja-read">현</div>
+                        <div class="hanja-mean">솥귀, 보좌하다</div>
+                    </div>
+                    <div class="hanja-item">
+                        <div class="hanja-char">松</div>
+                        <div class="hanja-read">송</div>
+                        <div class="hanja-mean">소나무, 절개</div>
+                    </div>
+                </div>
+
+                <div class="name-analysis">
+                    <div class="name-analysis-title">💡 QARAH 이름 분석</div>
+                    <p>'솥귀 현(鉉)'은 고대 솥의 양옆에 달린 고리를 뜻하며, 이는 곧 <strong>"국가의 핵심 기관을 보좌하는 직책"</strong>을 상징합니다. '소나무 송(松)'은 사계절 변치 않는 절개를 의미합니다. 이름 그대로 BIS에서 세계 경제를 보좌하다가, 이제는 대한민국 경제의 중심축을 지키는 '소나무'가 되었습니다. 작명의 예언이 현실이 된 놀라운 사례입니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insight Section -->
+        <h2>🔍 이름에서 발견한 놀라운 패턴</h2>
+
+        <h3>1. '錫(석)' 자의 압도적 등장</h3>
+        <p>
+            TOP 10 중 무려 <strong>4명</strong>(변우석, 심석희, 정호석, 유재석)의 이름에 '錫(줄 석)' 자가 포함되어 있습니다.
+            '錫'은 '주다', '하사하다'라는 뜻으로, <strong>세상에 무언가를 베푸는 사람</strong>이라는 공통된 에너지를 품고 있습니다.
+            이는 단순한 우연이 아닙니다. 대중에게 감동, 웃음, 영감을 '주는' 존재들이 검색순위 1위에 오른다는 것은 이름학적으로 대단히 흥미로운 발견입니다.
+        </p>
+
+        <h3>2. '빛'과 '보석'의 이미지</h3>
+        <p>
+            장원영의 '瑛(옥 광채)', 이재명의 '明(밝을 명)', 옥택연의 '玉(구슬 옥)', 방시혁의 '爀(빛날 혁)'...
+            실검 1위 이름들은 하나같이 <strong>'빛나다', '빛을 발하다'</strong>의 에너지를 공유하고 있습니다.
+            이름에 '빛'의 기운을 담은 사람이 실제로 세상의 주목을 받게 되는 현상은, 동양 작명학에서 말하는 <strong>'이름의 파동'</strong> 이론과 정확히 맞닿아 있습니다.
+        </p>
+
+        <h3>3. 이름이 운명을 따라가는가, 운명이 이름을 따라가는가?</h3>
+        <p>
+            심석희의 '희(希, 바라다)'가 8년 만의 금메달이라는 소망의 성취와 이어지고,
+            옥택연의 '택(澤, 깊은 못)'이 10년이라는 긴 시간의 사랑과 연결되며,
+            박지훈의 '훈(訓, 가르침)'이 끊임없는 성장 서사와 맞물리는 것을 보면,
+            이름은 단순한 호칭이 아니라 <strong>삶의 방향을 은밀히 제시하는 나침반</strong>일 수 있습니다.
+        </p>
+
+        <!-- Q&A Section (AEO Optimization) -->
+        <section class="qa-section">
+            <h2>🔎 자주 묻는 질문(FAQ)</h2>
+            <div class="qa-item">
+                <strong>Q: 이름에 '錫(석)' 자를 넣으면 정말 유명해질 수 있나요?</strong>
+                <p>A: 이름 한 글자가 성공을 보장하지는 않습니다. 그러나 '錫(주다)'이라는 글자가 가진 <strong>'베풂'의 에너지</strong>는 대인 관계와 사회적 영향력에 긍정적인 파동을 줄 수 있다고 작명학에서는 해석합니다. 중요한 것은 이름의 뜻을 알고 그 방향으로 살아가려는 <strong>의식적인 노력</strong>입니다.</p>
+            </div>
+            <div class="qa-item">
+                <strong>Q: 2026년 가장 인기 있는 작명 한자는 무엇인가요?</strong>
+                <p>A: 올해는 '瑛(옥 광채)', '明(밝을 명)', '佑(도울 우)' 같은 <strong>빛과 도움</strong>에 관련된 글자들이 인기입니다. 이는 불확실한 시대에 밝음과 상호 도움의 가치를 중시하는 사회적 분위기가 반영된 것으로 분석됩니다.</p>
+            </div>
+            <div class="qa-item">
+                <strong>Q: 예명과 본명 중 어느 것이 더 중요한가요?</strong>
+                <p>A: 작명학적 관점에서 본명은 <strong>타고난 기운(선천적 운명)</strong>을, 예명은 <strong>사회적으로 발현하는 에너지(후천적 브랜딩)</strong>를 반영합니다. 아이유가 본명 이지은(은혜를 아는 자)의 따뜻한 성품과 예명 IU(음악으로 하나 되다)의 대중적 파급력을 동시에 활용하는 것처럼, 두 이름의 시너지가 이상적입니다.</p>
+            </div>
+        </section>
+
+        <!-- CTA Card -->
+        <div class="highlight-card" style="background: linear-gradient(135deg, rgba(167,139,250,0.1), rgba(251,191,36,0.05)); border: 1px solid var(--border-glow); margin-top: 4rem;">
+            <h4 style="margin-bottom: 1rem; color: var(--text-primary);">💡 QARAH의 생각: 이름은 운명의 첫 번째 문장입니다</h4>
+            <p style="font-size: 0.95rem;">
+                2026년 검색창을 지배한 10개의 이름에는 '빛', '베풂', '희망'이라는 공통된 에너지가 흐르고 있었습니다.
+                이름은 단순한 호칭이 아니라, 세상과 소통하는 <strong>가장 근원적인 언어</strong>입니다.
+                당신의 이름에는 어떤 부름이 담겨 있을까요?
+                QARAH의 AI 이름 분석 서비스를 통해 당신만의 이름에 숨겨진 운명의 코드를 발견해 보세요.
+            </p>
+            <a href="../index.html" style="display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, var(--color-purple), var(--color-gold)); color: white; font-weight: 700; border-radius: 99px; text-decoration: none; font-size: 0.9rem; transition: transform 0.2s ease;">
+                ✨ 나의 이름 분석하기 →
+            </a>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <ul class="footer-links">
+            <li><a href="../about.html">소개</a></li>
+            <li><a href="../privacy.html">개인정보처리방침</a></li>
+            <li><a href="../terms.html">이용약관</a></li>
+            <li><a href="../contact.html">문의</a></li>
+        </ul>
+        <p class="footer-disclaimer">© 2026 QARAH. 모든 이름에는 부름이 있습니다.</p>
+    </div>
+</footer>
+
+<script>
+document.getElementById('navHamburger')?.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+
+</body>
+</html>
