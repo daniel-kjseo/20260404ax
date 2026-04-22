@@ -97,6 +97,15 @@
             <div class="impression-traits" id="impressionTraits"></div>
         </div>
 
+        <!-- Emotion Type Badge -->
+        <div class="glass-card impression-badge" id="emotionBadge" style="margin-top: 1rem;">
+            <span class="impression-emoji" id="emotionEmoji">😊</span>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.25rem;">당신의 감정 에너지</p>
+            <h2 class="impression-type" id="emotionType">기쁨형</h2>
+            <p class="impression-desc" id="emotionDesc">밝고 따뜻한 에너지</p>
+            <div class="impression-traits" id="emotionTraits"></div>
+        </div>
+
         <!-- Ad Slot 1 -->
         <div class="ad-slot" id="adResult1"></div>
 
@@ -164,6 +173,7 @@
 <script type="module">
 import { preloadModels, analyzeFace } from '../src/face-analyzer.js';
 import { determineImpression, getRarity } from '../src/impression-engine.js';
+import { determineEmotion } from '../src/emotion-engine.js';
 import { matchNames } from '../src/name-matcher.js';
 import { koreanNames } from '../src/name-db-korean.js';
 
@@ -247,14 +257,15 @@ async function handleFile(file) {
                 return;
             }
 
-            // Determine impression type
+            // Determine impression type + emotion type
             const impression = determineImpression(traits);
+            const emotion = determineEmotion(traits.expressions);
 
-            // Match names
-            const names = matchNames(impression.type, selectedGender, koreanNames, impression.score);
+            // Match names (2-axis: impression + emotion)
+            const names = matchNames(impression.type, emotion.type, selectedGender, koreanNames, impression.score);
 
             // Show result
-            showResult(impression, names);
+            showResult(impression, emotion, names);
         };
     };
     reader.readAsDataURL(file);
@@ -307,7 +318,7 @@ async function runCountdown() {
 }
 
 // === Show Result ===
-function showResult(impression, names) {
+function showResult(impression, emotion, names) {
     phaseCountdown.classList.add('hidden');
     phaseResult.classList.remove('hidden');
 
@@ -323,6 +334,19 @@ function showResult(impression, names) {
         span.className = 'impression-trait';
         span.textContent = trait;
         traitsContainer.appendChild(span);
+    });
+
+    // Emotion badge
+    document.getElementById('emotionEmoji').textContent = emotion.emoji;
+    document.getElementById('emotionType').textContent = emotion.label;
+    document.getElementById('emotionDesc').textContent = emotion.desc;
+    const emoTraits = document.getElementById('emotionTraits');
+    emoTraits.innerHTML = '';
+    emotion.traits.forEach(trait => {
+        const span = document.createElement('span');
+        span.className = 'impression-trait';
+        span.textContent = trait;
+        emoTraits.appendChild(span);
     });
 
     // Name cards

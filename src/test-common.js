@@ -4,6 +4,7 @@
  */
 import { preloadModels, analyzeFace } from './face-analyzer.js';
 import { determineImpression } from './impression-engine.js';
+import { determineEmotion } from './emotion-engine.js';
 import { matchNames } from './name-matcher.js';
 
 /**
@@ -87,8 +88,9 @@ export function initTestPage(config) {
                 }
 
                 const impression = determineImpression(traits);
-                const names = matchNames(impression.type, selectedGender, nameDB, impression.score);
-                showResult(impression, names);
+                const emotion = determineEmotion(traits.expressions);
+                const names = matchNames(impression.type, emotion.type, selectedGender, nameDB, impression.score);
+                showResult(impression, emotion, names);
             };
         };
         reader.readAsDataURL(file);
@@ -118,7 +120,7 @@ export function initTestPage(config) {
     }
 
     // Show result
-    function showResult(impression, names) {
+    function showResult(impression, emotion, names) {
         phaseCountdown.classList.add('hidden');
         phaseResult.classList.remove('hidden');
 
@@ -135,6 +137,27 @@ export function initTestPage(config) {
             span.textContent = trait;
             traitsContainer.appendChild(span);
         });
+
+        // Emotion badge
+        const emotionBadge = document.getElementById('emotionBadge');
+        if (emotionBadge) {
+            const emoEmoji = document.getElementById('emotionEmoji');
+            const emoType = document.getElementById('emotionType');
+            const emoDesc = document.getElementById('emotionDesc');
+            const emoTraits = document.getElementById('emotionTraits');
+            if (emoEmoji) emoEmoji.textContent = emotion.emoji;
+            if (emoType) emoType.textContent = useEn ? emotion.labelEn : emotion.label;
+            if (emoDesc) emoDesc.textContent = useEn ? emotion.descEn : emotion.desc;
+            if (emoTraits) {
+                emoTraits.innerHTML = '';
+                (useEn ? emotion.traitsEn : emotion.traits).forEach(trait => {
+                    const span = document.createElement('span');
+                    span.className = 'impression-trait';
+                    span.textContent = trait;
+                    emoTraits.appendChild(span);
+                });
+            }
+        }
 
         nameCardsContainer.innerHTML = '';
         names.forEach((nameData, index) => {
@@ -219,9 +242,10 @@ export function initTestPage(config) {
     document.getElementById('shareX')?.addEventListener('click', () => {
         const n = nameCardsContainer.querySelector('.name-text');
         const t = document.getElementById('impressionType').textContent;
+        const e = document.getElementById('emotionType')?.textContent || '';
         const text = lang === 'ko'
-            ? `내 인상에 어울리는 이름은 '${n?.textContent}'이래! 인상 유형: ${t} #QARAH #이름추천`
-            : `My impression type is "${t}" and QARAH recommends "${n?.textContent}" for me! #QARAH`;
+            ? `내 인상에 어울리는 이름은 '${n?.textContent}'이래! 인상: ${t}, 감정: ${e} #QARAH #이름추천`
+            : `My impression is "${t}" with "${e}" energy. QARAH recommends "${n?.textContent}" for me! #QARAH`;
         window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(location.href)}`, '_blank');
     });
 

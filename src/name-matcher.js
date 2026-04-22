@@ -1,27 +1,39 @@
 /**
  * QARAH — Name Matcher
- * 인상 유형 + 성별 + 카테고리 → 이름 3개 추천
+ * 인상 유형 + 감정 유형 + 성별 + 카테고리 → 이름 3개 추천
  */
 
 /**
- * 이름 매칭 메인 함수
+ * 이름 매칭 메인 함수 (2축 매칭: 인상 + 감정)
  * @param {string} impressionType - 인상 유형 키 (water, fire, etc.)
+ * @param {string} emotionType - 감정 유형 키 (joy, calm, etc.)
  * @param {string} gender - 'female' 또는 'male'
  * @param {Object} nameDB - 이름 데이터베이스
  * @param {number} baseScore - 기본 적합도 점수 (85-99)
  * @returns {Array} 추천 이름 3개 [{name, hanja, meaning, hanjaDetail, score, rarity}]
  */
-export function matchNames(impressionType, gender, nameDB, baseScore = 92) {
+export function matchNames(impressionType, emotionType, gender, nameDB, baseScore = 92) {
     const genderDB = nameDB[gender];
     if (!genderDB) return [];
 
     const typeNames = genderDB[impressionType];
     if (!typeNames || typeNames.length === 0) return [];
 
-    // 이름 목록을 약간 셔플 (같은 유형이어도 매번 다른 결과)
-    const shuffled = shuffleArray([...typeNames]);
+    // 감정 친화도 기반 정렬 (emotionAffinity가 있는 경우)
+    let sorted;
+    if (emotionType && typeNames[0]?.emotionAffinity) {
+        sorted = [...typeNames].sort((a, b) => {
+            const aScore = a.emotionAffinity?.[emotionType] || 0.5;
+            const bScore = b.emotionAffinity?.[emotionType] || 0.5;
+            return bScore - aScore;
+        });
+    } else {
+        sorted = [...typeNames];
+    }
 
-    // 상위 3개 선택
+    // 상위 5개 후보 중 3개를 셔플 선택 (다양성 + 정밀성 균형)
+    const candidates = sorted.slice(0, 5);
+    const shuffled = shuffleArray(candidates);
     const top3 = shuffled.slice(0, 3);
 
     // 적합도 점수 부여 (1위가 가장 높고 순차 감소)

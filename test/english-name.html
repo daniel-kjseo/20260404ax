@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -143,6 +143,7 @@
 <script type="module">
 import { preloadModels, analyzeFace } from '../src/face-analyzer.js';
 import { determineImpression, getRarity } from '../src/impression-engine.js';
+import { determineEmotion } from '../src/emotion-engine.js';
 import { matchNames } from '../src/name-matcher.js';
 import { englishNames } from '../src/name-db-english.js';
 
@@ -208,8 +209,9 @@ async function handleFile(file) {
             }
 
             const impression = determineImpression(traits);
-            const names = matchNames(impression.type, selectedGender, englishNames, impression.score);
-            showResult(impression, names);
+            const emotion = determineEmotion(traits.expressions);
+            const names = matchNames(impression.type, emotion.type, selectedGender, englishNames, impression.score);
+            showResult(impression, emotion, names);
         };
     };
     reader.readAsDataURL(file);
@@ -238,7 +240,7 @@ async function runCountdown() {
     flash.remove();
 }
 
-function showResult(impression, names) {
+function showResult(impression, emotion, names) {
     phaseCountdown.classList.add('hidden');
     phaseResult.classList.remove('hidden');
 
@@ -253,6 +255,19 @@ function showResult(impression, names) {
         span.className = 'impression-trait';
         span.textContent = trait;
         traitsContainer.appendChild(span);
+    });
+
+    // Emotion badge
+    document.getElementById('emotionEmoji').textContent = emotion.emoji;
+    document.getElementById('emotionType').textContent = emotion.label;
+    document.getElementById('emotionDesc').textContent = emotion.desc;
+    const emoTraits = document.getElementById('emotionTraits');
+    emoTraits.innerHTML = '';
+    emotion.traits.forEach(trait => {
+        const span = document.createElement('span');
+        span.className = 'impression-trait';
+        span.textContent = trait;
+        emoTraits.appendChild(span);
     });
 
     nameCardsContainer.innerHTML = '';

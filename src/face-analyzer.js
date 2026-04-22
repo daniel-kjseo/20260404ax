@@ -18,7 +18,8 @@ export async function preloadModels(modelPath = '../models') {
         try {
             await Promise.all([
                 faceapi.nets.tinyFaceDetector.loadFromUri(modelPath),
-                faceapi.nets.faceLandmark68Net.loadFromUri(modelPath)
+                faceapi.nets.faceLandmark68Net.loadFromUri(modelPath),
+                faceapi.nets.faceExpressionNet.loadFromUri(modelPath)
             ]);
             console.log('[QARAH] Models loaded');
 
@@ -93,12 +94,14 @@ export async function analyzeFace(imageElement) {
     const detection = await faceapi.detectSingleFace(
         resized,
         new faceapi.TinyFaceDetectorOptions({ inputSize: 416, scoreThreshold: 0.5 })
-    ).withFaceLandmarks();
+    ).withFaceLandmarks().withFaceExpressions();
 
     if (!detection) return null;
 
-    // 5가지 인상 지표 추출
-    return extractTraits(detection.landmarks);
+    // 5가지 인상 지표 + 감정 확률 추출
+    const traits = extractTraits(detection.landmarks);
+    traits.expressions = detection.expressions;
+    return traits;
 }
 
 /**
