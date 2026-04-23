@@ -69,7 +69,7 @@ export const englishNames = {
             { name: 'Lily', origin: 'English', meaning: 'Pure, innocent flower'  , emotionAffinity: { joy: 1, calm: 0.6, mystery: 0.8, passion: 1, soulful: 0.8, bold: 1 } },
             { name: 'Rose', origin: 'Latin', meaning: 'Rose flower, love'  , emotionAffinity: { joy: 0.7, calm: 0.7, mystery: 0.7, passion: 0.7, soulful: 0.7, bold: 0.7 } },
             { name: 'Violet', origin: 'Latin', meaning: 'Purple flower'  , emotionAffinity: { joy: 0.4, calm: 0.8, mystery: 0.6, passion: 0.4, soulful: 0.6, bold: 0.4 } },
-            { name: 'Daisy', origin: 'English', meaning: 'Day\'s eye, innocence' },
+            { name: 'Daisy', origin: 'English', meaning: 'Day\'s eye, innocence', emotionAffinity: { joy: 0.9, calm: 0.6, mystery: 0.3, passion: 0.7, soulful: 0.4, bold: 0.6 } },
             { name: 'Jasmine', origin: 'Persian', meaning: 'Gift from God, fragrant flower'  , emotionAffinity: { joy: 0.9, calm: 0.9, mystery: 0.5, passion: 0.9, soulful: 0.5, bold: 0.9 } },
             { name: 'Camellia', origin: 'Latin', meaning: 'Helper, pure beauty'  , emotionAffinity: { joy: 0.6, calm: 1, mystery: 0.4, passion: 0.6, soulful: 0.4, bold: 0.6 } },
             { name: 'Dahlia', origin: 'Scandinavian', meaning: 'Valley flower, elegance'  , emotionAffinity: { joy: 0.3, calm: 0.3, mystery: 0.3, passion: 0.3, soulful: 0.3, bold: 0.3 } },
@@ -160,7 +160,7 @@ export const englishNames = {
             { name: 'William', origin: 'German', meaning: 'Resolute protector'  , emotionAffinity: { joy: 0.4, calm: 0.8, mystery: 0.6, passion: 0.4, soulful: 0.6, bold: 0.4 } },
             { name: 'Edmund', origin: 'English', meaning: 'Prosperous protector'  , emotionAffinity: { joy: 0.9, calm: 0.9, mystery: 0.5, passion: 0.9, soulful: 0.5, bold: 0.9 } },
             { name: 'Harold', origin: 'Norse', meaning: 'Army ruler'  , emotionAffinity: { joy: 0.6, calm: 1, mystery: 0.4, passion: 0.6, soulful: 0.4, bold: 0.6 } },
-            { name: 'Godfrey', origin: 'German', meaning: 'God\'s peace' },
+            { name: 'Godfrey', origin: 'German', meaning: 'God\'s peace', emotionAffinity: { joy: 0.5, calm: 0.9, mystery: 0.4, passion: 0.5, soulful: 0.7, bold: 0.7 } },
             { name: 'Richard', origin: 'German', meaning: 'Brave ruler'  , emotionAffinity: { joy: 0.3, calm: 0.3, mystery: 0.3, passion: 0.3, soulful: 0.3, bold: 0.3 } },
         ],
         flower: [
@@ -196,7 +196,7 @@ export const englishNames = {
             { name: 'Blaine', origin: 'Gaelic', meaning: 'Thin, lean, bright'  , emotionAffinity: { joy: 0.5, calm: 0.5, mystery: 0.9, passion: 0.5, soulful: 0.9, bold: 0.5 } },
             { name: 'Aaron', origin: 'Hebrew', meaning: 'High mountain, exalted'  , emotionAffinity: { joy: 1, calm: 0.6, mystery: 0.8, passion: 1, soulful: 0.8, bold: 1 } },
             { name: 'Elias', origin: 'Hebrew', meaning: 'The Lord is my God'  , emotionAffinity: { joy: 0.7, calm: 0.7, mystery: 0.7, passion: 0.7, soulful: 0.7, bold: 0.7 } },
-            { name: 'Oscar', origin: 'Gaelic', meaning: 'God\'s spear, champion' },
+            { name: 'Oscar', origin: 'Gaelic', meaning: 'God\'s spear, champion', emotionAffinity: { joy: 0.7, calm: 0.5, mystery: 0.5, passion: 0.9, soulful: 0.6, bold: 1 } },
             { name: 'Luca', origin: 'Italian', meaning: 'Bringer of light'  , emotionAffinity: { joy: 0.4, calm: 0.8, mystery: 0.6, passion: 0.4, soulful: 0.6, bold: 0.4 } },
         ]
     }

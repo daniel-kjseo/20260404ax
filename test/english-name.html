@@ -86,6 +86,15 @@
             <div class="impression-traits" id="impressionTraits"></div>
         </div>
 
+        <!-- Emotion Badge -->
+        <div class="glass-card impression-badge" id="emotionBadge" style="margin-top: 1rem;">
+            <span class="impression-emoji" id="emotionEmoji">🎵</span>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.25rem;">Your Emotional Energy</p>
+            <h2 class="impression-type" id="emotionType">Type</h2>
+            <p class="impression-desc" id="emotionDesc">Description</p>
+            <div class="impression-traits" id="emotionTraits"></div>
+        </div>
+
         <div class="ad-slot" id="adResult1"></div>
 
         <h2 class="section-title" style="margin-top: 1.5rem;">QARAH Recommends</h2>
@@ -198,20 +207,26 @@ async function handleFile(file) {
         const img = new Image();
         img.src = e.target.result;
         img.onload = async () => {
-            const [traits] = await Promise.all([
-                analyzeFace(img).catch(() => null),
-                runCountdown()
-            ]);
+            try {
+                const [traits] = await Promise.all([
+                    analyzeFace(img).catch(() => null),
+                    runCountdown()
+                ]);
 
-            if (!traits) {
-                alert('No face detected. Please try another photo.');
-                resetToSetup(); return;
+                if (!traits) {
+                    alert('No face detected. Please try another photo.');
+                    resetToSetup(); return;
+                }
+
+                const impression = determineImpression(traits);
+                const emotion = determineEmotion(traits.expressions);
+                const names = matchNames(impression.type, emotion.type, selectedGender, englishNames, impression.score);
+                showResult(impression, emotion, names);
+            } catch (err) {
+                console.error('Flow error:', err);
+                alert('An error occurred. Please try again.');
+                resetToSetup();
             }
-
-            const impression = determineImpression(traits);
-            const emotion = determineEmotion(traits.expressions);
-            const names = matchNames(impression.type, emotion.type, selectedGender, englishNames, impression.score);
-            showResult(impression, emotion, names);
         };
     };
     reader.readAsDataURL(file);
@@ -258,17 +273,20 @@ function showResult(impression, emotion, names) {
     });
 
     // Emotion badge
-    document.getElementById('emotionEmoji').textContent = emotion.emoji;
-    document.getElementById('emotionType').textContent = emotion.label;
-    document.getElementById('emotionDesc').textContent = emotion.desc;
-    const emoTraits = document.getElementById('emotionTraits');
-    emoTraits.innerHTML = '';
-    emotion.traits.forEach(trait => {
-        const span = document.createElement('span');
-        span.className = 'impression-trait';
-        span.textContent = trait;
-        emoTraits.appendChild(span);
-    });
+    const emotionBadge = document.getElementById('emotionBadge');
+    if (emotionBadge) {
+        document.getElementById('emotionEmoji').textContent = emotion.emoji;
+        document.getElementById('emotionType').textContent = emotion.labelEn;
+        document.getElementById('emotionDesc').textContent = emotion.descEn;
+        const emoTraits = document.getElementById('emotionTraits');
+        emoTraits.innerHTML = '';
+        emotion.traitsEn.forEach(trait => {
+            const span = document.createElement('span');
+            span.className = 'impression-trait';
+            span.textContent = trait;
+            emoTraits.appendChild(span);
+        });
+    }
 
     nameCardsContainer.innerHTML = '';
     names.forEach((nameData, index) => {
