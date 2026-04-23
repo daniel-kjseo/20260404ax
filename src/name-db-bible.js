@@ -31,7 +31,7 @@ export const bibleNames = {
             { name: '미갈', origin: 'Michal', meaning: '하나님과 같은 자', desc: '귀족적이고 빛나는 품격을 지닌 사울 왕의 딸'  , emotionAffinity: { joy: 0.9, calm: 0.9, mystery: 0.5, passion: 0.9, soulful: 0.5, bold: 0.9 } },
             { name: '마르다', origin: 'Martha', meaning: '여주인, 귀한 자', desc: '성실하고 책임감 있으며 주변을 환하게 돌보는 여성'  , emotionAffinity: { joy: 0.6, calm: 1, mystery: 0.4, passion: 0.6, soulful: 0.4, bold: 0.6 } },
             { name: '프리스카', origin: 'Prisca', meaning: '고귀함, 오래된 보석', desc: '브리스길라의 원래 이름으로 빛나는 지혜의 소유자'  , emotionAffinity: { joy: 0.3, calm: 0.3, mystery: 0.3, passion: 0.3, soulful: 0.3, bold: 0.3 } },
-            { name: '실라', origin: 'Sila', meaning: '지혜로운 자', desc: '통찰력 있고 주변에 영감을 주는 빛나는 존재'  , emotionAffinity: { joy: 0.8, calm: 0.4, mystery: 1, passion: 0.8, soulful: 1, bold: 0.8 } }
+            { name: '살로메', origin: 'Salome', meaning: '평강', desc: '예수의 십자가 현장과 빈 무덤을 모두 목격한 신실한 여제자 (막 15:40, 16:1)'  , emotionAffinity: { joy: 0.7, calm: 0.5, mystery: 0.9, passion: 0.6, soulful: 0.9, bold: 0.6 } }
         ],
         rock: [
             { name: '사라', origin: 'Sarah', meaning: '공주, 민족의 어머니', desc: '신앙의 어머니로 듬직하고 존경받는 견고한 이미지'  , emotionAffinity: { joy: 0.5, calm: 0.5, mystery: 0.9, passion: 0.5, soulful: 0.9, bold: 0.5 } },
@@ -55,7 +55,7 @@ export const bibleNames = {
             { name: '글로리아', origin: 'Gloria', meaning: '영광', desc: '신비롭고 거룩한 분위기를 자아내는 이름'  , emotionAffinity: { joy: 0.3, calm: 0.3, mystery: 0.3, passion: 0.3, soulful: 0.3, bold: 0.3 } }
         ],
         sun: [
-            { name: '이삭', origin: 'Isaac', meaning: '웃음, 큰 기쁨', desc: '주변에 기쁨을 전하며 태양처럼 환한 에너지를 가진 자'  , emotionAffinity: { joy: 0.8, calm: 0.4, mystery: 1, passion: 0.8, soulful: 1, bold: 0.8 } },
+            { name: '요안나', origin: 'Joanna', meaning: '하나님의 은혜', desc: '예수를 따른 여제자로 부활의 첫 증인 중 한 명. 밝고 담대한 기쁨의 소유자 (눅 8:3, 24:10)'  , emotionAffinity: { joy: 1, calm: 0.4, mystery: 0.7, passion: 0.9, soulful: 0.7, bold: 0.9 } },
             { name: '십보라', origin: 'Zipporah', meaning: '작은 새, 자유', desc: '밝고 활기차며 자유로운 영혼을 가진 모세의 아내'  , emotionAffinity: { joy: 0.5, calm: 0.5, mystery: 0.9, passion: 0.5, soulful: 0.9, bold: 0.5 } },
             { name: '라헬', origin: 'Rachel', meaning: '암양, 온화한 빛', desc: '사랑스럽고 에너지가 넘치며 밝은 성격의 여인'  , emotionAffinity: { joy: 1, calm: 0.6, mystery: 0.8, passion: 1, soulful: 0.8, bold: 1 } },
             { name: '셀라', origin: 'Selah', meaning: '높이다, 멈추어 묵상하다', desc: '숭고하고 찬란한 느낌을 주는 이름'  , emotionAffinity: { joy: 0.7, calm: 0.7, mystery: 0.7, passion: 0.7, soulful: 0.7, bold: 0.7 } },
