@@ -8,6 +8,7 @@ import { determineEmotion } from './emotion-engine.js';
 import { matchNames } from './name-matcher.js';
 import { generateShareCard } from './share-card.js';
 import { trackAnalysis } from './analytics-tracker.js';
+import { makeNameKey, hasLiked, toggleLike } from './likes-tracker.js';
 
 /**
  * 테스트 페이지 초기화
@@ -224,6 +225,23 @@ export function initTestPage(config) {
                 </div>
             `;
         }
+
+        // Like button
+        const category  = config.category || categoryFromURL();
+        const nameKey   = makeNameKey(category, nameData.name);
+        const liked     = hasLiked(nameKey);
+        const likeBtn   = document.createElement('button');
+        likeBtn.className = 'like-btn' + (liked ? ' liked' : '');
+        likeBtn.innerHTML = `<span class="like-heart">${liked ? '❤️' : '🤍'}</span><span class="like-count"></span>`;
+        likeBtn.addEventListener('click', async () => {
+            const registered = await toggleLike(nameKey, { name: nameData.name, category });
+            if (registered) {
+                likeBtn.classList.add('liked', 'pop');
+                likeBtn.querySelector('.like-heart').textContent = '❤️';
+                setTimeout(() => likeBtn.classList.remove('pop'), 400);
+            }
+        });
+        card.appendChild(likeBtn);
 
         wrapper.appendChild(card);
         return wrapper;

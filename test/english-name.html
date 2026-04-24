@@ -17,6 +17,7 @@
         <a href="../index.html" class="nav-brand"><span>QARAH</span></a>
         <ul class="nav-links" id="navLinks">
             <li><a href="../index.html">이름추천</a></li>
+            <li><a href="../ranking.html">🏆 순위</a></li>
             <li><a href="../blog/index.html">블로그</a></li>
             <li><a href="../about.html">소개</a></li>
         </ul>
@@ -159,6 +160,7 @@ import { matchNames } from '../src/name-matcher.js';
 import { englishNames } from '../src/name-db-english.js';
 import { generateShareCard } from '../src/share-card.js';
 import { trackAnalysis } from '../src/analytics-tracker.js';
+import { makeNameKey, hasLiked, toggleLike } from '../src/likes-tracker.js';
 
 const phaseSetup = document.getElementById('phase-setup');
 const phaseCountdown = document.getElementById('phase-countdown');
@@ -343,6 +345,22 @@ function createNameCard(nameData, index) {
             ${origin ? `<div class="name-detail">Origin: ${origin}</div>` : ''}
         </div>
     `;
+
+    // Like button
+    const nameKey = makeNameKey('english', name);
+    const liked   = hasLiked(nameKey);
+    const likeBtn = document.createElement('button');
+    likeBtn.className = 'like-btn' + (liked ? ' liked' : '');
+    likeBtn.innerHTML = `<span class="like-heart">${liked ? '❤️' : '🤍'}</span><span class="like-count"></span>`;
+    likeBtn.addEventListener('click', async () => {
+        const registered = await toggleLike(nameKey, { name, category: 'english' });
+        if (registered) {
+            likeBtn.classList.add('liked', 'pop');
+            likeBtn.querySelector('.like-heart').textContent = '❤️';
+            setTimeout(() => likeBtn.classList.remove('pop'), 400);
+        }
+    });
+    card.appendChild(likeBtn);
 
     wrapper.appendChild(card);
     return wrapper;

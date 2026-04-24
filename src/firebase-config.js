@@ -12,7 +12,8 @@
  *   rules_version = '2';
  *   service cloud.firestore {
  *     match /databases/{database}/documents {
- *       match /stats/{doc} { allow read: if true; allow write: if true; }
+ *       match /stats/{doc}     { allow read: if true; allow write: if true; }
+ *       match /nameLikes/{doc} { allow read: if true; allow write: if true; }
  *     }
  *   }
  */

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이름 인기 순위 — QARAH</title>
+    <meta name="description" content="QARAH 사용자들이 가장 많이 좋아요를 누른 이름 순위. 오늘, 이번 주, 이번 달, 올해, 전체 기간별로 확인하세요.">
+    <link rel="canonical" href="https://qarah.web.app/ranking.html">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SPF6FHWKZ9"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SPF6FHWKZ9');</script>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand"><span>QARAH</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html#tests">이름추천</a></li>
+            <li><a href="ranking.html" class="active">🏆 순위</a></li>
+            <li><a href="blog/index.html">블로그</a></li>
+            <li><a href="about.html">소개</a></li>
+        </ul>
+        <button class="nav-hamburger" id="navHamburger" aria-label="메뉴">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<main class="container">
+
+    <section class="section" style="padding-top: 2rem;">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+            <h1 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem;">🏆 이름 인기 순위</h1>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">사용자들이 가장 많이 좋아요를 누른 이름 TOP 10</p>
+        </div>
+
+        <!-- Period Tabs -->
+        <div class="period-tabs" id="periodTabs">
+            <button class="period-tab active" data-period="total">전체</button>
+            <button class="period-tab" data-period="daily">오늘</button>
+            <button class="period-tab" data-period="weekly">이번 주</button>
+            <button class="period-tab" data-period="monthly">이번 달</button>
+            <button class="period-tab" data-period="yearly">올해</button>
+        </div>
+
+        <!-- Ranking List -->
+        <div class="glass-card" style="padding: 1.5rem;">
+            <div id="rankingContent">
+                <div class="ranking-loading">⏳ 순위를 불러오는 중...</div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div style="text-align: center; margin-top: 2rem;">
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+                이름을 추천받고 좋아요를 눌러 순위에 영향을 주세요!
+            </p>
+            <a href="index.html#tests" class="hero-cta" style="font-size: 0.95rem; padding: 0.7rem 1.8rem;">📸 이름 추천받기</a>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <ul class="footer-links">
+            <li><a href="index.html#tests">이름추천</a></li>
+            <li><a href="blog/index.html">블로그</a></li>
+            <li><a href="about.html">소개</a></li>
+            <li><a href="privacy.html">개인정보처리방침</a></li>
+            <li><a href="terms.html">이용약관</a></li>
+            <li><a href="contact.html">문의</a></li>
+        </ul>
+        <p class="footer-disclaimer">© 2026 QARAH. 모든 이름에는 부름이 있습니다.</p>
+    </div>
+</footer>
+
+<script>
+document.getElementById('navHamburger')?.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+});
+</script>
+
+<script type="module">
+import { loadRanking, hasLiked } from './src/likes-tracker.js';
+import { isConfigured } from './src/firebase-config.js';
+
+const CATEGORY_LABELS = {
+    korean:   '🇰🇷 한국 이름',
+    english:  '🇺🇸 영어 이름',
+    japanese: '🇯🇵 일본 이름',
+    stage:    '🌟 연예인 예명',
+    baby:     '👶 아기 이름',
+    pet:      '🐾 반려동물',
+    fantasy:  '🏰 판타지',
+    bible:    '📖 성경 이름',
+};
+
+const RANK_MEDALS = ['🥇', '🥈', '🥉'];
+
+let currentPeriod = 'total';
+
+async function renderRanking(period) {
+    const content = document.getElementById('rankingContent');
+    content.innerHTML = '<div class="ranking-loading">⏳ 불러오는 중...</div>';
+
+    if (!isConfigured()) {
+        content.innerHTML = `
+            <div class="ranking-unconfigured">
+                <p style="font-size: 1.5rem; margin-bottom: 0.75rem;">🔧</p>
+                <p>Firebase가 아직 설정되지 않았습니다.</p>
+                <p style="margin-top: 0.5rem;"><code>src/firebase-config.js</code>에 Firebase 자격 증명을 입력하면<br>실시간 순위가 표시됩니다.</p>
+            </div>`;
+        return;
+    }
+
+    const items = await loadRanking(period, 10);
+
+    if (!items.length) {
+        const periodLabel = { total: '전체', daily: '오늘', weekly: '이번 주', monthly: '이번 달', yearly: '올해' }[period];
+        content.innerHTML = `
+            <div class="ranking-empty">
+                <p style="font-size: 2rem; margin-bottom: 0.5rem;">🌱</p>
+                <p>${periodLabel} 기간에 좋아요를 받은 이름이 아직 없습니다.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem;">이름을 추천받고 첫 번째 좋아요를 눌러보세요!</p>
+            </div>`;
+        return;
+    }
+
+    const fieldMap = {
+        total:   'total',
+        daily:   `d_${_dateKey()}`,
+        weekly:  `w_${_weekKey()}`,
+        monthly: `m_${_monthKey()}`,
+        yearly:  `y_${new Date().getFullYear()}`,
+    };
+    const countField = fieldMap[period];
+
+    const ul = document.createElement('ul');
+    ul.className = 'ranking-list';
+
+    items.forEach((item, i) => {
+        const rank  = i + 1;
+        const count = item[countField] || item.total || 0;
+        const catLabel = CATEGORY_LABELS[item.category] || item.category || '';
+        const rankClass = rank <= 3 ? ` top${rank}` : '';
+        const medal = rank <= 3 ? RANK_MEDALS[rank - 1] + ' ' : '';
+
+        const li = document.createElement('li');
+        li.className = 'ranking-item';
+        li.innerHTML = `
+            <div class="ranking-rank${rankClass}">${medal}${rank}</div>
+            <div class="ranking-info">
+                <div class="ranking-name">${item.name || item.id}</div>
+                <span class="ranking-cat">${catLabel}</span>
+            </div>
+            <div class="ranking-likes">❤️ ${count.toLocaleString()}</div>
+        `;
+        ul.appendChild(li);
+    });
+
+    content.innerHTML = '';
+    content.appendChild(ul);
+}
+
+// Tab click
+document.getElementById('periodTabs').addEventListener('click', async (e) => {
+    const tab = e.target.closest('.period-tab');
+    if (!tab) return;
+    document.querySelectorAll('.period-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    currentPeriod = tab.dataset.period;
+    await renderRanking(currentPeriod);
+});
+
+// Initial load
+renderRanking('total');
+
+function _dateKey() {
+    const d = new Date();
+    return d.getFullYear().toString()
+        + String(d.getMonth() + 1).padStart(2, '0')
+        + String(d.getDate()).padStart(2, '0');
+}
+function _weekKey() {
+    const d = new Date();
+    const jan1 = new Date(d.getFullYear(), 0, 1);
+    const week = Math.ceil(((d - jan1) / 86400000 + jan1.getDay() + 1) / 7);
+    return d.getFullYear() + '_' + String(week).padStart(2, '0');
+}
+function _monthKey() {
+    const d = new Date();
+    return d.getFullYear().toString() + String(d.getMonth() + 1).padStart(2, '0');
+}
+</script>
+
+</body>
+</html>
