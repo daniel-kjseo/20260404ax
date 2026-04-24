@@ -21,12 +21,13 @@ import { initializeApp, getApps } from 'https://www.gstatic.com/firebasejs/10.12
 import { getFirestore }           from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig = {
-    apiKey:            'REPLACE_WITH_API_KEY',
-    authDomain:        'qarah.firebaseapp.com',
-    projectId:         'qarah',
-    storageBucket:     'qarah.appspot.com',
-    messagingSenderId: 'REPLACE_WITH_SENDER_ID',
-    appId:             'REPLACE_WITH_APP_ID',
+    apiKey:            'AIzaSyBkidNESclGdWzSXcdN24ja0LtLjZeLrgU',
+    authDomain:        'havenames-20260412.firebaseapp.com',
+    projectId:         'havenames-20260412',
+    storageBucket:     'havenames-20260412.firebasestorage.app',
+    messagingSenderId: '555168902628',
+    appId:             '1:555168902628:web:09375ef83a3e2aaa6eebf1',
+    measurementId:     'G-XQD4SGMZFJ',
 };
 
 let _db = null;
