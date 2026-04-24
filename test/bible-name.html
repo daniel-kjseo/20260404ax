@@ -25,7 +25,9 @@
             margin-bottom: 0.25rem;
         }
     </style>
-</head>
+    <!-- Google Analytics 4 (측정 ID를 analytics.google.com에서 발급 후 G-XXXXXXXXXX 교체) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script></head>
 <body>
 
 <nav class="nav">
@@ -160,6 +162,8 @@ import { determineImpression } from '../src/impression-engine.js';
 import { determineEmotion } from '../src/emotion-engine.js';
 import { matchNames } from '../src/name-matcher.js';
 import { bibleNames } from '../src/name-db-bible.js';
+import { generateShareCard } from '../src/share-card.js';
+import { trackAnalysis } from '../src/analytics-tracker.js';
 
 const phaseSetup = document.getElementById('phase-setup');
 const phaseCountdown = document.getElementById('phase-countdown');
@@ -173,6 +177,7 @@ const countdownOverlay = document.getElementById('countdownOverlay');
 const nameCardsContainer = document.getElementById('nameCardsContainer');
 
 let selectedGender = 'female';
+let lastResult = null;
 
 // === Model Preloading (on page load) ===
 preloadModels('../models').catch(err => console.warn('Model preload failed:', err));
@@ -219,8 +224,10 @@ async function handleFile(file) {
                 }
 
                 const impression = determineImpression(traits);
-            const emotion = determineEmotion(traits.expressions);
-            const names = matchNames(impression.type, emotion.type, selectedGender, bibleNames, impression.score);
+                const emotion = determineEmotion(traits.expressions);
+                const names = matchNames(impression.type, emotion.type, selectedGender, bibleNames, impression.score);
+                lastResult = { impression, emotion, names, photoSrc: countdownPhoto.src };
+                trackAnalysis('bible');
                 showResult(impression, emotion, names);
             } catch (err) {
                 console.error('Flow error:', err);
@@ -355,6 +362,23 @@ document.getElementById('shareCopy').addEventListener('click', async () => {
         alert('링크가 복사되었습니다!');
     } catch (e) {
         prompt('링크를 복사해주세요:', location.href);
+    }
+});
+
+document.getElementById('shareDownload').addEventListener('click', async () => {
+    if (!lastResult) return;
+    const btn = document.getElementById('shareDownload');
+    const orig = btn.textContent;
+    btn.textContent = '⏳ 생성 중...';
+    btn.disabled = true;
+    try {
+        await generateShareCard({ ...lastResult, lang: 'ko' });
+    } catch (e) {
+        console.error('Share card error:', e);
+        alert('카드 생성 중 오류가 발생했습니다.');
+    } finally {
+        btn.textContent = orig;
+        btn.disabled = false;
     }
 });
 

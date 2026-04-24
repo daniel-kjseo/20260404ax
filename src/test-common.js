@@ -6,6 +6,8 @@ import { preloadModels, analyzeFace } from './face-analyzer.js';
 import { determineImpression } from './impression-engine.js';
 import { determineEmotion } from './emotion-engine.js';
 import { matchNames } from './name-matcher.js';
+import { generateShareCard } from './share-card.js';
+import { trackAnalysis } from './analytics-tracker.js';
 
 /**
  * 테스트 페이지 초기화
@@ -30,6 +32,7 @@ export function initTestPage(config) {
     const nameCardsContainer = document.getElementById('nameCardsContainer');
 
     let selectedGender = 'female';
+    let lastResult     = null;  // impression, emotion, names from last successful analysis
 
     // Model preload
     preloadModels('../models').catch(err => console.warn('Model preload:', err));
@@ -90,6 +93,8 @@ export function initTestPage(config) {
                 const impression = determineImpression(traits);
                 const emotion = determineEmotion(traits.expressions);
                 const names = matchNames(impression.type, emotion.type, selectedGender, nameDB, impression.score);
+                lastResult = { impression, emotion, names, photoSrc: countdownPhoto.src };
+                trackAnalysis(config.category || categoryFromURL());
                 showResult(impression, emotion, names);
             };
         };
@@ -259,8 +264,21 @@ export function initTestPage(config) {
         } catch(e) { prompt('링크를 복사해주세요:', location.href); }
     });
 
-    document.getElementById('shareDownload')?.addEventListener('click', () => {
-        alert(lang === 'ko' ? '카드 저장 기능 준비 중입니다!' : 'Card download coming soon!');
+    document.getElementById('shareDownload')?.addEventListener('click', async () => {
+        if (!lastResult) return;
+        const btn = document.getElementById('shareDownload');
+        const origText = btn.textContent;
+        btn.textContent = '⏳ 생성 중...';
+        btn.disabled = true;
+        try {
+            await generateShareCard({ ...lastResult, lang });
+        } catch (e) {
+            console.error('Share card error:', e);
+            alert(lang === 'ko' ? '카드 생성 중 오류가 발생했습니다.' : 'Failed to generate card.');
+        } finally {
+            btn.textContent = origText;
+            btn.disabled = false;
+        }
     });
 
     // Retry
@@ -282,3 +300,16 @@ export function initTestPage(config) {
 }
 
 function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+function categoryFromURL() {
+    const p = location.pathname;
+    if (p.includes('korean'))   return 'korean';
+    if (p.includes('english'))  return 'english';
+    if (p.includes('japanese')) return 'japanese';
+    if (p.includes('stage'))    return 'stage';
+    if (p.includes('baby'))     return 'baby';
+    if (p.includes('pet'))      return 'pet';
+    if (p.includes('fantasy'))  return 'fantasy';
+    if (p.includes('bible'))    return 'bible';
+    return 'unknown';
+}

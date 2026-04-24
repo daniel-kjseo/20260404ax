@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,9 @@
     <meta name="description" content="사진 한 장으로 나에게 어울리는 한국 이름을 찾아보세요. QARAH가 인상을 분석하여 가장 잘 어울리는 이름 3개를 추천합니다.">
     <link rel="stylesheet" href="../style.css">
     <script defer src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.min.js"></script>
-</head>
+    <!-- Google Analytics 4 (측정 ID를 analytics.google.com에서 발급 후 G-XXXXXXXXXX 교체) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script></head>
 <body>
 
 <!-- Navigation -->
@@ -176,6 +178,8 @@ import { determineImpression, getRarity } from '../src/impression-engine.js';
 import { determineEmotion } from '../src/emotion-engine.js';
 import { matchNames } from '../src/name-matcher.js';
 import { koreanNames } from '../src/name-db-korean.js';
+import { generateShareCard } from '../src/share-card.js';
+import { trackAnalysis } from '../src/analytics-tracker.js';
 
 // === DOM Elements ===
 const phaseSetup = document.getElementById('phase-setup');
@@ -194,7 +198,7 @@ const btnRetry = document.getElementById('btnRetry');
 
 // === State ===
 let selectedGender = 'female';
-let analysisResult = null;
+let lastResult = null;
 
 // === Model Preloading (on page load) ===
 preloadModels('../models').catch(err => console.warn('Model preload failed:', err));
@@ -263,6 +267,8 @@ async function handleFile(file) {
 
             // Match names (2-axis: impression + emotion)
             const names = matchNames(impression.type, emotion.type, selectedGender, koreanNames, impression.score);
+            lastResult = { impression, emotion, names, photoSrc: countdownPhoto.src };
+            trackAnalysis('korean');
 
             // Show result
             showResult(impression, emotion, names);
@@ -456,86 +462,22 @@ document.getElementById('shareCopy').addEventListener('click', async () => {
     }
 });
 
-document.getElementById('shareDownload').addEventListener('click', () => {
-    // Simple canvas card generation
-    generateShareCard();
+document.getElementById('shareDownload').addEventListener('click', async () => {
+    if (!lastResult) return;
+    const btn = document.getElementById('shareDownload');
+    const orig = btn.textContent;
+    btn.textContent = '⏳ 생성 중...';
+    btn.disabled = true;
+    try {
+        await generateShareCard({ ...lastResult, lang: 'ko' });
+    } catch (e) {
+        console.error('Share card error:', e);
+        alert('카드 생성 중 오류가 발생했습니다.');
+    } finally {
+        btn.textContent = orig;
+        btn.disabled = false;
+    }
 });
-
-async function generateShareCard() {
-    const canvas = document.createElement('canvas');
-    canvas.width = 1080;
-    canvas.height = 1080;
-    const ctx = canvas.getContext('2d');
-
-    // Background gradient
-    const grad = ctx.createLinearGradient(0, 0, 1080, 1080);
-    grad.addColorStop(0, '#0a0a1a');
-    grad.addColorStop(0.5, '#141428');
-    grad.addColorStop(1, '#1a0a2a');
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, 1080, 1080);
-
-    // Brand
-    ctx.font = '900 64px Outfit, sans-serif';
-    ctx.fillStyle = '#a78bfa';
-    ctx.textAlign = 'center';
-    ctx.fillText('QARAH', 540, 150);
-
-    // Subtitle
-    ctx.font = '400 32px Pretendard, sans-serif';
-    ctx.fillStyle = '#94a3b8';
-    ctx.fillText('내 인상에 어울리는 이름', 540, 210);
-
-    // Impression type
-    const emoji = document.getElementById('impressionEmoji').textContent;
-    const type = document.getElementById('impressionType').textContent;
-    ctx.font = '48px sans-serif';
-    ctx.fillText(emoji, 540, 340);
-    ctx.font = '800 48px Pretendard, sans-serif';
-    ctx.fillStyle = '#f1f5f9';
-    ctx.fillText(type, 540, 400);
-
-    // Name
-    const firstNameEl = nameCardsContainer.querySelector('.name-text');
-    const firstHanjaEl = nameCardsContainer.querySelector('.hanja-text');
-    const firstMeaning = nameCardsContainer.querySelector('.name-meaning');
-    const firstScore = nameCardsContainer.querySelector('.score-text');
-
-    if (firstNameEl) {
-        ctx.font = '900 120px Pretendard, sans-serif';
-        ctx.fillStyle = '#fbbf24';
-        ctx.fillText(firstNameEl.textContent, 540, 580);
-    }
-
-    if (firstHanjaEl) {
-        ctx.font = '400 48px Pretendard, sans-serif';
-        ctx.fillStyle = 'rgba(251,191,36,0.6)';
-        ctx.fillText(firstHanjaEl.textContent, 540, 650);
-    }
-
-    if (firstMeaning) {
-        ctx.font = '400 32px Pretendard, sans-serif';
-        ctx.fillStyle = '#94a3b8';
-        ctx.fillText(firstMeaning.textContent, 540, 730);
-    }
-
-    if (firstScore) {
-        ctx.font = '800 40px Outfit, sans-serif';
-        ctx.fillStyle = '#fbbf24';
-        ctx.fillText(firstScore.textContent, 540, 810);
-    }
-
-    // CTA
-    ctx.font = '400 28px Pretendard, sans-serif';
-    ctx.fillStyle = '#64748b';
-    ctx.fillText('qarah.web.app 에서 해보기', 540, 980);
-
-    // Download
-    const link = document.createElement('a');
-    link.download = 'qarah-result.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-}
 
 // === Retry ===
 btnRetry.addEventListener('click', resetToSetup);
