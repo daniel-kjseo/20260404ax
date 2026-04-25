@@ -82,7 +82,7 @@ document.getElementById('navHamburger')?.addEventListener('click', () => {
 <script type="module">
 import { initI18n, t, getCurrentLang } from './src/i18n.js';
 import { loadRanking } from './src/likes-tracker.js';
-import { isConfigured } from './src/firebase-config.js';
+import { QARAH_API_BASE } from './src/api-config.js';
 
 await initI18n();
 
@@ -119,12 +119,12 @@ async function renderRanking(period) {
     const content = document.getElementById('rankingContent');
     content.innerHTML = `<div class="ranking-loading">${t('ranking.loading')}</div>`;
 
-    if (!isConfigured()) {
+    if (!QARAH_API_BASE) {
         content.innerHTML = `
             <div class="ranking-unconfigured">
                 <p style="font-size: 1.5rem; margin-bottom: 0.75rem;">🔧</p>
-                <p>Firebase가 아직 설정되지 않았습니다.</p>
-                <p style="margin-top: 0.5rem;"><code>src/firebase-config.js</code>에 Firebase 자격 증명을 입력하면<br>실시간 순위가 표시됩니다.</p>
+                <p data-i18n="ranking.unconfigured">API가 아직 설정되지 않았습니다.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);"><code>src/api-config.js</code>에 Cloudflare Workers URL을 입력하면<br>실시간 순위가 표시됩니다.</p>
             </div>`;
         return;
     }
@@ -146,20 +146,11 @@ async function renderRanking(period) {
         return;
     }
 
-    const fieldMap = {
-        total: 'total',
-        daily:   `d_${_dateKey()}`,
-        weekly:  `w_${_weekKey()}`,
-        monthly: `m_${_monthKey()}`,
-        yearly:  `y_${new Date().getFullYear()}`,
-    };
-    const countField = fieldMap[period];
-
     const ul = document.createElement('ul');
     ul.className = 'ranking-list';
     items.forEach((item, i) => {
-        const rank     = i + 1;
-        const count    = item[countField] || item.total || 0;
+        const rank  = i + 1;
+        const count = item.total || 0;
         const catLabel = labels[item.category] || item.category || '';
         const rankClass = rank <= 3 ? ` top${rank}` : '';
         const medal     = rank <= 3 ? RANK_MEDALS[rank - 1] + ' ' : '';
@@ -189,19 +180,6 @@ document.getElementById('periodTabs').addEventListener('click', async e => {
 
 renderRanking('total');
 
-function _dateKey() {
-    const d = new Date();
-    return d.getFullYear() + String(d.getMonth()+1).padStart(2,'0') + String(d.getDate()).padStart(2,'0');
-}
-function _weekKey() {
-    const d = new Date(), jan1 = new Date(d.getFullYear(),0,1);
-    const week = Math.ceil(((d-jan1)/86400000+jan1.getDay()+1)/7);
-    return d.getFullYear()+'_'+String(week).padStart(2,'0');
-}
-function _monthKey() {
-    const d = new Date();
-    return d.getFullYear()+String(d.getMonth()+1).padStart(2,'0');
-}
 </script>
 
 </body>
