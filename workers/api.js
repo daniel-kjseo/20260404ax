@@ -8,7 +8,7 @@
  */
 
 const VISIT_COOLDOWN_TTL = 60;    // seconds
-const LIKE_COOLDOWN_TTL  = 86400; // 24 hours
+const LIKE_COOLDOWN_TTL  = 60;    // seconds (reduced from 24h to allow testing and NAT users)
 
 const ALLOWED_ORIGINS = new Set([
     'https://havenames.com',
@@ -111,7 +111,7 @@ async function handleLike(request, env, origin) {
     await env.DB.prepare(`
         INSERT INTO likes (name_key, name, category, day, week, month, year, count)
         VALUES (?, ?, ?, ?, ?, ?, ?, 1)
-        ON CONFLICT(name_key, day) DO UPDATE SET count = count + 1
+        ON CONFLICT(name_key, day) DO UPDATE SET count = likes.count + 1
     `).bind(nameKey, name, category, d, w, m, y).run();
 
     return corsResponse({ ok: true }, 200, origin);

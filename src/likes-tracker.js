@@ -5,7 +5,6 @@
 import { QARAH_API_BASE } from './api-config.js';
 
 const LIKE_PREFIX = 'qarah_liked_';
-const COOLDOWN_MS = 24 * 60 * 60 * 1000; // 24시간 중복 방지 (클라이언트 측)
 
 /** nameKey 생성: "{category}_{name}" */
 export function makeNameKey(category, name) {
@@ -16,20 +15,19 @@ export function makeNameKey(category, name) {
         .slice(0, 80);
 }
 
-/** 이미 24시간 내 좋아요 눌렀는지 확인 (localStorage 기반) */
+/** 이 브라우저에서 좋아요를 누른 적 있는지 확인 (UI 상태용) */
 export function hasLiked(nameKey) {
-    const ts = parseInt(localStorage.getItem(LIKE_PREFIX + nameKey) || '0');
-    return Date.now() - ts < COOLDOWN_MS;
+    return !!localStorage.getItem(LIKE_PREFIX + nameKey);
 }
 
 /**
- * 좋아요 등록 (이미 눌렀으면 no-op)
- * 서버에서도 IP 기반 24h 중복 방지를 적용하므로 클라이언트는 UX용으로만 체크
+ * 좋아요 등록 — 같은 브라우저에서는 한 번만 허용 (UI 상태).
+ * 실제 중복 방지는 서버(KV 60s TTL)가 담당.
  * @returns {boolean} 실제로 등록됐으면 true
  */
 export async function toggleLike(nameKey, { name, category }) {
     if (hasLiked(nameKey)) return false;
-    localStorage.setItem(LIKE_PREFIX + nameKey, String(Date.now()));
+    localStorage.setItem(LIKE_PREFIX + nameKey, '1');
 
     if (QARAH_API_BASE) {
         try {
