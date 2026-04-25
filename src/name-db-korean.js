@@ -42,6 +42,7 @@ export const koreanNames = {
             { name: '수연', hanja: '秀然', meaning: '빼어나게 자연스러운', hanjaDetail: { first: '秀(빼어날 수)', second: '然(그럴 연)' }  , emotionAffinity: { joy: 0.9, calm: 0.9, mystery: 0.5, passion: 0.9, soulful: 0.5, bold: 0.9 } },
         ],
         star: [
+            { name: '주은', hanja: '主恩', meaning: '주님의 은총', hanjaDetail: { first: '主(주님 주)', second: '恩(은혜 은)' }  , emotionAffinity: { joy: 0.7, calm: 0.9, mystery: 0.5, passion: 0.6, soulful: 1, bold: 0.4 } },
             { name: '서윤', hanja: '瑞允', meaning: '상서로운 빛을 허락하다', hanjaDetail: { first: '瑞(상서 서)', second: '允(허락할 윤)' }  , emotionAffinity: { joy: 0.6, calm: 1, mystery: 0.4, passion: 0.6, soulful: 0.4, bold: 0.6 } },
             { name: '지아', hanja: '知雅', meaning: '지혜롭고 우아한', hanjaDetail: { first: '知(알 지)', second: '雅(우아할 아)' }  , emotionAffinity: { joy: 0.3, calm: 0.3, mystery: 0.3, passion: 0.3, soulful: 0.3, bold: 0.3 } },
             { name: '하은', hanja: '夏恩', meaning: '여름처럼 따뜻한 은혜', hanjaDetail: { first: '夏(여름 하)', second: '恩(은혜 은)' }  , emotionAffinity: { joy: 0.8, calm: 0.4, mystery: 1, passion: 0.8, soulful: 1, bold: 0.8 } },
