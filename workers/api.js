@@ -10,47 +10,54 @@
 const VISIT_COOLDOWN_TTL = 60;    // seconds
 const LIKE_COOLDOWN_TTL  = 86400; // 24 hours
 
+const ALLOWED_ORIGINS = new Set([
+    'https://havenames.com',
+    'https://www.havenames.com',
+    'https://20260404ax.pages.dev',
+]);
+
 export default {
     async fetch(request, env) {
         const url    = new URL(request.url);
         const path   = url.pathname;
         const method = request.method;
+        const origin = request.headers.get('Origin') || '';
 
         // CORS preflight
         if (method === 'OPTIONS') {
-            return corsResponse(null, 204, env);
+            return corsResponse(null, 204, origin);
         }
 
         try {
             if (path === '/api/visit' && method === 'POST') {
-                return await handleVisit(request, env);
+                return await handleVisit(request, env, origin);
             }
             if (path === '/api/stats' && method === 'GET') {
-                return await handleStats(request, env);
+                return await handleStats(request, env, origin);
             }
             if (path === '/api/like' && method === 'POST') {
-                return await handleLike(request, env);
+                return await handleLike(request, env, origin);
             }
             if (path === '/api/ranking' && method === 'GET') {
-                return await handleRanking(request, env, url);
+                return await handleRanking(request, env, url, origin);
             }
-            return corsResponse({ error: 'Not Found' }, 404, env);
+            return corsResponse({ error: 'Not Found' }, 404, origin);
         } catch (e) {
             console.error(e);
-            return corsResponse({ error: 'Internal Server Error' }, 500, env);
+            return corsResponse({ error: 'Internal Server Error' }, 500, origin);
         }
     },
 };
 
 // --- Handlers ---
 
-async function handleVisit(request, env) {
+async function handleVisit(request, env, origin) {
     const ip    = request.headers.get('CF-Connecting-IP') || 'unknown';
     const kvKey = `visit:${ip}`;
 
     // 60s cooldown per IP
     if (await env.KV.get(kvKey)) {
-        return corsResponse({ ok: false, reason: 'cooldown' }, 429, env);
+        return corsResponse({ ok: false, reason: 'cooldown' }, 429, origin);
     }
     await env.KV.put(kvKey, '1', { expirationTtl: VISIT_COOLDOWN_TTL });
 
@@ -59,10 +66,10 @@ async function handleVisit(request, env) {
         'INSERT INTO visits (day, count) VALUES (?, 1) ON CONFLICT(day) DO UPDATE SET count = count + 1'
     ).bind(day).run();
 
-    return corsResponse({ ok: true }, 200, env);
+    return corsResponse({ ok: true }, 200, origin);
 }
 
-async function handleStats(request, env) {
+async function handleStats(request, env, origin) {
     const day = dateKey();
 
     const totalRow = await env.DB.prepare(
@@ -75,16 +82,16 @@ async function handleStats(request, env) {
     return corsResponse({
         total: totalRow?.total || 0,
         today: todayRow?.count || 0,
-    }, 200, env);
+    }, 200, origin);
 }
 
-async function handleLike(request, env) {
+async function handleLike(request, env, origin) {
     let body;
-    try { body = await request.json(); } catch { return corsResponse({ error: 'Invalid JSON' }, 400, env); }
+    try { body = await request.json(); } catch { return corsResponse({ error: 'Invalid JSON' }, 400, origin); }
 
     const { nameKey, name, category } = body || {};
     if (!nameKey || !name || !category) {
-        return corsResponse({ error: 'Missing fields' }, 400, env);
+        return corsResponse({ error: 'Missing fields' }, 400, origin);
     }
 
     const ip    = request.headers.get('CF-Connecting-IP') || 'unknown';
@@ -92,14 +99,14 @@ async function handleLike(request, env) {
 
     // 24h cooldown per IP+nameKey
     if (await env.KV.get(kvKey)) {
-        return corsResponse({ ok: false, reason: 'already_liked' }, 429, env);
+        return corsResponse({ ok: false, reason: 'already_liked' }, 429, origin);
     }
     await env.KV.put(kvKey, '1', { expirationTtl: LIKE_COOLDOWN_TTL });
 
     const d = dateKey();
     const w = weekKey();
     const m = monthKey();
-    const y = String(new Date().getFullYear());
+    const y = String(new Date().getUTCFullYear());
 
     await env.DB.prepare(`
         INSERT INTO likes (name_key, name, category, day, week, month, year, count)
@@ -107,10 +114,10 @@ async function handleLike(request, env) {
         ON CONFLICT(name_key, day) DO UPDATE SET count = count + 1
     `).bind(nameKey, name, category, d, w, m, y).run();
 
-    return corsResponse({ ok: true }, 200, env);
+    return corsResponse({ ok: true }, 200, origin);
 }
 
-async function handleRanking(request, env, url) {
+async function handleRanking(request, env, url, origin) {
     const period = url.searchParams.get('period') || 'total';
     const limit  = Math.min(parseInt(url.searchParams.get('limit') || '10', 10), 50);
 
@@ -128,7 +135,7 @@ async function handleRanking(request, env, url) {
         rows = result.results;
     } else {
         const field = periodField(period);
-        if (!field) return corsResponse({ error: 'Invalid period' }, 400, env);
+        if (!field) return corsResponse({ error: 'Invalid period' }, 400, origin);
 
         const result = await env.DB.prepare(`
             SELECT name_key, name, category,
@@ -142,18 +149,19 @@ async function handleRanking(request, env, url) {
         rows = result.results;
     }
 
-    return corsResponse({ items: rows || [] }, 200, env);
+    return corsResponse({ items: rows || [] }, 200, origin);
 }
 
 // --- Helpers ---
 
-function corsResponse(body, status, env) {
-    const origin  = env?.ALLOWED_ORIGIN || '*';
+function corsResponse(body, status, origin) {
+    const allowedOrigin = ALLOWED_ORIGINS.has(origin) ? origin : 'https://havenames.com';
     const headers = {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': origin,
+        'Access-Control-Allow-Origin': allowedOrigin,
         'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type',
+        'Vary': 'Origin',
     };
     return new Response(
         body !== null ? JSON.stringify(body) : null,

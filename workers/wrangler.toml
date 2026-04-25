@@ -1,15 +1,16 @@
 name = "qarah-api"
 main = "api.js"
 compatibility_date = "2024-01-01"
+account_id = "7bbea071a3e26fe5d73f74cc7665168e"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "qarah-db"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "1b91a4b1-590d-4d6b-b5f3-cc01566709d2"
 
 [[kv_namespaces]]
 binding = "KV"
-id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+id = "7a1b1bb392e343c9af4ff5c755d6da8f"
 
 [vars]
-ALLOWED_ORIGIN = "https://qarah.web.app"
+ALLOWED_ORIGIN = "https://havenames.com"
