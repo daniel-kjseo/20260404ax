@@ -9,6 +9,7 @@ import { matchNames } from './name-matcher.js';
 import { generateShareCard } from './share-card.js';
 import { trackAnalysis } from './analytics-tracker.js';
 import { makeNameKey, hasLiked, toggleLike } from './likes-tracker.js';
+import { t, getCurrentLang } from './i18n.js';
 
 /**
  * 테스트 페이지 초기화
@@ -18,7 +19,7 @@ import { makeNameKey, hasLiked, toggleLike } from './likes-tracker.js';
  * @param {Function} config.createCardContent — (nameData, index) => HTML string
  */
 export function initTestPage(config) {
-    const { nameDB, lang = 'ko', createCardContent } = config;
+    const { nameDB, createCardContent } = config;
 
     // DOM
     const phaseSetup = document.getElementById('phase-setup');
@@ -87,7 +88,7 @@ export function initTestPage(config) {
                 ]);
 
                 if (!traits) {
-                    alert(lang === 'ko' ? '얼굴을 찾을 수 없습니다. 다른 사진을 사용해 주세요.' : 'No face detected. Please try another photo.');
+                    alert(t('alert.no_face'));
                     resetToSetup(); return;
                 }
 
@@ -130,7 +131,7 @@ export function initTestPage(config) {
         phaseCountdown.classList.add('hidden');
         phaseResult.classList.remove('hidden');
 
-        const useEn = lang === 'en';
+        const useEn = getCurrentLang() !== 'ko';
         document.getElementById('impressionEmoji').textContent = impression.emoji;
         document.getElementById('impressionType').textContent = useEn ? impression.labelEn : impression.label;
         document.getElementById('impressionDesc').textContent = useEn ? impression.descEn : impression.desc;
@@ -200,8 +201,8 @@ export function initTestPage(config) {
         }
 
         const medals = ['🥇', '🥈', '🥉'];
-        const scoreLabel = lang === 'ko' ? '적합도' : 'Match';
-        const rankLabel = lang === 'ko' ? `${rank}위` : `#${rank}`;
+        const scoreLabel = t('result.match');
+        const rankLabel  = getCurrentLang() === 'ko' ? `${rank}${t('result.rank_suffix')}` : `#${rank}`;
 
         // Use custom content generator if provided, otherwise default
         if (createCardContent) {
@@ -263,12 +264,10 @@ export function initTestPage(config) {
 
     // Share
     document.getElementById('shareX')?.addEventListener('click', () => {
-        const n = nameCardsContainer.querySelector('.name-text');
-        const t = document.getElementById('impressionType').textContent;
-        const e = document.getElementById('emotionType')?.textContent || '';
-        const text = lang === 'ko'
-            ? `내 인상에 어울리는 이름은 '${n?.textContent}'이래! 인상: ${t}, 감정: ${e} #QARAH #이름추천`
-            : `My impression is "${t}" with "${e}" energy. QARAH recommends "${n?.textContent}" for me! #QARAH`;
+        const nameEl     = nameCardsContainer.querySelector('.name-text');
+        const impression = document.getElementById('impressionType').textContent;
+        const emotion    = document.getElementById('emotionType')?.textContent || '';
+        const text = t('tweet.text', { name: nameEl?.textContent || 'QARAH', impression, emotion });
         window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(location.href)}`, '_blank');
     });
 
@@ -277,7 +276,7 @@ export function initTestPage(config) {
             await navigator.clipboard.writeText(location.href);
             const b = document.getElementById('shareCopy');
             const orig = b.textContent;
-            b.textContent = '✅ 복사됨!';
+            b.textContent = t('share.copied');
             setTimeout(() => b.textContent = orig, 2000);
         } catch(e) { prompt('링크를 복사해주세요:', location.href); }
     });
@@ -286,13 +285,13 @@ export function initTestPage(config) {
         if (!lastResult) return;
         const btn = document.getElementById('shareDownload');
         const origText = btn.textContent;
-        btn.textContent = '⏳ 생성 중...';
+        btn.textContent = t('share.generating');
         btn.disabled = true;
         try {
-            await generateShareCard({ ...lastResult, lang });
+            await generateShareCard({ ...lastResult, lang: getCurrentLang() });
         } catch (e) {
             console.error('Share card error:', e);
-            alert(lang === 'ko' ? '카드 생성 중 오류가 발생했습니다.' : 'Failed to generate card.');
+            alert(t('alert.card_error'));
         } finally {
             btn.textContent = origText;
             btn.disabled = false;

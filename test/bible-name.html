@@ -34,10 +34,10 @@
     <div class="nav-inner">
         <a href="../index.html" class="nav-brand"><span>QARAH</span></a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="../index.html">이름추천</a></li>
-            <li><a href="../ranking.html">🏆 순위</a></li>
-            <li><a href="../blog/index.html">블로그</a></li>
-            <li><a href="../about.html">소개</a></li>
+            <li><a href="../index.html" data-i18n="nav.test">이름추천</a></li>
+            <li><a href="../ranking.html" data-i18n="nav.ranking">🏆 순위</a></li>
+            <li><a href="../blog/index.html" data-i18n="nav.blog">블로그</a></li>
+            <li><a href="../about.html" data-i18n="nav.about">소개</a></li>
         </ul>
         <button class="nav-hamburger" id="navHamburger" aria-label="메뉴">
             <span></span><span></span><span></span>
@@ -51,13 +51,13 @@
     <section id="phase-setup" class="section" style="padding-top: 2rem;">
         <div style="text-align: center; margin-bottom: 2rem;">
             <h1 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem;">📖 성경 이름 추천</h1>
-            <p style="color: var(--text-secondary); font-size: 0.95rem;">당신의 인상에 어울리는 성경 속 인물의 이름과 고유한 성품을 찾아드립니다</p>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;" data-i18n="page.bible.subtitle">당신의 인상에 어울리는 성경 속 인물의 이름과 고유한 성품을 찾아드립니다</p>
         </div>
 
         <!-- Gender Select -->
         <div class="gender-select">
-            <button class="gender-btn active" data-gender="female" id="genderFemale">👩 여성</button>
-            <button class="gender-btn" data-gender="male" id="genderMale">👨 남성</button>
+            <button class="gender-btn active" data-gender="female" id="genderFemale"><span data-i18n="gender.female">👩 여성</span</button>
+            <button class="gender-btn" data-gender="male" id="genderMale"><span data-i18n="gender.male">👨 남성</span</button>
         </div>
 
         <!-- Upload Zone -->
@@ -65,7 +65,7 @@
         <input type="file" id="cameraInput" accept="image/*" capture="user" style="display:none">
         <div class="upload-zone" id="uploadZone">
             <span class="upload-zone-icon">📸</span>
-            <p class="upload-zone-text">사진을 올려주세요</p>
+            <p class="upload-zone-text"><span data-i18n="upload.title">사진을 올려주세요</span></p>
             <p class="upload-zone-hint">성경 속 인물과의 닮은꼴을 분석합니다</p>
             <div class="upload-buttons">
                 <button class="btn-upload" id="btnUpload">📁 파일 선택</button>
@@ -94,7 +94,7 @@
         </div>
         <div class="ad-slot" id="adCountdown" style="margin-top: 1.5rem;"></div>
         <p style="text-align: center; color: var(--text-secondary); font-size: 0.85rem; margin-top: 1rem;">
-            💡 성경 속 인물들의 성품과 인상을 매칭 중입니다...
+            <span data-i18n="page.bible.countdown_hint">💡 성경 속 인물들의 성품과 인상을 매칭 중입니다...</span>
         </p>
     </section>
 
@@ -167,6 +167,10 @@ import { generateShareCard } from '../src/share-card.js';
 import { trackAnalysis } from '../src/analytics-tracker.js';
 import { makeNameKey, hasLiked, toggleLike } from '../src/likes-tracker.js';
 
+import { initI18n, t, getCurrentLang } from '../src/i18n.js';
+
+await initI18n();
+
 const phaseSetup = document.getElementById('phase-setup');
 const phaseCountdown = document.getElementById('phase-countdown');
 const phaseResult = document.getElementById('phase-result');
@@ -221,7 +225,7 @@ async function handleFile(file) {
                 ]);
 
                 if (!traits) {
-                    alert('얼굴을 인식하지 못했습니다. 다른 사진으로 다시 시도해 주세요.');
+                    alert(t('alert.no_face'));
                     resetToSetup(); return;
                 }
 
@@ -233,7 +237,7 @@ async function handleFile(file) {
                 showResult(impression, emotion, names);
             } catch (err) {
                 console.error('Flow error:', err);
-                alert('처리 중 오류가 발생했습니다.');
+                alert(t('alert.no_face'));
                 resetToSetup();
             }
         };
@@ -267,13 +271,13 @@ function showResult(impression, emotion, names) {
     phaseResult.classList.remove('hidden');
 
     document.getElementById('impressionEmoji').textContent = impression.emoji;
-    document.getElementById('impressionType').textContent = impression.label;
-    document.getElementById('impressionDesc').textContent = impression.desc;
+    document.getElementById('impressionType').textContent = (getCurrentLang() !== 'ko' ? impression.labelEn : impression.label);
+    document.getElementById('impressionDesc').textContent = (getCurrentLang() !== 'ko' ? impression.descEn : impression.desc);
 
     const traitsContainer = document.getElementById('impressionTraits');
     traitsContainer.innerHTML = '';
     
-    if (impression.traits) {
+    if ((getCurrentLang() !== 'ko' ? impression.traitsEn : impression.traits)) {
         impression.traits.forEach(trait => {
             const span = document.createElement('span');
             span.className = 'impression-trait';
@@ -283,8 +287,8 @@ function showResult(impression, emotion, names) {
 
     // Emotion badge
     document.getElementById('emotionEmoji').textContent = emotion.emoji;
-    document.getElementById('emotionType').textContent = emotion.label;
-    document.getElementById('emotionDesc').textContent = emotion.desc;
+    document.getElementById('emotionType').textContent = (getCurrentLang() !== 'ko' ? emotion.labelEn : emotion.label);
+    document.getElementById('emotionDesc').textContent = (getCurrentLang() !== 'ko' ? emotion.descEn : emotion.desc);
     const emoTraits = document.getElementById('emotionTraits');
     emoTraits.innerHTML = '';
     emotion.traits.forEach(trait => {
@@ -377,7 +381,7 @@ document.getElementById('btnMore').addEventListener('click', () => location.relo
 document.getElementById('shareCopy').addEventListener('click', async () => {
     try {
         await navigator.clipboard.writeText(location.href);
-        alert('링크가 복사되었습니다!');
+        btn.textContent = t('share.copied');;
     } catch (e) {
         prompt('링크를 복사해주세요:', location.href);
     }
@@ -387,13 +391,13 @@ document.getElementById('shareDownload').addEventListener('click', async () => {
     if (!lastResult) return;
     const btn = document.getElementById('shareDownload');
     const orig = btn.textContent;
-    btn.textContent = '⏳ 생성 중...';
+    btn.textContent = t('share.generating');
     btn.disabled = true;
     try {
         await generateShareCard({ ...lastResult, lang: 'ko' });
     } catch (e) {
         console.error('Share card error:', e);
-        alert('카드 생성 중 오류가 발생했습니다.');
+        alert(t('alert.card_error'));
     } finally {
         btn.textContent = orig;
         btn.disabled = false;

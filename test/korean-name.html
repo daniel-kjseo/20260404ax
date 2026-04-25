@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -7,22 +7,21 @@
     <meta name="description" content="사진 한 장으로 나에게 어울리는 한국 이름을 찾아보세요. QARAH가 인상을 분석하여 가장 잘 어울리는 이름 3개를 추천합니다.">
     <link rel="stylesheet" href="../style.css">
     <script defer src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.min.js"></script>
-    <!-- Google Analytics 4 (측정 ID를 analytics.google.com에서 발급 후 G-SPF6FHWKZ9 교체) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SPF6FHWKZ9"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SPF6FHWKZ9');</script></head>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SPF6FHWKZ9');</script>
+</head>
 <body>
 
-<!-- Navigation -->
 <nav class="nav">
     <div class="nav-inner">
         <a href="../index.html" class="nav-brand"><span>QARAH</span></a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="../index.html">이름추천</a></li>
-            <li><a href="../ranking.html">🏆 순위</a></li>
-            <li><a href="../blog/index.html">블로그</a></li>
-            <li><a href="../about.html">소개</a></li>
+            <li><a href="../index.html" data-i18n="nav.test">이름추천</a></li>
+            <li><a href="../ranking.html" data-i18n="nav.ranking">🏆 순위</a></li>
+            <li><a href="../blog/index.html" data-i18n="nav.blog">블로그</a></li>
+            <li><a href="../about.html" data-i18n="nav.about">소개</a></li>
         </ul>
-        <button class="nav-hamburger" id="navHamburger" aria-label="메뉴">
+        <button class="nav-hamburger" id="navHamburger" data-i18n-aria="nav.about" aria-label="메뉴">
             <span></span><span></span><span></span>
         </button>
     </div>
@@ -33,57 +32,50 @@
     <!-- PHASE 1: Setup -->
     <section id="phase-setup" class="section" style="padding-top: 2rem;">
         <div style="text-align: center; margin-bottom: 2rem;">
-            <h1 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem;">🇰🇷 한국 이름 추천</h1>
-            <p style="color: var(--text-secondary); font-size: 0.95rem;">당신의 인상에 가장 잘 어울리는 한국 이름을 찾아드립니다</p>
+            <h1 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem;" data-i18n="page.korean.h1">🇰🇷 한국 이름 추천</h1>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;" data-i18n="page.korean.subtitle">당신의 인상에 가장 잘 어울리는 한국 이름을 찾아드립니다</p>
         </div>
 
-        <!-- Gender Select -->
         <div class="gender-select">
-            <button class="gender-btn active" data-gender="female" id="genderFemale">👩 여성</button>
-            <button class="gender-btn" data-gender="male" id="genderMale">👨 남성</button>
+            <button class="gender-btn active" data-gender="female" id="genderFemale" data-i18n="gender.female">👩 여성</button>
+            <button class="gender-btn" data-gender="male" id="genderMale" data-i18n="gender.male">👨 남성</button>
         </div>
 
-        <!-- Upload Zone -->
         <input type="file" id="fileInput" accept="image/*" style="display:none">
         <input type="file" id="cameraInput" accept="image/*" capture="user" style="display:none">
         <div class="upload-zone" id="uploadZone">
             <span class="upload-zone-icon">📸</span>
-            <p class="upload-zone-text">사진을 올려주세요</p>
-            <p class="upload-zone-hint">또는 카메라로 촬영하세요</p>
+            <p class="upload-zone-text" data-i18n="upload.title">사진을 올려주세요</p>
+            <p class="upload-zone-hint" data-i18n="upload.hint">또는 카메라로 촬영하세요</p>
             <div class="upload-buttons">
-                <button class="btn-upload" id="btnUpload">📁 파일 선택</button>
-                <button class="btn-camera" id="btnCamera">📷 카메라 촬영</button>
+                <button class="btn-upload" id="btnUpload" data-i18n="upload.btn_file">📁 파일 선택</button>
+                <button class="btn-camera" id="btnCamera" data-i18n="upload.btn_camera">📷 카메라 촬영</button>
             </div>
         </div>
 
         <ul class="tips-list" style="margin-top: 1.5rem;">
-            <li>정면을 바라보세요</li>
-            <li>밝은 곳에서 촬영하세요</li>
-            <li>얼굴이 화면의 70% 이상 차지하게</li>
+            <li data-i18n="upload.tip1">정면을 바라보세요</li>
+            <li data-i18n="upload.tip2">밝은 곳에서 촬영하세요</li>
+            <li data-i18n="upload.tip3">얼굴이 화면의 70% 이상 차지하게</li>
         </ul>
 
-        <div class="privacy-notice">
+        <div class="privacy-notice" data-i18n="upload.privacy">
             🔒 사진은 기기 내에서만 분석됩니다. 서버에 저장되지 않습니다.
         </div>
 
-        <!-- Ad Slot -->
         <div class="ad-slot" id="adSetup"></div>
 
-        <p class="footer-disclaimer" style="margin-top: 1rem;">ℹ️ QARAH — 당신의 인상 속에 숨겨진 이름을 찾아드립니다</p>
+        <p class="footer-disclaimer" style="margin-top: 1rem;" data-i18n="page.tagline">ℹ️ QARAH — 당신의 인상 속에 숨겨진 이름을 찾아드립니다</p>
     </section>
 
     <!-- PHASE 2: Countdown -->
     <section id="phase-countdown" class="section hidden" style="padding-top: 2rem;">
         <div class="countdown-container" id="countdownContainer">
-            <img id="countdownPhoto" class="countdown-photo" src="" alt="업로드된 사진">
+            <img id="countdownPhoto" class="countdown-photo" src="" alt="uploaded photo">
             <div class="countdown-overlay" id="countdownOverlay"></div>
-            <!-- Countdown numbers will be dynamically added here -->
         </div>
-
-        <!-- Ad Slot during countdown -->
         <div class="ad-slot" id="adCountdown" style="margin-top: 1.5rem;"></div>
-
-        <p style="text-align: center; color: var(--text-secondary); font-size: 0.85rem; margin-top: 1rem;">
+        <p style="text-align: center; color: var(--text-secondary); font-size: 0.85rem; margin-top: 1rem;" data-i18n="countdown.hint">
             💡 이름에는 그 사람의 인상이 담깁니다
         </p>
     </section>
@@ -91,89 +83,80 @@
     <!-- PHASE 3: Result -->
     <section id="phase-result" class="section hidden" style="padding-top: 2rem;">
 
-        <!-- Impression Type Badge -->
         <div class="glass-card impression-badge" id="impressionBadge">
             <span class="impression-emoji" id="impressionEmoji">✨</span>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.25rem;">당신의 인상 유형</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.25rem;" data-i18n="result.impression_label">당신의 인상 유형</p>
             <h2 class="impression-type" id="impressionType">별빛형</h2>
             <p class="impression-desc" id="impressionDesc">균형잡히고 빛나는 인상</p>
             <div class="impression-traits" id="impressionTraits"></div>
         </div>
 
-        <!-- Emotion Type Badge -->
         <div class="glass-card impression-badge" id="emotionBadge" style="margin-top: 1rem;">
             <span class="impression-emoji" id="emotionEmoji">😊</span>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.25rem;">당신의 감정 에너지</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.25rem;" data-i18n="result.emotion_label">당신의 감정 에너지</p>
             <h2 class="impression-type" id="emotionType">기쁨형</h2>
             <p class="impression-desc" id="emotionDesc">밝고 따뜻한 에너지</p>
             <div class="impression-traits" id="emotionTraits"></div>
         </div>
 
-        <!-- Ad Slot 1 -->
         <div class="ad-slot" id="adResult1"></div>
 
-        <h2 class="section-title" style="margin-top: 1.5rem;">QARAH가 추천하는 한국 이름</h2>
+        <h2 class="section-title" style="margin-top: 1.5rem;" data-i18n="page.korean.result_title">QARAH가 추천하는 한국 이름</h2>
 
-        <!-- Name Cards Container -->
         <div id="nameCardsContainer" style="display: flex; flex-direction: column; gap: 1.5rem;"></div>
 
-        <!-- Share -->
         <div class="share-bar" style="margin-top: 2rem;">
-            <button class="share-btn" id="shareX">𝕏 공유</button>
-            <button class="share-btn" id="shareCopy">🔗 링크복사</button>
-            <button class="share-btn" id="shareDownload">📥 카드 저장</button>
+            <button class="share-btn" id="shareX" data-i18n="share.x">𝕏 공유</button>
+            <button class="share-btn" id="shareCopy" data-i18n="share.copy">🔗 링크복사</button>
+            <button class="share-btn" id="shareDownload" data-i18n="share.download">📥 카드 저장</button>
         </div>
 
-        <!-- Ad Slot 2 -->
         <div class="ad-slot" id="adResult2"></div>
 
-        <!-- Other Tests CTA -->
-        <h2 class="section-title" style="margin-top: 1.5rem;">🔮 다른 이름도 추천받아 보세요!</h2>
+        <h2 class="section-title" style="margin-top: 1.5rem;" data-i18n="result.other_tests">🔮 다른 이름도 추천받아 보세요!</h2>
         <div class="test-grid">
             <a href="english-name.html" class="glass-card test-card">
                 <span class="test-card-emoji">🇺🇸</span>
-                <p class="test-card-title">영어 이름</p>
-                <p class="test-card-desc">English Name 추천</p>
+                <p class="test-card-title" data-i18n="test.english.title">영어 이름</p>
+                <p class="test-card-desc" data-i18n="test.english.desc">English Name + 어원</p>
             </a>
             <a href="japanese-name.html" class="glass-card test-card">
                 <span class="test-card-emoji">🇯🇵</span>
-                <p class="test-card-title">일본 이름</p>
-                <p class="test-card-desc">일본 이름 추천</p>
+                <p class="test-card-title" data-i18n="test.japanese.title">일본 이름</p>
+                <p class="test-card-desc" data-i18n="test.japanese.desc">일본식 이름 + 의미</p>
             </a>
             <a href="fantasy-name.html" class="glass-card test-card">
                 <span class="test-card-emoji">🏰</span>
-                <p class="test-card-title">판타지 이름</p>
-                <p class="test-card-desc">판타지 세계의 이름</p>
+                <p class="test-card-title" data-i18n="test.fantasy.title">판타지 이름</p>
+                <p class="test-card-desc" data-i18n="test.fantasy.desc">판타지 세계의 이름</p>
             </a>
         </div>
 
-        <!-- Retry -->
         <div style="text-align: center; margin-top: 2rem;">
-            <button class="btn-ghost" id="btnRetry">🔄 다시 하기</button>
+            <button class="btn-ghost" id="btnRetry" data-i18n="result.retry">🔄 다시 하기</button>
         </div>
 
-        <!-- Ad Slot 3 (anchor) -->
         <div class="ad-slot" id="adResult3"></div>
 
-        <p class="footer-disclaimer" style="margin-top: 1rem;">ℹ️ QARAH — 당신의 인상 속에 숨겨진 이름을 찾아드립니다</p>
+        <p class="footer-disclaimer" style="margin-top: 1rem;" data-i18n="page.tagline">ℹ️ QARAH — 당신의 인상 속에 숨겨진 이름을 찾아드립니다</p>
     </section>
 
 </main>
 
-<!-- Footer -->
 <footer class="footer">
     <div class="container">
         <ul class="footer-links">
-            <li><a href="../about.html">소개</a></li>
-            <li><a href="../privacy.html">개인정보처리방침</a></li>
-            <li><a href="../terms.html">이용약관</a></li>
-            <li><a href="../contact.html">문의</a></li>
+            <li><a href="../about.html" data-i18n="footer.about">소개</a></li>
+            <li><a href="../privacy.html" data-i18n="footer.privacy">개인정보처리방침</a></li>
+            <li><a href="../terms.html" data-i18n="footer.terms">이용약관</a></li>
+            <li><a href="../contact.html" data-i18n="footer.contact">문의</a></li>
         </ul>
-        <p class="footer-disclaimer">© 2026 QARAH. 모든 이름에는 부름이 있습니다.</p>
+        <p class="footer-disclaimer" data-i18n="footer.copyright">© 2026 QARAH. 모든 이름에는 부름이 있습니다.</p>
     </div>
 </footer>
 
 <script type="module">
+import { initI18n, t, getCurrentLang } from '../src/i18n.js';
 import { preloadModels, analyzeFace } from '../src/face-analyzer.js';
 import { determineImpression, getRarity } from '../src/impression-engine.js';
 import { determineEmotion } from '../src/emotion-engine.js';
@@ -183,29 +166,25 @@ import { generateShareCard } from '../src/share-card.js';
 import { trackAnalysis } from '../src/analytics-tracker.js';
 import { makeNameKey, hasLiked, toggleLike } from '../src/likes-tracker.js';
 
-// === DOM Elements ===
-const phaseSetup = document.getElementById('phase-setup');
+// Initialize i18n first
+await initI18n();
+
+const phaseSetup     = document.getElementById('phase-setup');
 const phaseCountdown = document.getElementById('phase-countdown');
-const phaseResult = document.getElementById('phase-result');
-const uploadZone = document.getElementById('uploadZone');
-const fileInput = document.getElementById('fileInput');
-const cameraInput = document.getElementById('cameraInput');
-const btnUpload = document.getElementById('btnUpload');
-const btnCamera = document.getElementById('btnCamera');
+const phaseResult    = document.getElementById('phase-result');
+const uploadZone     = document.getElementById('uploadZone');
+const fileInput      = document.getElementById('fileInput');
+const cameraInput    = document.getElementById('cameraInput');
 const countdownPhoto = document.getElementById('countdownPhoto');
 const countdownContainer = document.getElementById('countdownContainer');
-const countdownOverlay = document.getElementById('countdownOverlay');
+const countdownOverlay   = document.getElementById('countdownOverlay');
 const nameCardsContainer = document.getElementById('nameCardsContainer');
-const btnRetry = document.getElementById('btnRetry');
 
-// === State ===
 let selectedGender = 'female';
 let lastResult = null;
 
-// === Model Preloading (on page load) ===
 preloadModels('../models').catch(err => console.warn('Model preload failed:', err));
 
-// === Gender Selection ===
 document.querySelectorAll('.gender-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
@@ -214,258 +193,184 @@ document.querySelectorAll('.gender-btn').forEach(btn => {
     });
 });
 
-// === File Upload ===
-btnUpload.addEventListener('click', (e) => { e.stopPropagation(); e.preventDefault(); fileInput.click(); });
-btnCamera.addEventListener('click', (e) => { e.stopPropagation(); e.preventDefault(); cameraInput.click(); });
-uploadZone.addEventListener('click', (e) => {
-    // Don't trigger if clicking on buttons inside
-    if (e.target.closest('.upload-buttons')) return;
-    fileInput.click();
-});
-
-uploadZone.addEventListener('dragover', (e) => { e.preventDefault(); uploadZone.classList.add('dragover'); });
+document.getElementById('btnUpload').addEventListener('click', e => { e.stopPropagation(); e.preventDefault(); fileInput.click(); });
+document.getElementById('btnCamera').addEventListener('click', e => { e.stopPropagation(); e.preventDefault(); cameraInput.click(); });
+uploadZone.addEventListener('click', e => { if (e.target.closest('.upload-buttons')) return; fileInput.click(); });
+uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('dragover'); });
 uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
-uploadZone.addEventListener('drop', (e) => {
-    e.preventDefault();
-    uploadZone.classList.remove('dragover');
+uploadZone.addEventListener('drop', e => {
+    e.preventDefault(); uploadZone.classList.remove('dragover');
     if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
 });
+fileInput.addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
+cameraInput.addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
 
-fileInput.addEventListener('change', (e) => { if (e.target.files[0]) handleFile(e.target.files[0]); });
-cameraInput.addEventListener('change', (e) => { if (e.target.files[0]) handleFile(e.target.files[0]); });
-
-// === Main Flow ===
 async function handleFile(file) {
     if (!file.type.startsWith('image/')) return;
-
     const reader = new FileReader();
-    reader.onload = async (e) => {
-        const imgSrc = e.target.result;
-
-        // Show photo in countdown container
-        countdownPhoto.src = imgSrc;
+    reader.onload = async e => {
+        countdownPhoto.src = e.target.result;
         phaseSetup.classList.add('hidden');
         phaseCountdown.classList.remove('hidden');
-
-        // Start analysis in background + countdown simultaneously
         const img = new Image();
-        img.src = imgSrc;
+        img.src = e.target.result;
         img.onload = async () => {
-            // Parallel: analyze face + run countdown
             const [traits] = await Promise.all([
-                analyzeFace(img).catch(err => { console.error(err); return null; }),
+                analyzeFace(img).catch(() => null),
                 runCountdown()
             ]);
-
             if (!traits) {
-                alert('얼굴을 찾을 수 없습니다. 다른 사진을 사용해 주세요.');
-                resetToSetup();
-                return;
+                alert(t('alert.no_face'));
+                resetToSetup(); return;
             }
-
-            // Determine impression type + emotion type
             const impression = determineImpression(traits);
-            const emotion = determineEmotion(traits.expressions);
-
-            // Match names (2-axis: impression + emotion)
-            const names = matchNames(impression.type, emotion.type, selectedGender, koreanNames, impression.score);
+            const emotion    = determineEmotion(traits.expressions);
+            const names      = matchNames(impression.type, emotion.type, selectedGender, koreanNames, impression.score);
             lastResult = { impression, emotion, names, photoSrc: countdownPhoto.src };
             trackAnalysis('korean');
-
-            // Show result
             showResult(impression, emotion, names);
         };
     };
     reader.readAsDataURL(file);
 }
 
-// === Countdown Animation (5-4-3-2-1) ===
 async function runCountdown() {
-    const numbers = [5, 4, 3, 2, 1];
-
-    for (let i = 0; i < numbers.length; i++) {
-        const num = numbers[i];
-
-        // Update overlay phase
+    for (let i = 0; i < 5; i++) {
+        const num = 5 - i;
         countdownOverlay.className = 'countdown-overlay phase-' + num;
-
-        // Create number element
         const el = document.createElement('div');
         el.className = `countdown-number size-80 anim-${num}`;
         el.textContent = num;
         countdownContainer.appendChild(el);
-
-        // Shake effects
         if (num <= 3 && num > 1) countdownContainer.classList.add('shake');
-        if (num === 1) {
-            countdownContainer.classList.remove('shake');
-            countdownContainer.classList.add('intense-shake');
-        }
-
-        // Vibration feedback (mobile)
-        if (navigator.vibrate) navigator.vibrate(50 + (5 - num) * 30);
-
-        // Wait
-        const waitTime = num === 1 ? 500 : 1000;
-        await delay(waitTime);
-
-        // Remove number
+        if (num === 1) { countdownContainer.classList.remove('shake'); countdownContainer.classList.add('intense-shake'); }
+        if (navigator.vibrate) navigator.vibrate(50 + i * 30);
+        await delay(num === 1 ? 500 : 1000);
         el.remove();
     }
-
-    // Remove shakes
     countdownContainer.classList.remove('shake', 'intense-shake');
-
-    // Flash explosion
     const flash = document.createElement('div');
     flash.className = 'flash-overlay';
     countdownContainer.appendChild(flash);
-
     await delay(600);
     flash.remove();
 }
 
-// === Show Result ===
 function showResult(impression, emotion, names) {
     phaseCountdown.classList.add('hidden');
     phaseResult.classList.remove('hidden');
 
-    // Impression badge
+    const lang = getCurrentLang();
+    const useEn = lang !== 'ko';
+
     document.getElementById('impressionEmoji').textContent = impression.emoji;
-    document.getElementById('impressionType').textContent = impression.label;
-    document.getElementById('impressionDesc').textContent = impression.desc;
+    document.getElementById('impressionType').textContent  = useEn ? impression.labelEn : impression.label;
+    document.getElementById('impressionDesc').textContent  = useEn ? impression.descEn  : impression.desc;
 
-    const traitsContainer = document.getElementById('impressionTraits');
-    traitsContainer.innerHTML = '';
-    impression.traits.forEach(trait => {
-        const span = document.createElement('span');
-        span.className = 'impression-trait';
-        span.textContent = trait;
-        traitsContainer.appendChild(span);
+    const traitsEl = document.getElementById('impressionTraits');
+    traitsEl.innerHTML = '';
+    (useEn ? impression.traitsEn : impression.traits).forEach(tr => {
+        const s = document.createElement('span'); s.className = 'impression-trait'; s.textContent = tr;
+        traitsEl.appendChild(s);
     });
 
-    // Emotion badge
     document.getElementById('emotionEmoji').textContent = emotion.emoji;
-    document.getElementById('emotionType').textContent = emotion.label;
-    document.getElementById('emotionDesc').textContent = emotion.desc;
-    const emoTraits = document.getElementById('emotionTraits');
-    emoTraits.innerHTML = '';
-    emotion.traits.forEach(trait => {
-        const span = document.createElement('span');
-        span.className = 'impression-trait';
-        span.textContent = trait;
-        emoTraits.appendChild(span);
+    document.getElementById('emotionType').textContent  = useEn ? emotion.labelEn : emotion.label;
+    document.getElementById('emotionDesc').textContent  = useEn ? emotion.descEn  : emotion.desc;
+    const emoTraitsEl = document.getElementById('emotionTraits');
+    emoTraitsEl.innerHTML = '';
+    (useEn ? emotion.traitsEn : emotion.traits).forEach(tr => {
+        const s = document.createElement('span'); s.className = 'impression-trait'; s.textContent = tr;
+        emoTraitsEl.appendChild(s);
     });
 
-    // Name cards
     nameCardsContainer.innerHTML = '';
     names.forEach((nameData, index) => {
         const card = createNameCard(nameData, index);
         nameCardsContainer.appendChild(card);
-
-        // Animate score bar after card appears
         setTimeout(() => {
             const bar = card.querySelector('.score-bar-fill');
             if (bar) bar.style.width = nameData.score + '%';
-        }, (index === 0 ? 500 : 1500 + index * 1000));
+        }, index === 0 ? 500 : 1500 + index * 1000);
     });
 
-    // Create particles for first card
     setTimeout(() => {
-        const firstCard = nameCardsContainer.querySelector('.card-legendary, .card-epic');
-        if (firstCard) createParticles(firstCard, 15);
+        const first = nameCardsContainer.querySelector('.card-legendary, .card-epic');
+        if (first) createParticles(first, 15);
     }, 800);
 
-    // Scroll to result
     phaseResult.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function createNameCard(nameData, index) {
     const { rank, name, hanja, meaning, hanjaDetail, score, rarity } = nameData;
+    const lang = getCurrentLang();
+    const rankLabel  = lang === 'ko' ? `${rank}${t('result.rank_suffix')}` : `#${rank}`;
+    const matchLabel = t('result.match');
 
     const wrapper = document.createElement('div');
     wrapper.style.position = 'relative';
-
     const card = document.createElement('div');
     card.className = `glass-card card-${rarity.tier}`;
+    card.classList.add('card-reveal');
+    if (index > 0) card.classList.add(`card-reveal-delay-${index}`);
 
-    // Add reveal animation
-    if (index === 0) {
-        card.classList.add('card-reveal');
-    } else {
-        card.classList.add('card-reveal', `card-reveal-delay-${index}`);
-    }
-
-    // Light burst for rank 1
     if (index === 0) {
         const burst = document.createElement('div');
         burst.className = 'light-burst';
         wrapper.appendChild(burst);
     }
 
-    const medalEmojis = ['🥇', '🥈', '🥉'];
-
+    const medals = ['🥇', '🥈', '🥉'];
     card.innerHTML = `
         <div style="text-align: center;">
             <span class="rarity-badge ${rarity.tier}">${rarity.stars} ${rarity.label}</span>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">${medalEmojis[index]} ${rank}위</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">${medals[index]} ${rankLabel}</p>
             <div class="name-text">${name}</div>
             ${hanja ? `<div class="hanja-text">${hanja}</div>` : ''}
             <p class="name-meaning">"${meaning}"</p>
-            <div class="score-bar">
-                <div class="score-bar-fill ${rarity.tier}" style="width: 0%;"></div>
-            </div>
-            <p class="score-text ${rarity.tier}">적합도 ${score}%</p>
-            ${hanjaDetail ? `
-                <div class="name-detail">
-                    ${hanjaDetail.first}<br>
-                    ${hanjaDetail.second}
-                </div>
-            ` : ''}
-        </div>
-    `;
+            <div class="score-bar"><div class="score-bar-fill ${rarity.tier}" style="width: 0%;"></div></div>
+            <p class="score-text ${rarity.tier}">${matchLabel} ${score}%</p>
+            ${hanjaDetail ? `<div class="name-detail">${hanjaDetail.first}<br>${hanjaDetail.second}</div>` : ''}
+        </div>`;
 
-    // Like button
     const nameKey = makeNameKey('korean', name);
     const liked   = hasLiked(nameKey);
     const likeBtn = document.createElement('button');
     likeBtn.className = 'like-btn' + (liked ? ' liked' : '');
     likeBtn.innerHTML = `<span class="like-heart">${liked ? '❤️' : '🤍'}</span><span class="like-count"></span>`;
     likeBtn.addEventListener('click', async () => {
-        const registered = await toggleLike(nameKey, { name, category: 'korean' });
-        if (registered) {
+        const ok = await toggleLike(nameKey, { name, category: 'korean' });
+        if (ok) {
             likeBtn.classList.add('liked', 'pop');
             likeBtn.querySelector('.like-heart').textContent = '❤️';
             setTimeout(() => likeBtn.classList.remove('pop'), 400);
         }
     });
     card.appendChild(likeBtn);
-
     wrapper.appendChild(card);
     return wrapper;
 }
 
-// === Particles ===
 function createParticles(container, count = 20) {
     for (let i = 0; i < count; i++) {
-        const particle = document.createElement('span');
-        particle.className = 'particle';
-        particle.textContent = ['✦', '✧', '⭐', '✨', '💫'][i % 5];
-        particle.style.setProperty('--x', `${(Math.random() - 0.5) * 200}px`);
-        particle.style.setProperty('--y', `${(Math.random() - 0.5) * 200}px`);
-        particle.style.animationDelay = `${Math.random() * 0.5}s`;
-        particle.style.animationDuration = `${0.8 + Math.random() * 0.5}s`;
-        container.appendChild(particle);
-        setTimeout(() => particle.remove(), 1500);
+        const p = document.createElement('span');
+        p.className = 'particle';
+        p.textContent = ['✦','✧','⭐','✨','💫'][i % 5];
+        p.style.setProperty('--x', `${(Math.random()-0.5)*200}px`);
+        p.style.setProperty('--y', `${(Math.random()-0.5)*200}px`);
+        p.style.animationDelay = `${Math.random()*0.5}s`;
+        p.style.animationDuration = `${0.8+Math.random()*0.5}s`;
+        container.appendChild(p);
+        setTimeout(() => p.remove(), 1500);
     }
 }
 
-// === Share ===
 document.getElementById('shareX').addEventListener('click', () => {
-    const firstCard = nameCardsContainer.querySelector('.name-text');
-    const name = firstCard ? firstCard.textContent : 'QARAH';
+    const name       = nameCardsContainer.querySelector('.name-text')?.textContent || 'QARAH';
     const impression = document.getElementById('impressionType').textContent;
-    const text = `내 인상에 어울리는 이름은 '${name}'이래! 인상 유형: ${impression} #QARAH #이름추천`;
+    const emotion    = document.getElementById('emotionType')?.textContent || '';
+    const text = t('tweet.text', { name, impression, emotion });
     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(location.href)}`, '_blank');
 });
 
@@ -473,56 +378,46 @@ document.getElementById('shareCopy').addEventListener('click', async () => {
     try {
         await navigator.clipboard.writeText(location.href);
         const btn = document.getElementById('shareCopy');
-        btn.textContent = '✅ 복사됨!';
-        setTimeout(() => btn.textContent = '🔗 링크복사', 2000);
-    } catch (e) {
-        prompt('링크를 복사해주세요:', location.href);
-    }
+        const orig = btn.textContent;
+        btn.textContent = t('share.copied');
+        setTimeout(() => btn.textContent = orig, 2000);
+    } catch(e) { prompt(t('share.copy') + ':', location.href); }
 });
 
 document.getElementById('shareDownload').addEventListener('click', async () => {
     if (!lastResult) return;
     const btn = document.getElementById('shareDownload');
     const orig = btn.textContent;
-    btn.textContent = '⏳ 생성 중...';
+    btn.textContent = t('share.generating');
     btn.disabled = true;
     try {
-        await generateShareCard({ ...lastResult, lang: 'ko' });
-    } catch (e) {
-        console.error('Share card error:', e);
-        alert('카드 생성 중 오류가 발생했습니다.');
+        await generateShareCard({ ...lastResult, lang: getCurrentLang() });
+    } catch(e) {
+        console.error(e);
+        alert(t('alert.card_error'));
     } finally {
         btn.textContent = orig;
         btn.disabled = false;
     }
 });
 
-// === Retry ===
-btnRetry.addEventListener('click', resetToSetup);
+document.getElementById('btnRetry').addEventListener('click', resetToSetup);
 
 function resetToSetup() {
     phaseResult.classList.add('hidden');
     phaseCountdown.classList.add('hidden');
     phaseSetup.classList.remove('hidden');
-    fileInput.value = '';
-    cameraInput.value = '';
+    fileInput.value = ''; cameraInput.value = '';
     nameCardsContainer.innerHTML = '';
     countdownOverlay.className = 'countdown-overlay';
 }
 
-// === Nav hamburger ===
 document.getElementById('navHamburger')?.addEventListener('click', () => {
     document.getElementById('navLinks').classList.toggle('open');
 });
 
-// === Utility ===
-function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
 </script>
 
 </body>
 </html>
-
-
-

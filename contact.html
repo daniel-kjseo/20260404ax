@@ -15,9 +15,9 @@
     <div class="nav-inner">
         <a href="index.html" class="nav-brand"><span>QARAH</span></a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">이름추천</a></li>
-            <li><a href="blog/index.html">블로그</a></li>
-            <li><a href="about.html">소개</a></li>
+            <li><a href="index.html"><span data-i18n="nav.test">이름추천</span></a></li>
+            <li><a href="blog/index.html"><span data-i18n="nav.blog">블로그</span></a></li>
+            <li><a href="about.html"><span data-i18n="nav.about">소개</span></a></li>
         </ul>
         <button class="nav-hamburger" id="navHamburger" aria-label="메뉴"><span></span><span></span><span></span></button>
     </div>
@@ -90,12 +90,12 @@
 <footer class="footer">
     <div class="container">
         <ul class="footer-links">
-            <li><a href="about.html">소개</a></li>
+            <li><a href="about.html"><span data-i18n="nav.about">소개</span></a></li>
             <li><a href="privacy.html">개인정보처리방침</a></li>
             <li><a href="terms.html">이용약관</a></li>
             <li><a href="contact.html">문의</a></li>
         </ul>
-        <p class="footer-disclaimer">© 2026 QARAH. 모든 이름에는 부름이 있습니다.</p>
+        <p class="footer-disclaimer" data-i18n="footer.copyright">© 2026 QARAH. 모든 이름에는 부름이 있습니다.</p>
     </div>
 </footer>
 
@@ -113,5 +113,10 @@
 </script>
 <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 <script>document.getElementById('navHamburger')?.addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});</script>
+
+<script type="module">
+import { initI18n } from './src/i18n.js';
+initI18n();
+</script>
 </body>
 </html>
