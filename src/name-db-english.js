@@ -1,4 +1,4 @@
-﻿/**
+/**
  * QARAH — English Name Database
  * 인상 유형별 영어 이름 (남/여 각 80+ = 총 160+)
  */
@@ -40,6 +40,7 @@ export const englishNames = {
             { name: 'Dawn', origin: 'English', meaning: 'First light of day'  , emotionAffinity: { joy: 0.7, calm: 0.7, mystery: 0.7, passion: 0.7, soulful: 0.7, bold: 0.7 } },
             { name: 'Autumn', origin: 'Latin', meaning: 'Fall season, abundance'  , emotionAffinity: { joy: 0.4, calm: 0.8, mystery: 0.6, passion: 0.4, soulful: 0.6, bold: 0.4 } },
             { name: 'Meadow', origin: 'English', meaning: 'Field of grass'  , emotionAffinity: { joy: 0.9, calm: 0.9, mystery: 0.5, passion: 0.9, soulful: 0.5, bold: 0.9 } },
+            { name: 'Olivia', origin: 'Latin', meaning: '올리브, 평화의 상징', emotionAffinity: { joy: 0.8, calm: 0.8, mystery: 0.4, passion: 0.5, soulful: 0.7, bold: 0.4 } },
         ],
         star: [
             { name: 'Stella', origin: 'Latin', meaning: 'Star'  , emotionAffinity: { joy: 0.6, calm: 1, mystery: 0.4, passion: 0.6, soulful: 0.4, bold: 0.6 } },
@@ -48,15 +49,18 @@ export const englishNames = {
             { name: 'Diana', origin: 'Latin', meaning: 'Goddess of the moon and hunt'  , emotionAffinity: { joy: 0.5, calm: 0.5, mystery: 0.9, passion: 0.5, soulful: 0.9, bold: 0.5 } },
             { name: 'Grace', origin: 'Latin', meaning: 'Elegance, beauty of form'  , emotionAffinity: { joy: 1, calm: 0.6, mystery: 0.8, passion: 1, soulful: 0.8, bold: 1 } },
             { name: 'Sophia', origin: 'Greek', meaning: 'Wisdom'  , emotionAffinity: { joy: 0.7, calm: 0.7, mystery: 0.7, passion: 0.7, soulful: 0.7, bold: 0.7 } },
-            { name: 'Isabella', origin: 'Italian', meaning: 'Devoted to God'  , emotionAffinity: { joy: 0.4, calm: 0.8, mystery: 0.6, passion: 0.4, soulful: 0.6, bold: 0.4 } },
+            { name: 'Isabella', origin: 'Italian', meaning: '하느님은 나의 맹세'  , emotionAffinity: { joy: 0.4, calm: 0.8, mystery: 0.6, passion: 0.4, soulful: 0.6, bold: 0.4 } },
             { name: 'Aria', origin: 'Italian', meaning: 'Air, song, melody'  , emotionAffinity: { joy: 0.9, calm: 0.9, mystery: 0.5, passion: 0.9, soulful: 0.5, bold: 0.9 } },
             { name: 'Vivienne', origin: 'French', meaning: 'Alive, lively'  , emotionAffinity: { joy: 0.6, calm: 1, mystery: 0.4, passion: 0.6, soulful: 0.4, bold: 0.6 } },
             { name: 'Camille', origin: 'French', meaning: 'Perfect, unblemished'  , emotionAffinity: { joy: 0.3, calm: 0.3, mystery: 0.3, passion: 0.3, soulful: 0.3, bold: 0.3 } },
+            { name: 'Ian', origin: 'Scottish', meaning: '하나님의 은총'  , emotionAffinity: { joy: 0.7, calm: 0.7, mystery: 0.7, passion: 0.7, soulful: 0.7, bold: 0.7 } },
+            { name: 'Emma', origin: 'German', meaning: '보편적인, 전체적인', emotionAffinity: { joy: 0.9, calm: 0.7, mystery: 0.3, passion: 0.6, soulful: 0.5, bold: 0.6 } },
+            { name: 'Sofia', origin: 'Greek', meaning: '지혜', emotionAffinity: { joy: 0.7, calm: 0.7, mystery: 0.7, passion: 0.7, soulful: 0.7, bold: 0.7 } },
         ],
         rock: [
             { name: 'Alexandra', origin: 'Greek', meaning: 'Defender of the people'  , emotionAffinity: { joy: 0.8, calm: 0.4, mystery: 1, passion: 0.8, soulful: 1, bold: 0.8 } },
             { name: 'Margaret', origin: 'Greek', meaning: 'Pearl, precious'  , emotionAffinity: { joy: 0.5, calm: 0.5, mystery: 0.9, passion: 0.5, soulful: 0.9, bold: 0.5 } },
-            { name: 'Charlotte', origin: 'French', meaning: 'Free woman, strong'  , emotionAffinity: { joy: 1, calm: 0.6, mystery: 0.8, passion: 1, soulful: 0.8, bold: 1 } },
+            { name: 'Charlotte', origin: 'French', meaning: '자유로운 사람'  , emotionAffinity: { joy: 1, calm: 0.6, mystery: 0.8, passion: 1, soulful: 0.8, bold: 1 } },
             { name: 'Elizabeth', origin: 'Hebrew', meaning: 'God is my oath'  , emotionAffinity: { joy: 0.7, calm: 0.7, mystery: 0.7, passion: 0.7, soulful: 0.7, bold: 0.7 } },
             { name: 'Katherine', origin: 'Greek', meaning: 'Pure, clear'  , emotionAffinity: { joy: 0.4, calm: 0.8, mystery: 0.6, passion: 0.4, soulful: 0.6, bold: 0.4 } },
             { name: 'Theodora', origin: 'Greek', meaning: 'Gift of God'  , emotionAffinity: { joy: 0.9, calm: 0.9, mystery: 0.5, passion: 0.9, soulful: 0.5, bold: 0.9 } },
@@ -64,6 +68,7 @@ export const englishNames = {
             { name: 'Matilda', origin: 'German', meaning: 'Mighty in battle'  , emotionAffinity: { joy: 0.3, calm: 0.3, mystery: 0.3, passion: 0.3, soulful: 0.3, bold: 0.3 } },
             { name: 'Harriet', origin: 'German', meaning: 'Ruler of the home'  , emotionAffinity: { joy: 0.8, calm: 0.4, mystery: 1, passion: 0.8, soulful: 1, bold: 0.8 } },
             { name: 'Beatrice', origin: 'Latin', meaning: 'She who brings joy'  , emotionAffinity: { joy: 0.5, calm: 0.5, mystery: 0.9, passion: 0.5, soulful: 0.9, bold: 0.5 } },
+            { name: 'Amelia', origin: 'German', meaning: '근면한, 노력하는', emotionAffinity: { joy: 0.7, calm: 0.6, mystery: 0.4, passion: 0.8, soulful: 0.6, bold: 0.8 } },
         ],
         flower: [
             { name: 'Lily', origin: 'English', meaning: 'Pure, innocent flower'  , emotionAffinity: { joy: 1, calm: 0.6, mystery: 0.8, passion: 1, soulful: 0.8, bold: 1 } },
@@ -88,6 +93,7 @@ export const englishNames = {
             { name: 'Morgana', origin: 'Welsh', meaning: 'Sea circle, enchantress'  , emotionAffinity: { joy: 1, calm: 0.6, mystery: 0.8, passion: 1, soulful: 0.8, bold: 1 } },
             { name: 'Cassandra', origin: 'Greek', meaning: 'She who shines upon mankind'  , emotionAffinity: { joy: 0.7, calm: 0.7, mystery: 0.7, passion: 0.7, soulful: 0.7, bold: 0.7 } },
             { name: 'Esmeralda', origin: 'Spanish', meaning: 'Emerald, precious green stone'  , emotionAffinity: { joy: 0.4, calm: 0.8, mystery: 0.6, passion: 0.4, soulful: 0.6, bold: 0.4 } },
+            { name: 'Evelyn', origin: 'English', meaning: '부드럽고 우아한 이미지', emotionAffinity: { joy: 0.6, calm: 0.9, mystery: 0.7, passion: 0.4, soulful: 0.9, bold: 0.3 } },
         ],
         sun: [
             { name: 'Sunny', origin: 'English', meaning: 'Cheerful, bright'  , emotionAffinity: { joy: 0.9, calm: 0.9, mystery: 0.5, passion: 0.9, soulful: 0.5, bold: 0.9 } },
@@ -100,6 +106,8 @@ export const englishNames = {
             { name: 'Zara', origin: 'Arabic', meaning: 'Blooming flower, princess'  , emotionAffinity: { joy: 0.4, calm: 0.8, mystery: 0.6, passion: 0.4, soulful: 0.6, bold: 0.4 } },
             { name: 'Leah', origin: 'Hebrew', meaning: 'Weary, delicate'  , emotionAffinity: { joy: 0.9, calm: 0.9, mystery: 0.5, passion: 0.9, soulful: 0.5, bold: 0.9 } },
             { name: 'Mila', origin: 'Slavic', meaning: 'Gracious, dear'  , emotionAffinity: { joy: 0.6, calm: 1, mystery: 0.4, passion: 0.6, soulful: 0.4, bold: 0.6 } },
+            { name: 'Mia', origin: 'Latin', meaning: '친근하고 간결한 이름', emotionAffinity: { joy: 0.9, calm: 0.6, mystery: 0.4, passion: 0.7, soulful: 0.5, bold: 0.7 } },
+            { name: 'Ava', origin: 'German', meaning: '짧고 세련된 현대적 이름', emotionAffinity: { joy: 0.8, calm: 0.5, mystery: 0.6, passion: 0.8, soulful: 0.5, bold: 0.8 } },
         ]
     },
     male: {
@@ -108,12 +116,13 @@ export const englishNames = {
             { name: 'Dylan', origin: 'Welsh', meaning: 'Son of the sea, great tide'  , emotionAffinity: { joy: 0.8, calm: 0.4, mystery: 1, passion: 0.8, soulful: 1, bold: 0.8 } },
             { name: 'Ethan', origin: 'Hebrew', meaning: 'Strong, enduring'  , emotionAffinity: { joy: 0.5, calm: 0.5, mystery: 0.9, passion: 0.5, soulful: 0.9, bold: 0.5 } },
             { name: 'Jasper', origin: 'Persian', meaning: 'Bringer of treasure'  , emotionAffinity: { joy: 1, calm: 0.6, mystery: 0.8, passion: 1, soulful: 0.8, bold: 1 } },
-            { name: 'Liam', origin: 'Irish', meaning: 'Strong-willed warrior'  , emotionAffinity: { joy: 0.7, calm: 0.7, mystery: 0.7, passion: 0.7, soulful: 0.7, bold: 0.7 } },
+            { name: 'Liam', origin: 'Irish', meaning: '강한 보호자 또는 결단력 있는 수호자'  , emotionAffinity: { joy: 0.7, calm: 0.7, mystery: 0.7, passion: 0.7, soulful: 0.7, bold: 0.7 } },
             { name: 'Finn', origin: 'Irish', meaning: 'Fair, white, clear'  , emotionAffinity: { joy: 0.4, calm: 0.8, mystery: 0.6, passion: 0.4, soulful: 0.6, bold: 0.4 } },
             { name: 'Caleb', origin: 'Hebrew', meaning: 'Faithful, wholehearted'  , emotionAffinity: { joy: 0.9, calm: 0.9, mystery: 0.5, passion: 0.9, soulful: 0.5, bold: 0.9 } },
             { name: 'Remy', origin: 'French', meaning: 'Oarsman, from Rheims'  , emotionAffinity: { joy: 0.6, calm: 1, mystery: 0.4, passion: 0.6, soulful: 0.4, bold: 0.6 } },
             { name: 'Kai', origin: 'Hawaiian', meaning: 'Sea, ocean'  , emotionAffinity: { joy: 0.3, calm: 0.3, mystery: 0.3, passion: 0.3, soulful: 0.3, bold: 0.3 } },
             { name: 'Noel', origin: 'French', meaning: 'Christmas, born at Christmas'  , emotionAffinity: { joy: 0.8, calm: 0.4, mystery: 1, passion: 0.8, soulful: 1, bold: 0.8 } },
+            { name: 'Noah', origin: 'Hebrew', meaning: '휴식, 위로', emotionAffinity: { joy: 0.6, calm: 0.9, mystery: 0.5, passion: 0.4, soulful: 0.8, bold: 0.3 } },
         ],
         fire: [
             { name: 'Leo', origin: 'Latin', meaning: 'Lion, brave'  , emotionAffinity: { joy: 0.5, calm: 0.5, mystery: 0.9, passion: 0.5, soulful: 0.9, bold: 0.5 } },
@@ -130,7 +139,7 @@ export const englishNames = {
         forest: [
             { name: 'Rowan', origin: 'Gaelic', meaning: 'Little red-haired one, tree'  , emotionAffinity: { joy: 0.7, calm: 0.7, mystery: 0.7, passion: 0.7, soulful: 0.7, bold: 0.7 } },
             { name: 'Ash', origin: 'English', meaning: 'Ash tree, born of fire and earth'  , emotionAffinity: { joy: 0.4, calm: 0.8, mystery: 0.6, passion: 0.4, soulful: 0.6, bold: 0.4 } },
-            { name: 'Oliver', origin: 'Latin', meaning: 'Olive tree, peace'  , emotionAffinity: { joy: 0.9, calm: 0.9, mystery: 0.5, passion: 0.9, soulful: 0.5, bold: 0.9 } },
+            { name: 'Oliver', origin: 'Latin', meaning: '올리브 나무 (평화의 이미지)'  , emotionAffinity: { joy: 0.9, calm: 0.9, mystery: 0.5, passion: 0.9, soulful: 0.5, bold: 0.9 } },
             { name: 'Forrest', origin: 'English', meaning: 'Woodsman, of the forest'  , emotionAffinity: { joy: 0.6, calm: 1, mystery: 0.4, passion: 0.6, soulful: 0.4, bold: 0.6 } },
             { name: 'Heath', origin: 'English', meaning: 'Heathland, open field'  , emotionAffinity: { joy: 0.3, calm: 0.3, mystery: 0.3, passion: 0.3, soulful: 0.3, bold: 0.3 } },
             { name: 'Cedar', origin: 'English', meaning: 'Cedar tree, strength'  , emotionAffinity: { joy: 0.8, calm: 0.4, mystery: 1, passion: 0.8, soulful: 1, bold: 0.8 } },
@@ -150,6 +159,9 @@ export const englishNames = {
             { name: 'Gabriel', origin: 'Hebrew', meaning: 'God is my strength'  , emotionAffinity: { joy: 0.4, calm: 0.8, mystery: 0.6, passion: 0.4, soulful: 0.6, bold: 0.4 } },
             { name: 'Rafael', origin: 'Hebrew', meaning: 'God has healed'  , emotionAffinity: { joy: 0.9, calm: 0.9, mystery: 0.5, passion: 0.9, soulful: 0.5, bold: 0.9 } },
             { name: 'Theodore', origin: 'Greek', meaning: 'Gift of God'  , emotionAffinity: { joy: 0.6, calm: 1, mystery: 0.4, passion: 0.6, soulful: 0.4, bold: 0.6 } },
+            { name: 'Ian', origin: 'Scottish', meaning: '하나님의 은총'  , emotionAffinity: { joy: 0.7, calm: 0.7, mystery: 0.7, passion: 0.7, soulful: 0.7, bold: 0.7 } },
+            { name: 'Mateo', origin: 'Spanish', meaning: '하느님의 선물', emotionAffinity: { joy: 0.8, calm: 0.5, mystery: 0.4, passion: 0.9, soulful: 0.6, bold: 0.8 } },
+            { name: 'Elijah', origin: 'Hebrew', meaning: '나의 하나님은 야훼', emotionAffinity: { joy: 0.6, calm: 0.7, mystery: 0.8, passion: 0.6, soulful: 0.9, bold: 0.5 } },
         ],
         rock: [
             { name: 'Atlas', origin: 'Greek', meaning: 'Bearer of the heavens'  , emotionAffinity: { joy: 0.3, calm: 0.3, mystery: 0.3, passion: 0.3, soulful: 0.3, bold: 0.3 } },
@@ -157,11 +169,13 @@ export const englishNames = {
             { name: 'Arthur', origin: 'Celtic', meaning: 'Bear, noble, courageous'  , emotionAffinity: { joy: 0.5, calm: 0.5, mystery: 0.9, passion: 0.5, soulful: 0.9, bold: 0.5 } },
             { name: 'Conrad', origin: 'German', meaning: 'Bold counsel'  , emotionAffinity: { joy: 1, calm: 0.6, mystery: 0.8, passion: 1, soulful: 0.8, bold: 1 } },
             { name: 'Frederick', origin: 'German', meaning: 'Peaceful ruler'  , emotionAffinity: { joy: 0.7, calm: 0.7, mystery: 0.7, passion: 0.7, soulful: 0.7, bold: 0.7 } },
-            { name: 'William', origin: 'German', meaning: 'Resolute protector'  , emotionAffinity: { joy: 0.4, calm: 0.8, mystery: 0.6, passion: 0.4, soulful: 0.6, bold: 0.4 } },
+            { name: 'William', origin: 'German', meaning: '의지의 보호자, 결단력 있는 수호자'  , emotionAffinity: { joy: 0.4, calm: 0.8, mystery: 0.6, passion: 0.4, soulful: 0.6, bold: 0.4 } },
             { name: 'Edmund', origin: 'English', meaning: 'Prosperous protector'  , emotionAffinity: { joy: 0.9, calm: 0.9, mystery: 0.5, passion: 0.9, soulful: 0.5, bold: 0.9 } },
             { name: 'Harold', origin: 'Norse', meaning: 'Army ruler'  , emotionAffinity: { joy: 0.6, calm: 1, mystery: 0.4, passion: 0.6, soulful: 0.4, bold: 0.6 } },
             { name: 'Godfrey', origin: 'German', meaning: 'God\'s peace', emotionAffinity: { joy: 0.5, calm: 0.9, mystery: 0.4, passion: 0.5, soulful: 0.7, bold: 0.7 } },
             { name: 'Richard', origin: 'German', meaning: 'Brave ruler'  , emotionAffinity: { joy: 0.3, calm: 0.3, mystery: 0.3, passion: 0.3, soulful: 0.3, bold: 0.3 } },
+            { name: 'James', origin: 'Hebrew', meaning: '전통적이고 고전적인 이름', emotionAffinity: { joy: 0.5, calm: 0.7, mystery: 0.4, passion: 0.6, soulful: 0.5, bold: 0.8 } },
+            { name: 'Henry', origin: 'German', meaning: '집의 지배자, 가문의 통치자', emotionAffinity: { joy: 0.5, calm: 0.6, mystery: 0.4, passion: 0.7, soulful: 0.5, bold: 0.9 } },
         ],
         flower: [
             { name: 'Felix', origin: 'Latin', meaning: 'Happy, fortunate'  , emotionAffinity: { joy: 0.8, calm: 0.4, mystery: 1, passion: 0.8, soulful: 1, bold: 0.8 } },

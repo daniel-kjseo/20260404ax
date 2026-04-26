@@ -8,7 +8,7 @@
  */
 
 const VISIT_COOLDOWN_TTL = 60;    // seconds
-const LIKE_COOLDOWN_TTL  = 60;    // seconds (reduced from 24h to allow testing and NAT users)
+const LIKE_COOLDOWN_TTL = 60;     // 60 seconds (for testing)
 
 const ALLOWED_ORIGINS = new Set([
     'https://havenames.com',
@@ -18,8 +18,8 @@ const ALLOWED_ORIGINS = new Set([
 
 export default {
     async fetch(request, env) {
-        const url    = new URL(request.url);
-        const path   = url.pathname;
+        const url = new URL(request.url);
+        const path = url.pathname;
         const method = request.method;
         const origin = request.headers.get('Origin') || '';
 
@@ -52,7 +52,7 @@ export default {
 // --- Handlers ---
 
 async function handleVisit(request, env, origin) {
-    const ip    = request.headers.get('CF-Connecting-IP') || 'unknown';
+    const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
     const kvKey = `visit:${ip}`;
 
     // 60s cooldown per IP
@@ -94,7 +94,7 @@ async function handleLike(request, env, origin) {
         return corsResponse({ error: 'Missing fields' }, 400, origin);
     }
 
-    const ip    = request.headers.get('CF-Connecting-IP') || 'unknown';
+    const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
     const kvKey = `like:${ip}:${nameKey}`;
 
     // 24h cooldown per IP+nameKey
@@ -106,7 +106,7 @@ async function handleLike(request, env, origin) {
     const d = dateKey();
     const w = weekKey();
     const m = monthKey();
-    const y = String(new Date().getUTCFullYear());
+    const y = yearKey();
 
     await env.DB.prepare(`
         INSERT INTO likes (name_key, name, category, day, week, month, year, count)
@@ -119,7 +119,7 @@ async function handleLike(request, env, origin) {
 
 async function handleRanking(request, env, url, origin) {
     const period = url.searchParams.get('period') || 'total';
-    const limit  = Math.min(parseInt(url.searchParams.get('limit') || '10', 10), 50);
+    const limit = Math.min(parseInt(url.searchParams.get('limit') || '10', 10), 50);
 
     let rows;
 
@@ -169,23 +169,39 @@ function corsResponse(body, status, origin) {
     );
 }
 
+function getKSTDate() {
+    // Current time + 9 hours
+    return new Date(Date.now() + (9 * 60 * 60 * 1000));
+}
+
 function dateKey() {
-    const d = new Date();
+    const d = getKSTDate();
     return d.getUTCFullYear()
         + String(d.getUTCMonth() + 1).padStart(2, '0')
         + String(d.getUTCDate()).padStart(2, '0');
 }
 
 function weekKey() {
-    const d    = new Date();
+    const d = getKSTDate();
     const jan1 = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-    const week = Math.ceil(((d - jan1) / 86400000 + jan1.getUTCDay() + 1) / 7);
+    // Number of days since Jan 1 (0-indexed)
+    const dayOfYear = Math.floor((d.getTime() - jan1.getTime()) / 86400000);
+    // Jan 1st day of week: 0=Sun, 1=Mon, ..., 6=Sat
+    // Convert to Monday=1, ..., Sunday=7
+    const jan1Day = jan1.getUTCDay() === 0 ? 7 : jan1.getUTCDay();
+    // Week number calculation where Monday starts the week
+    const week = Math.ceil((dayOfYear + jan1Day) / 7);
     return d.getUTCFullYear() + '_' + String(week).padStart(2, '0');
 }
 
 function monthKey() {
-    const d = new Date();
+    const d = getKSTDate();
     return d.getUTCFullYear() + String(d.getUTCMonth() + 1).padStart(2, '0');
+}
+
+function yearKey() {
+    const d = getKSTDate();
+    return String(d.getUTCFullYear());
 }
 
 function periodField(period) {
@@ -193,9 +209,9 @@ function periodField(period) {
 }
 
 function periodValue(period) {
-    if (period === 'daily')   return dateKey();
-    if (period === 'weekly')  return weekKey();
+    if (period === 'daily') return dateKey();
+    if (period === 'weekly') return weekKey();
     if (period === 'monthly') return monthKey();
-    if (period === 'yearly')  return String(new Date().getUTCFullYear());
+    if (period === 'yearly') return yearKey();
     return null;
 }
