@@ -7,8 +7,8 @@
  *   GET  /api/ranking?period=total&limit=10
  */
 
-const VISIT_COOLDOWN_TTL = 60;    // seconds
-const LIKE_COOLDOWN_TTL = 60;     // 60 seconds (for testing)
+const VISIT_COOLDOWN_TTL = 60;      // seconds
+const LIKE_COOLDOWN_TTL = 86400;    // 24 hours
 
 const ALLOWED_ORIGINS = new Set([
     'https://havenames.com',
@@ -69,7 +69,7 @@ async function handleVisit(request, env, origin) {
     return corsResponse({ ok: true }, 200, origin);
 }
 
-async function handleStats(request, env, origin) {
+async function handleStats(_request, env, origin) {
     const day = dateKey();
 
     const totalRow = await env.DB.prepare(
@@ -117,7 +117,7 @@ async function handleLike(request, env, origin) {
     return corsResponse({ ok: true }, 200, origin);
 }
 
-async function handleRanking(request, env, url, origin) {
+async function handleRanking(_request, env, url, origin) {
     const period = url.searchParams.get('period') || 'total';
     const limit = Math.min(parseInt(url.searchParams.get('limit') || '10', 10), 50);
 
