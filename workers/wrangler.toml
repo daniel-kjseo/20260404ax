@@ -12,5 +12,3 @@ database_id = "1b91a4b1-590d-4d6b-b5f3-cc01566709d2"
 binding = "KV"
 id = "7a1b1bb392e343c9af4ff5c755d6da8f"
 
-[vars]
-ALLOWED_ORIGIN = "https://havenames.com"
