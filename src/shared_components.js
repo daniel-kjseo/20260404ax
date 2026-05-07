@@ -1,47 +1,57 @@
 /**
- * Shared Components for Consistent Layout across all pages
+ * QARAH — Shared Components
+ * Consistent layout helpers for QARAH pages
  */
 
 const navbarHTML = `
-    <nav class="navbar">
-        <a href="/index.html" class="nav-logo">IDOL AGENCY</a>
-        <div class="language-selector">
-            <button id="lang-en" class="lang-btn active">EN</button>
-            <button id="lang-ko" class="lang-btn">KO</button>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/index.html" class="nav-brand"><span>QARAH</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/index.html#tests" data-i18n="nav.test">이름추천</a></li>
+                <li><a href="/ranking.html" data-i18n="nav.ranking">🏆 순위</a></li>
+                <li><a href="/blog/index.html" data-i18n="nav.blog">블로그</a></li>
+                <li><a href="/about.html" data-i18n="nav.about">소개</a></li>
+            </ul>
+            <button class="nav-hamburger" id="navHamburger" aria-label="메뉴">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 `;
 
 const footerHTML = `
-    <footer style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border-dim); text-align: center;">
-        <p style="color: var(--text-muted); font-size: 0.8rem;">&copy; 2026 IDOL AGENCY. All rights reserved.</p>
-        <div class="footer-links" style="margin-top: 10px; display: flex; justify-content: center; gap: 15px; font-size: 0.8rem;">
-            <a href="/index.html" style="text-decoration: none; color: var(--text-muted);">Home</a>
-            <a href="/about.html" style="text-decoration: none; color: var(--text-muted);">About Us</a>
-            <a href="/privacy.html" style="text-decoration: none; color: var(--text-muted);">Privacy Policy</a>
-            <a href="/terms.html" style="text-decoration: none; color: var(--text-muted);">Terms of Service</a>
-            <a href="/contact.html" style="text-decoration: none; color: var(--text-muted);">Contact</a>
+    <footer class="footer">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="/index.html#tests" data-i18n="nav.test">이름추천</a></li>
+                <li><a href="/blog/index.html" data-i18n="nav.blog">블로그</a></li>
+                <li><a href="/about.html" data-i18n="footer.about">소개</a></li>
+                <li><a href="/privacy.html" data-i18n="footer.privacy">개인정보처리방침</a></li>
+                <li><a href="/terms.html" data-i18n="footer.terms">이용약관</a></li>
+                <li><a href="/contact.html" data-i18n="footer.contact">문의</a></li>
+            </ul>
+            <p class="footer-disclaimer" data-i18n="footer.copyright">© 2026 QARAH. 모든 이름에는 부름이 있습니다.</p>
         </div>
     </footer>
 `;
 
 export function syncLayout() {
-    // Inject Navbar if not present or to ensure consistency
-    let nav = document.querySelector('.navbar');
-    // If it's already there and has IDOL AGENCY branding, we might skip to avoid breaking dynamic listeners
-    // But since main.js calls syncLayout THEN initUI, it's safer to just set it once.
+    // Inject Navbar if not present
+    let nav = document.querySelector('.nav');
     if (!nav) {
         document.body.insertAdjacentHTML('afterbegin', navbarHTML);
-    } else if (!nav.innerHTML.includes('IDOL AGENCY')) {
-        nav.outerHTML = navbarHTML;
     }
 
-    // Inject Footer if not present or old
-    let footer = document.querySelector('footer');
+    // Inject Footer if not present
+    let footer = document.querySelector('.footer');
     if (!footer) {
         const container = document.querySelector('.container') || document.body;
         container.insertAdjacentHTML('beforeend', footerHTML);
-    } else if (!footer.innerHTML.includes('IDOL AGENCY')) {
-        footer.outerHTML = footerHTML;
     }
+
+    // Hamburger menu toggle
+    document.getElementById('navHamburger')?.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.toggle('open');
+    });
 }

@@ -155,7 +155,7 @@ export async function generateShareCard({ photoSrc, impression, names, lang = 'k
     // Bottom CTA
     ctx.font      = '400 36px Pretendard, sans-serif';
     ctx.fillStyle = '#374151';
-    ctx.fillText('qarah.web.app 에서 내 이름 찾기 →', W / 2, H - 80);
+    ctx.fillText('havenames.com 에서 내 이름 찾기 →', W / 2, H - 80);
 
     // Download
     const a = document.createElement('a');

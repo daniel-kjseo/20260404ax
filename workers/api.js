@@ -13,6 +13,7 @@ const LIKE_COOLDOWN_TTL = 86400;    // 24 hours
 const ALLOWED_ORIGINS = new Set([
     'https://havenames.com',
     'https://www.havenames.com',
+    'https://qarah.web.app',
     'https://20260404ax.pages.dev',
 ]);
 
